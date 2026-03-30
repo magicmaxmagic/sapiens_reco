@@ -26,8 +26,12 @@ def test_try_extract_auth_context_with_invalid_token_returns_none():
 
 
 def test_validate_admin_credentials_with_test_defaults():
+    # correct username and password
     assert validate_admin_credentials("admin", "TestAdmin#2026Secure") is True
+    # correct username, wrong password
     assert validate_admin_credentials("admin", "wrong") is False
+    # wrong username, correct password
+    assert validate_admin_credentials("not-admin", "TestAdmin#2026Secure") is False
 
 
 def test_validate_admin_password_policy_accepts_complex_password():
