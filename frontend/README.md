@@ -14,6 +14,8 @@ App URL:
 Required variable:
 - NEXT_PUBLIC_API_URL=http://localhost:8000/api
 - APP_LOGIN_SESSION_SECRET=<random-long-secret>
+- NEXT_PUBLIC_SUPABASE_URL=https://your-project-ref.supabase.co
+- NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
 
 Optional variable:
 - APP_LOGIN_SESSION_MAX_AGE_SECONDS=3600
@@ -24,6 +26,7 @@ Optional variable:
 - /profiles
 - /profiles/{id} (manual correction screen)
 - /missions
+- /notes (lecture table notes via Supabase)
 
 ## Admin JWT session (UI)
 
@@ -75,6 +78,8 @@ npx vercel link
 - NEXT_PUBLIC_API_URL=https://your-backend-public-url/api
 - APP_LOGIN_SESSION_SECRET=<random-long-secret>
 - APP_LOGIN_SESSION_MAX_AGE_SECONDS=3600 (optional)
+- NEXT_PUBLIC_SUPABASE_URL=https://your-project-ref.supabase.co
+- NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
 
 3. Configure GitHub secrets
 

@@ -9,6 +9,7 @@ const links = [
   { href: "/dashboard", label: "Dashboard" },
   { href: "/profiles", label: "Profils" },
   { href: "/missions", label: "Missions & Matching" },
+  { href: "/notes", label: "Notes" },
 ];
 
 export function AppNav() {
