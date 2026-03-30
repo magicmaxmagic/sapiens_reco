@@ -134,6 +134,11 @@ Recommandation GitHub:
 - utiliser l'environment `preview` pour vercel-preview.yml
 - utiliser l'environment `production` pour vercel-deploy.yml
 
+Troubleshooting Vercel CI (`no-credentials-found`):
+- verifier que `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID` sont bien des **Secrets** GitHub (pas des Variables)
+- verifier que les secrets existent dans l'environment utilise (`preview` ou `production`) ou au niveau repository
+- si workflow `pull_request` depuis un fork: les secrets ne sont pas exposes par GitHub (deploy preview ignore dans ce cas)
+
 Variable runtime a definir dans le projet Vercel:
 - NEXT_PUBLIC_API_URL=https://your-backend-public-url/api
 
