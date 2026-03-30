@@ -119,14 +119,20 @@ Retour:
 
 ## CI/CD
 
-- frontend-ci.yml: lint + typecheck + build
-- backend-ci.yml: ruff + tests
-- vercel-deploy.yml: deploy frontend sur main
+- frontend-ci.yml: lint + typecheck + build (PR, main, uat)
+- backend-ci.yml: ruff + tests + migration check (PR, main, uat)
+- vercel-preview.yml: deploy preview frontend (PR et push uat)
+- vercel-deploy.yml: deploy production frontend (push main)
 
 Secrets GitHub requis pour Vercel:
 - VERCEL_TOKEN
 - VERCEL_ORG_ID
 - VERCEL_PROJECT_ID
+
+Recommandation GitHub:
+- definir les secrets au niveau repository ou environment
+- utiliser l'environment `preview` pour vercel-preview.yml
+- utiliser l'environment `production` pour vercel-deploy.yml
 
 Variable runtime a definir dans le projet Vercel:
 - NEXT_PUBLIC_API_URL=https://your-backend-public-url/api
@@ -177,6 +183,11 @@ Test de deploiement sur main:
 1. merger une PR qui modifie frontend/**
 2. verifier le workflow "Deploy Frontend to Vercel"
 3. verifier la mise en production sur l'URL Vercel
+
+Test preview sur uat:
+1. pousser une modification frontend/** sur la branche uat
+2. verifier le workflow "Deploy Frontend Preview to Vercel"
+3. verifier l'URL preview generee par Vercel
 
 ## Documents
 

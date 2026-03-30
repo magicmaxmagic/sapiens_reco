@@ -6,9 +6,10 @@ on:
       - "frontend/**"
       - ".github/workflows/frontend-ci.yml"
   push:
-    branches: [main]
+    branches: [main, uat]
     paths:
       - "frontend/**"
+  workflow_dispatch:
 
 jobs:
   frontend-ci:

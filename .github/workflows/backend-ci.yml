@@ -6,9 +6,10 @@ on:
       - "backend/**"
       - ".github/workflows/backend-ci.yml"
   push:
-    branches: [main]
+    branches: [main, uat]
     paths:
       - "backend/**"
+  workflow_dispatch:
 
 jobs:
   backend-ci:

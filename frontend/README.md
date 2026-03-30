@@ -61,9 +61,14 @@ npx vercel link
 - VERCEL_ORG_ID
 - VERCEL_PROJECT_ID
 
-4. Push to main
+4. Push strategy
 
-The workflow [.github/workflows/vercel-deploy.yml](../.github/workflows/vercel-deploy.yml) will:
-- pull production environment from Vercel
-- build artifacts
-- deploy prebuilt assets to production
+- Push on uat (or open PR): triggers preview deploy via [../.github/workflows/vercel-preview.yml](../.github/workflows/vercel-preview.yml)
+- Push on main: triggers production deploy via [../.github/workflows/vercel-deploy.yml](../.github/workflows/vercel-deploy.yml)
+
+Production workflow does:
+- npm ci
+- lint + typecheck
+- vercel pull (production)
+- vercel build --prod
+- vercel deploy --prebuilt --prod
