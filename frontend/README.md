@@ -13,6 +13,10 @@ App URL:
 
 Required variable:
 - NEXT_PUBLIC_API_URL=http://localhost:8000/api
+- APP_LOGIN_SESSION_SECRET=<random-long-secret>
+
+Optional variable:
+- APP_LOGIN_SESSION_MAX_AGE_SECONDS=3600
 
 ## Main pages
 
@@ -35,6 +39,21 @@ Workflow:
 2. le token JWT est stocke en localStorage
 3. les appels mutatifs envoient automatiquement Authorization: Bearer <token>
 
+## Login global applicatif
+
+L'app frontend est maintenant protegee par un login global (/login) base sur une session cookie signee.
+
+Fonctionnement:
+1. l'utilisateur se connecte via /login avec l'identifiant admin backend
+2. le frontend verifie les credentials via POST /auth/login backend
+3. un cookie de session signe est pose pour autoriser l'acces aux pages
+4. sans session valide, middleware redirige vers /login
+
+Notes:
+- la verification du login utilise les variables backend ADMIN_USERNAME/ADMIN_PASSWORD
+- APP_LOGIN_SESSION_SECRET est obligatoire pour activer la protection globale
+- si APP_LOGIN_SESSION_SECRET est absent, l'app redirige vers /setup-error
+
 ## Quality checks
 
 ```bash
@@ -54,6 +73,8 @@ npx vercel link
 2. Set frontend runtime variable in Vercel project settings
 
 - NEXT_PUBLIC_API_URL=https://your-backend-public-url/api
+- APP_LOGIN_SESSION_SECRET=<random-long-secret>
+- APP_LOGIN_SESSION_MAX_AGE_SECONDS=3600 (optional)
 
 3. Configure GitHub secrets
 

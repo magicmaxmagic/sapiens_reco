@@ -76,6 +76,7 @@ Environment variables (see .env.example):
 - AUTH_REQUIRED
 - ADMIN_USERNAME
 - ADMIN_PASSWORD
+- ADMIN_PASSWORD_MIN_LENGTH
 - JWT_SECRET_KEY
 - JWT_ALGORITHM
 - JWT_ACCESS_TOKEN_MINUTES
@@ -91,13 +92,14 @@ When AUTH_REQUIRED=true, mutating routes require:
 
 Production safety check:
 - in APP_ENV=production, API startup fails if ADMIN_PASSWORD or JWT_SECRET_KEY still use defaults.
+- in APP_ENV=production, API startup also fails if ADMIN_PASSWORD is weak (min length + uppercase + lowercase + digit + special char).
 
 Get token:
 
 ```bash
 curl -s -X POST http://localhost:8000/api/auth/login \
 	-H "Content-Type: application/json" \
-	-d '{"username":"admin","password":"change-me"}'
+	-d '{"username":"admin","password":"ChangeMe#2026"}'
 ```
 
 ## Main endpoints

@@ -10,7 +10,7 @@ from fastapi.responses import JSONResponse
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 
 from app.api.router import api_router
-from app.core.auth import try_extract_auth_context
+from app.core.auth import try_extract_auth_context, validate_admin_password_policy
 from app.core.config import get_settings
 from app.core.database import Base, engine
 from app.core.security import InMemoryRateLimiter
@@ -40,6 +40,25 @@ async def lifespan(_: FastAPI):
             "insecure_default_auth_values env=%s fields=%s",
             settings.app_env,
             ",".join(insecure_defaults),
+        )
+
+    is_password_strong, violations = validate_admin_password_policy(
+        settings.admin_password,
+        settings.admin_password_min_length,
+    )
+    if settings.auth_required and not is_password_strong:
+        joined = ",".join(violations)
+        if settings.app_env.lower() == "production":
+            raise RuntimeError(
+                "Weak ADMIN_PASSWORD configuration in production: "
+                f"{joined}. "
+                "Use a complex password with uppercase, lowercase, digit and special char."
+            )
+
+        security_logger.warning(
+            "weak_admin_password env=%s violations=%s",
+            settings.app_env,
+            joined,
         )
 
     if settings.auto_create_tables:

@@ -141,6 +141,13 @@ Troubleshooting Vercel CI (`no-credentials-found`):
 
 Variable runtime a definir dans le projet Vercel:
 - NEXT_PUBLIC_API_URL=https://your-backend-public-url/api
+- APP_LOGIN_SESSION_SECRET=<random-long-secret>
+- APP_LOGIN_SESSION_MAX_AGE_SECONDS=3600 (optionnel)
+
+Login frontend global:
+- l'acces UI passe par /login (identifiant + mot de passe admin backend)
+- la session frontend utilise un cookie signe (middleware Next.js)
+- sans APP_LOGIN_SESSION_SECRET, l'app redirige vers /setup-error
 
 ## Security baseline
 
@@ -158,6 +165,7 @@ Variables de securite dans backend/.env:
 - AUTH_REQUIRED=true
 - ADMIN_USERNAME=admin
 - ADMIN_PASSWORD=change-me
+- ADMIN_PASSWORD_MIN_LENGTH=12
 - JWT_SECRET_KEY=change-this-jwt-secret-in-prod
 - JWT_ALGORITHM=HS256
 - JWT_ACCESS_TOKEN_MINUTES=60
@@ -175,13 +183,14 @@ Flux admin JWT:
 
 Protection production:
 - en APP_ENV=production, l'API refuse de demarrer si ADMIN_PASSWORD ou JWT_SECRET_KEY gardent leur valeur par defaut.
+- en APP_ENV=production, l'API refuse aussi de demarrer si ADMIN_PASSWORD est trop faible (longueur minimum + majuscule + minuscule + chiffre + caractere special).
 
 Exemple rapide:
 
 ```bash
 curl -s -X POST http://localhost:8000/api/auth/login \
 	-H "Content-Type: application/json" \
-	-d '{"username":"admin","password":"change-me"}'
+	-d '{"username":"admin","password":"ChangeMe#2026"}'
 ```
 
 Test de deploiement sur main:
