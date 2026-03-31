@@ -19,8 +19,8 @@ jobs:
     environment: preview
     env:
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_BACKEND_PROJECT_ID }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID || 'team_PxiM4koaw46BfI5ItljL8UxS' }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_BACKEND_PROJECT_ID || 'prj_FBqdjfdLU7Zf52I2LCDYHpfbhA9S' }}
     services:
       postgres:
         image: postgres:16
@@ -82,7 +82,7 @@ jobs:
           set -euo pipefail
           [[ -n "${VERCEL_TOKEN:-}" ]] || { echo "::error::Missing secret VERCEL_TOKEN"; exit 1; }
           [[ -n "${VERCEL_ORG_ID:-}" ]] || { echo "::error::Missing secret VERCEL_ORG_ID"; exit 1; }
-          [[ -n "${VERCEL_PROJECT_ID:-}" ]] || { echo "::error::Missing secret VERCEL_BACKEND_PROJECT_ID"; exit 1; }
+          [[ -n "${VERCEL_PROJECT_ID:-}" ]] || { echo "::error::Missing backend VERCEL_PROJECT_ID"; exit 1; }
 
       - name: Pull Vercel Preview Environment
         run: vercel pull --yes --environment=preview --token="$VERCEL_TOKEN"
