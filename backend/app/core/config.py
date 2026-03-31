@@ -19,6 +19,7 @@ class Settings(BaseSettings):
     auth_required: bool = True
     admin_username: str = "admin"
     admin_password: str = "change-me"
+    admin_password_min_length: int = 12
     jwt_secret_key: str = "change-this-jwt-secret-in-prod"
     jwt_algorithm: str = "HS256"
     jwt_access_token_minutes: int = 60

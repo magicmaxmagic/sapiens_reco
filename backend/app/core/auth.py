@@ -26,6 +26,30 @@ def _epoch_seconds(value: datetime) -> int:
     return int(value.timestamp())
 
 
+def validate_admin_password_policy(
+    password: str,
+    min_length: int,
+) -> tuple[bool, list[str]]:
+    violations: list[str] = []
+
+    if len(password) < min_length:
+        violations.append(f"minimum_length<{min_length}")
+
+    if not any(char.islower() for char in password):
+        violations.append("missing_lowercase")
+
+    if not any(char.isupper() for char in password):
+        violations.append("missing_uppercase")
+
+    if not any(char.isdigit() for char in password):
+        violations.append("missing_digit")
+
+    if not any((not char.isalnum()) and (not char.isspace()) for char in password):
+        violations.append("missing_special_char")
+
+    return len(violations) == 0, violations
+
+
 def validate_admin_credentials(username: str, password: str) -> bool:
     settings = get_settings()
     return compare_digest(username, settings.admin_username) and compare_digest(

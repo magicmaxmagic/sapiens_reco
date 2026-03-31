@@ -6,9 +6,10 @@ on:
       - "backend/**"
       - ".github/workflows/backend-ci.yml"
   push:
-    branches: [main]
+    branches: [main, uat]
     paths:
       - "backend/**"
+  workflow_dispatch:
 
 jobs:
   backend-ci:
@@ -54,8 +55,8 @@ jobs:
           DATABASE_URL: postgresql+psycopg://optimus:optimus@localhost:5432/optimus
         run: alembic upgrade head
 
-      - name: Tests
+      - name: Tests + Coverage
         env:
           DATABASE_URL: postgresql+psycopg://optimus:optimus@localhost:5432/optimus
           AUTO_CREATE_TABLES: "true"
-        run: pytest
+        run: pytest --cov=app --cov-report=term-missing

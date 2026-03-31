@@ -119,17 +119,35 @@ Retour:
 
 ## CI/CD
 
-- frontend-ci.yml: lint + typecheck + build
-- backend-ci.yml: ruff + tests
-- vercel-deploy.yml: deploy frontend sur main
+- frontend-ci.yml: lint + typecheck + build (PR, main, uat)
+- backend-ci.yml: ruff + tests + migration check (PR, main, uat)
+- vercel-preview.yml: deploy preview frontend (PR et push uat)
+- vercel-deploy.yml: deploy production frontend (push main)
 
 Secrets GitHub requis pour Vercel:
 - VERCEL_TOKEN
 - VERCEL_ORG_ID
 - VERCEL_PROJECT_ID
 
+Recommandation GitHub:
+- definir les secrets au niveau repository ou environment
+- utiliser l'environment `preview` pour vercel-preview.yml
+- utiliser l'environment `production` pour vercel-deploy.yml
+
+Troubleshooting Vercel CI (`no-credentials-found`):
+- verifier que `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID` sont bien des **Secrets** GitHub (pas des Variables)
+- verifier que les secrets existent dans l'environment utilise (`preview` ou `production`) ou au niveau repository
+- si workflow `pull_request` depuis un fork: les secrets ne sont pas exposes par GitHub (deploy preview ignore dans ce cas)
+
 Variable runtime a definir dans le projet Vercel:
 - NEXT_PUBLIC_API_URL=https://your-backend-public-url/api
+- APP_LOGIN_SESSION_SECRET=<random-long-secret>
+- APP_LOGIN_SESSION_MAX_AGE_SECONDS=3600 (optionnel)
+
+Login frontend global:
+- l'acces UI passe par /login (identifiant + mot de passe admin backend)
+- la session frontend utilise un cookie signe (middleware Next.js)
+- sans APP_LOGIN_SESSION_SECRET, l'app redirige vers /setup-error
 
 ## Security baseline
 
@@ -147,6 +165,7 @@ Variables de securite dans backend/.env:
 - AUTH_REQUIRED=true
 - ADMIN_USERNAME=admin
 - ADMIN_PASSWORD=change-me
+- ADMIN_PASSWORD_MIN_LENGTH=12
 - JWT_SECRET_KEY=change-this-jwt-secret-in-prod
 - JWT_ALGORITHM=HS256
 - JWT_ACCESS_TOKEN_MINUTES=60
@@ -164,19 +183,25 @@ Flux admin JWT:
 
 Protection production:
 - en APP_ENV=production, l'API refuse de demarrer si ADMIN_PASSWORD ou JWT_SECRET_KEY gardent leur valeur par defaut.
+- en APP_ENV=production, l'API refuse aussi de demarrer si ADMIN_PASSWORD est trop faible (longueur minimum + majuscule + minuscule + chiffre + caractere special).
 
 Exemple rapide:
 
 ```bash
 curl -s -X POST http://localhost:8000/api/auth/login \
 	-H "Content-Type: application/json" \
-	-d '{"username":"admin","password":"change-me"}'
+	-d '{"username":"admin","password":"ChangeMe#2026"}'
 ```
 
 Test de deploiement sur main:
 1. merger une PR qui modifie frontend/**
 2. verifier le workflow "Deploy Frontend to Vercel"
 3. verifier la mise en production sur l'URL Vercel
+
+Test preview sur uat:
+1. pousser une modification frontend/** sur la branche uat
+2. verifier le workflow "Deploy Frontend Preview to Vercel"
+3. verifier l'URL preview generee par Vercel
 
 ## Documents
 

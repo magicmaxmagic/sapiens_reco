@@ -1,17 +1,22 @@
-name: Deploy Frontend to Vercel
+name: Deploy Frontend Preview to Vercel
 
 on:
-  push:
-    branches: [main]
+  pull_request:
     paths:
       - "frontend/**"
-      - ".github/workflows/vercel-deploy.yml"
+      - ".github/workflows/vercel-preview.yml"
+  push:
+    branches: [uat]
+    paths:
+      - "frontend/**"
+      - ".github/workflows/vercel-preview.yml"
   workflow_dispatch:
 
 jobs:
-  deploy:
+  deploy-preview:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.fork == false
     runs-on: ubuntu-latest
-    environment: production
+    environment: preview
     env:
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
@@ -20,7 +25,7 @@ jobs:
       run:
         working-directory: frontend
     concurrency:
-      group: vercel-production
+      group: vercel-preview-${{ github.ref }}
       cancel-in-progress: true
     steps:
       - name: Checkout
@@ -52,11 +57,11 @@ jobs:
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
 
-      - name: Pull Vercel Environment Information
-        run: vercel pull --yes --environment=production --token="$VERCEL_TOKEN"
+      - name: Pull Vercel Preview Environment
+        run: vercel pull --yes --environment=preview --token="$VERCEL_TOKEN"
 
-      - name: Build Project Artifacts
-        run: vercel build --prod --token="$VERCEL_TOKEN"
+      - name: Build Preview Artifacts
+        run: vercel build --token="$VERCEL_TOKEN"
 
-      - name: Deploy Project Artifacts to Vercel
-        run: vercel deploy --prebuilt --prod --token="$VERCEL_TOKEN"
+      - name: Deploy Preview
+        run: vercel deploy --prebuilt --token="$VERCEL_TOKEN"
