@@ -6,7 +6,7 @@ Ce repository contient un socle MVP local-first avec:
 - frontend Next.js (UI Dashboard, Profils, Missions & Matching)
 - backend FastAPI (upload CV, recherche, matching explicable)
 - PostgreSQL local via Docker Compose
-- CI/CD GitHub Actions + deploy frontend Vercel
+- CI/CD GitHub Actions + deploy Vercel (frontend et backend possible)
 
 ## Structure
 
@@ -123,6 +123,28 @@ Retour:
 - backend-ci.yml: ruff + tests + migration check (PR, main, uat)
 - vercel-preview.yml: deploy preview frontend (PR et push uat)
 - vercel-deploy.yml: deploy production frontend (push main)
+
+## Deploiement full Vercel
+
+Tu peux deployer toute l'app sur Vercel avec deux projets:
+- projet frontend (Root Directory: `frontend`)
+- projet backend (Root Directory: `backend`)
+
+Backend Vercel:
+- utilise [backend/vercel.json](backend/vercel.json)
+- entrypoint FastAPI: [backend/api/index.py](backend/api/index.py)
+
+Variables backend minimales sur Vercel:
+- APP_ENV=production
+- APP_DEBUG=false
+- DATABASE_URL=<supabase-postgres-url-with-sslmode-require>
+- ALLOWED_ORIGINS=<frontend-vercel-urls>
+- TRUSTED_HOSTS=<backend-vercel-domain>,localhost,127.0.0.1,testserver
+- AUTH_REQUIRED=true
+- ADMIN_USERNAME=<admin-user>
+- ADMIN_PASSWORD=<complex-password>
+- JWT_SECRET_KEY=<long-random-secret>
+- AUDIT_LOG_PATH=/tmp/audit.jsonl
 
 Secrets GitHub requis pour Vercel:
 - VERCEL_TOKEN

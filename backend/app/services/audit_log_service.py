@@ -29,7 +29,6 @@ def _resolve_log_path() -> Path:
 
 def append_audit_event(event_type: str, payload: dict[str, Any]) -> dict[str, Any]:
     path = _resolve_log_path()
-    path.parent.mkdir(parents=True, exist_ok=True)
 
     entry: dict[str, Any] = {
         "timestamp": datetime.now(timezone.utc).isoformat(),
@@ -37,10 +36,16 @@ def append_audit_event(event_type: str, payload: dict[str, Any]) -> dict[str, An
         **{key: _to_json_compatible(value) for key, value in payload.items()},
     }
 
-    encoded = json.dumps(entry, ensure_ascii=True, separators=(",", ":"))
-    with _writer_lock, path.open("a", encoding="utf-8") as handle:
-        handle.write(encoded)
-        handle.write("\n")
+    try:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        encoded = json.dumps(entry, ensure_ascii=True, separators=(",", ":"))
+        with _writer_lock, path.open("a", encoding="utf-8") as handle:
+            handle.write(encoded)
+            handle.write("\n")
+    except OSError:
+        # Serverless environments can expose a read-only filesystem.
+        # Skip persistent write without breaking request handling.
+        pass
 
     return entry
 
@@ -54,11 +59,14 @@ def read_audit_events(limit: int) -> list[dict[str, Any]]:
         return []
 
     lines: deque[str] = deque(maxlen=bounded_limit)
-    with _writer_lock, path.open("r", encoding="utf-8") as handle:
-        for line in handle:
-            content = line.strip()
-            if content:
-                lines.append(content)
+    try:
+        with _writer_lock, path.open("r", encoding="utf-8") as handle:
+            for line in handle:
+                content = line.strip()
+                if content:
+                    lines.append(content)
+    except OSError:
+        return []
 
     events: list[dict[str, Any]] = []
     for line in lines:

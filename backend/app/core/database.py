@@ -1,7 +1,9 @@
+import os
 from collections.abc import Generator
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
+from sqlalchemy.pool import NullPool
 
 from app.core.config import get_settings
 
@@ -10,6 +12,9 @@ settings = get_settings()
 engine_kwargs: dict[str, object] = {"pool_pre_ping": True}
 if settings.database_url.startswith("sqlite"):
     engine_kwargs["connect_args"] = {"check_same_thread": False}
+elif os.getenv("VERCEL"):
+    # Serverless workers are short-lived and may reuse stale pooled connections.
+    engine_kwargs["poolclass"] = NullPool
 
 
 class Base(DeclarativeBase):

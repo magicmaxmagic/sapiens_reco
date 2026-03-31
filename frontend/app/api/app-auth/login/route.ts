@@ -18,8 +18,6 @@ type BackendLoginResponse = {
   expires_in: number;
 };
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000/api";
-
 function extractDetail(value: unknown): string | null {
   if (!value || typeof value !== "object") {
     return null;
@@ -52,14 +50,36 @@ export async function POST(request: Request) {
     return NextResponse.json({ detail: "Identifiant et mot de passe requis." }, { status: 400 });
   }
 
-  const upstream = await fetch(`${API_BASE}/auth/login`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ username, password }),
-    cache: "no-store",
-  });
+  const apiBase = process.env.NEXT_PUBLIC_API_URL?.trim();
+  if (!apiBase) {
+    return NextResponse.json(
+      {
+        detail:
+          "Configuration manquante: NEXT_PUBLIC_API_URL n'est pas definie sur ce deploiement.",
+      },
+      { status: 500 },
+    );
+  }
+
+  let upstream: Response;
+  try {
+    upstream = await fetch(`${apiBase}/auth/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
+      cache: "no-store",
+    });
+  } catch {
+    return NextResponse.json(
+      {
+        detail:
+          "Backend API inaccessible. Verifie NEXT_PUBLIC_API_URL et que le backend est bien deploye publiquement.",
+      },
+      { status: 502 },
+    );
+  }
 
   if (!upstream.ok) {
     let detail = "Echec d'authentification.";
