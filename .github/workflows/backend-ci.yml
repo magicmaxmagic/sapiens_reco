@@ -47,6 +47,34 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt -r requirements-dev.txt
 
+      - name: Test Supabase DB connectivity
+        if: ${{ secrets.SUPABASE_DATABASE_URL != '' || secrets.DATABASE_URL != '' || secrets.POSTGRES_URL_NON_POOLING != '' }}
+        env:
+          SUPABASE_DATABASE_URL: ${{ secrets.SUPABASE_DATABASE_URL || secrets.DATABASE_URL || secrets.POSTGRES_URL_NON_POOLING }}
+        run: |
+          python - <<'PY'
+          import os, sys
+          from sqlalchemy import create_engine, text
+
+          url = os.environ.get('SUPABASE_DATABASE_URL')
+          if not url:
+              print('No Supabase DB URL provided.')
+              sys.exit(1)
+
+          # Normalize popular postgres URI shorthands
+          if url.startswith('postgres://'):
+              url = url.replace('postgres://', 'postgresql+psycopg://', 1)
+
+          try:
+              engine = create_engine(url, connect_args={"connect_timeout": 5})
+              with engine.connect() as conn:
+                  conn.execute(text('select 1'))
+              print('Supabase DB connection OK')
+          except Exception as exc:
+              print('Supabase DB connection FAILED:', exc)
+              raise
+          PY
+
       - name: Ruff
         run: ruff check app tests
 
