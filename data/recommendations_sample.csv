@@ -1,0 +1,701 @@
+mission_id,profile_id,structured_score,semantic_score,business_score,final_score,explanation_tags
+1,260,0.92,0.1292,0.84,0.5877,C# match | FastAPI match | Java match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector telecom | Domain aligned
+1,124,0.836,0.1702,0.8956,0.5816,C# match | FastAPI match | Java match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Sector telecom | Domain aligned
+1,263,0.8235,0.1722,0.7725,0.5528,FastAPI match | Java match | SQL match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector telecom | Domain aligned
+1,303,0.97,0.1359,0.55,0.5523,C# match | FastAPI match | Java match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+1,274,0.9235,0.1734,0.55,0.5488,C# match | FastAPI match | Java match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+1,180,0.97,0.0764,0.65,0.5485,C# match | Java match | Salesforce match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector telecom
+1,31,0.97,0.1253,0.55,0.5481,C# match | SQL match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+1,87,0.92,0.2019,0.49,0.5468,C# match | FastAPI match | Java match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Domain aligned
+1,336,0.866,0.0847,0.7543,0.5311,C# match | Java match | SQL match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Sector telecom | Domain aligned
+1,112,0.841,0.1369,0.6599,0.5231,C# match | Java match | SQL match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Sector telecom
+2,258,0.886,0.1386,0.9267,0.5952,C# match | Docker match | Java match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Sector retail | Domain aligned
+2,274,0.87,0.1443,0.8667,0.579,C# match | Java match | Python match | Seniority compatible | Location compatible | Available in 15 days | Rate within budget | Sector retail | Domain aligned
+2,92,0.97,0.0998,0.75,0.5779,Docker match | Python match | Spark match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector retail
+2,3,0.83,0.1526,0.7533,0.5437,C# match | Docker match | Java match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector retail | Domain aligned
+2,336,0.95,0.119,0.5233,0.5323,C# match | Docker match | Java match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Domain aligned
+2,276,0.791,0.1857,0.6881,0.5283,Docker match | Java match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Sector retail | Domain aligned
+2,242,0.7735,0.1156,0.8036,0.5164,Java match | Python match | Seniority compatible | Location compatible | Available in 30 days | Rate within budget | Sector retail | Domain aligned
+2,250,0.92,0.0472,0.6233,0.5116,Docker match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector retail
+2,53,0.83,0.096,0.6867,0.5077,C# match | Docker match | Java match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector retail | Domain aligned
+2,123,0.82,0.1033,0.69,0.5073,Docker match | Java match | Python match | Seniority compatible | Location compatible | Available in 30 days | Rate within budget | Sector retail
+3,147,0.92,0.1567,1.0,0.6307,AWS match | Python match | SIEM match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector public | Domain aligned
+3,174,0.91,0.249,0.65,0.5936,AWS match | Python match | SIEM match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+3,219,0.7625,0.2307,0.9333,0.5839,Python match | SIEM match | Seniority compatible | Location compatible | Available in 15 days | Rate within budget | Sector public | Domain aligned
+3,208,0.8875,0.1369,0.8667,0.5831,SIEM match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Sector public | Domain aligned
+3,132,0.72,0.2652,0.8733,0.5688,DevOps match | Python match | SIEM match | Language compatible | Available in 30 days | Rate within budget | Sector public | Domain aligned
+3,25,0.8235,0.1213,0.8733,0.5526,Python match | SIEM match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector public | Domain aligned
+3,192,0.786,0.142,0.8778,0.5468,AWS match | Python match | SIEM match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Sector public | Domain aligned
+3,110,0.93,0.0884,0.6833,0.544,AWS match | DevOps match | Python match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Sector public
+3,72,0.91,0.0767,0.6833,0.5313,AWS match | DevOps match | Python match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Sector public
+3,84,0.95,0.0674,0.6167,0.5303,Python match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector public
+4,258,0.886,0.1932,0.8902,0.6097,Docker match | FastAPI match | Java match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Sector public | Domain aligned
+4,270,0.92,0.185,0.8133,0.6047,Docker match | FastAPI match | Java match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector public | Domain aligned
+4,18,0.97,0.2773,0.5233,0.6036,FastAPI match | Java match | NLP match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Domain aligned
+4,223,1.0,0.1167,0.69,0.5847,Docker match | NLP match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector public
+4,323,1.0,0.1509,0.6167,0.5837,Python match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector public
+4,213,0.836,0.2337,0.7593,0.5798,Docker match | FastAPI match | Java match | Seniority compatible | Language compatible | Location compatible | Sector public | Domain aligned
+4,79,0.87,0.1669,0.8133,0.5774,Docker match | FastAPI match | Python match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector public | Domain aligned
+4,31,0.88,0.1266,0.8667,0.576,Python match | React match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector public | Domain aligned
+4,124,0.7825,0.2125,0.8733,0.5727,Docker match | FastAPI match | Java match | Seniority compatible | Location compatible | Available in 30 days | Rate within budget | Sector public | Domain aligned
+4,203,1.0,0.1145,0.6233,0.5705,FastAPI match | NLP match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector public
+5,322,0.97,0.0675,0.75,0.565,NLP match | Tableau match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector banque
+5,324,0.97,0.0526,0.75,0.559,NLP match | Tableau match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector banque
+5,30,0.91,0.0605,0.8,0.5482,C# match | FastAPI match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Sector banque | Domain aligned
+5,217,0.8875,0.0897,0.75,0.5409,NLP match | React match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Sector banque
+5,148,0.95,0.074,0.63,0.5356,C# match | NLP match | Tableau match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector banque
+5,91,0.8135,0.1106,0.8197,0.5336,C# match | FastAPI match | NLP match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector banque | Domain aligned
+5,336,0.88,0.0649,0.74,0.526,C# match | React match | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector banque | Domain aligned
+5,218,0.8875,0.0522,0.75,0.5259,NLP match | Tableau match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Sector banque
+5,258,1.0,0.083,0.45,0.5232,C# match | FastAPI match | React match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+5,237,0.97,0.0913,0.45,0.5145,C# match | FastAPI match | React match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+6,308,0.97,0.2156,0.9333,0.6609,Azure match | DevOps match | Docker match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector banque | Domain aligned
+6,92,0.93,0.1977,0.75,0.6011,Azure match | DevOps match | Docker match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Sector banque
+6,328,0.81,0.2106,0.9333,0.5949,Azure match | DevOps match | Docker match | Location compatible | Available in 15 days | Rate within budget | Sector banque | Domain aligned
+6,41,0.78,0.2678,0.8733,0.5938,Azure match | DevOps match | Docker match | Seniority compatible | Available in 30 days | Rate within budget | Sector banque | Domain aligned
+6,228,0.83,0.2289,0.7533,0.5742,Azure match | DevOps match | Docker match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector banque | Domain aligned
+6,248,0.9275,0.1888,0.6233,0.5712,Azure match | DevOps match | Docker match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector banque
+6,345,0.796,0.1857,0.8806,0.5688,Azure match | DevOps match | Docker match | Seniority compatible | Language compatible | Available in 30 days | Sector banque | Domain aligned
+6,171,0.92,0.1748,0.6233,0.5626,Azure match | DevOps match | Docker match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector banque
+6,110,1.0,0.1956,0.4,0.5582,Azure match | DevOps match | Docker match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget
+6,275,0.8475,0.2256,0.5833,0.5459,Azure match | DevOps match | Docker match | Seniority compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+7,223,0.97,0.2348,0.89,0.6599,AWS match | DevOps match | Kubernetes match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector public | Domain aligned
+7,46,0.8875,0.2051,0.94,0.625,AWS match | DevOps match | Kubernetes match | Seniority compatible | Language compatible | Available in 30 days | Rate within budget | Sector public | Domain aligned
+7,297,0.92,0.156,0.78,0.5864,AWS match | DevOps match | Kubernetes match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector public | Domain aligned
+7,281,0.9235,0.1135,0.8145,0.5777,AWS match | DevOps match | Kubernetes match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector public | Domain aligned
+7,20,0.77,0.1825,0.88,0.557,AWS match | DevOps match | Kubernetes match | Language compatible | Rate within budget | Sector public | Domain aligned
+7,90,1.0,0.0769,0.6,0.5508,NLP match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector public
+7,308,0.97,0.1236,0.55,0.5475,AWS match | DevOps match | Kubernetes match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+7,207,0.74,0.234,0.77,0.5436,AWS match | DevOps match | Kubernetes match | Language compatible | Location compatible | Rate within budget | Sector public | Domain aligned
+7,149,0.8975,0.2162,0.48,0.5415,AWS match | DevOps match | Kubernetes match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Domain aligned
+7,82,0.8125,0.161,0.75,0.5394,AWS match | DevOps match | Kubernetes match | Seniority compatible | Location compatible | Available in 15 days | Rate within budget | Sector public
+8,25,0.9535,0.2014,0.8453,0.631,Azure match | GCP match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector public | Domain aligned
+8,147,0.9775,0.1139,0.9143,0.6194,GCP match | Python match | SIEM match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector public | Domain aligned
+8,219,0.87,0.2029,0.9143,0.612,Azure match | GCP match | Python match | Seniority compatible | Location compatible | Available in 15 days | Rate within budget | Sector public | Domain aligned
+8,84,0.97,0.1752,0.6643,0.5909,Azure match | Docker match | GCP match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector public
+8,208,0.9475,0.1086,0.833,0.589,GCP match | SIEM match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector public | Domain aligned
+8,250,0.97,0.2025,0.5329,0.5756,Azure match | Docker match | GCP match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Domain aligned
+8,132,0.88,0.1214,0.8543,0.5714,Azure match | Python match | SIEM match | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector public | Domain aligned
+8,323,1.0,0.0954,0.6357,0.5653,Python match | SAP match | SQL match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector public
+8,88,0.87,0.1907,0.6929,0.5629,Azure match | GCP match | Python match | Seniority compatible | Location compatible | Available in 15 days | Rate within budget | Sector public
+8,192,0.871,0.1414,0.7772,0.5604,Azure match | GCP match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Sector public | Domain aligned
+9,151,0.77,0.3112,0.57,0.5465,Power BI match | SOC match | SQL match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+9,36,0.8975,0.1267,0.67,0.5437,SOC match | SQL match | Salesforce match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector sante
+9,318,0.7875,0.2127,0.66,0.5321,Power BI match | Tableau match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector sante | Domain aligned
+9,138,0.86,0.1979,0.53,0.5292,Power BI match | Salesforce match | dbt match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+9,173,0.88,0.1552,0.57,0.5281,Power BI match | SQL match | Spark match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+9,203,0.75,0.1752,0.78,0.5261,SQL match | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector sante | Domain aligned
+9,61,0.81,0.2092,0.57,0.5217,Power BI match | SQL match | Spark match | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+9,190,0.83,0.1272,0.67,0.5169,Power BI match | SQL match | Salesforce match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector sante
+9,344,0.88,0.1426,0.53,0.5151,SOC match | SQL match | Tableau match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+9,129,0.73,0.2925,0.53,0.515,Power BI match | Spark match | Tableau match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+10,233,0.791,0.2375,0.7619,0.5638,SQL match | Spark match | dbt match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Sector assurance | Domain aligned
+10,151,0.8975,0.2482,0.4955,0.5574,SQL match | Snowflake match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+10,251,0.6785,0.2454,0.7961,0.5288,SQL match | Snowflake match | dbt match | Seniority compatible | Location compatible | Available in 15 days | Sector assurance | Domain aligned
+10,117,0.7535,0.1981,0.7333,0.5273,SQL match | Spark match | dbt match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Sector assurance | Domain aligned
+10,99,0.8,0.1151,0.776,0.5212,Azure match | Spark match | Seniority compatible | Language compatible | Location compatible | Sector assurance | Domain aligned
+10,90,0.8975,0.0932,0.5833,0.513,SQL match | Spark match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+10,274,0.92,0.0449,0.6167,0.5093,SQL match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector assurance
+10,127,0.74,0.1594,0.7467,0.5091,Snowflake match | Spark match | dbt match | Language compatible | Location compatible | Rate within budget | Sector assurance | Domain aligned
+10,112,0.8975,0.0661,0.6167,0.5088,SQL match | dbt match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector assurance
+10,78,0.8975,0.0463,0.6548,0.5085,Azure match | SQL match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector assurance
+11,222,0.97,0.22,0.8667,0.6493,FastAPI match | Salesforce match | Snowflake match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector public | Domain aligned
+11,324,1.0,0.1803,0.8667,0.6454,MLOps match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector public | Domain aligned
+11,57,0.9775,0.2113,0.8133,0.6382,MLOps match | Power BI match | Snowflake match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector public | Domain aligned
+11,217,0.9475,0.2107,0.8667,0.6366,Power BI match | Snowflake match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector public | Domain aligned
+11,284,0.82,0.3454,0.8133,0.6288,FastAPI match | MLOps match | Power BI match | Language compatible | Location compatible | Rate within budget | Sector public | Domain aligned
+11,90,0.88,0.2312,0.8667,0.6178,FastAPI match | MLOps match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector public | Domain aligned
+11,203,0.91,0.1998,0.8067,0.6052,FastAPI match | MLOps match | Snowflake match | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector public | Domain aligned
+11,61,1.0,0.2133,0.5833,0.602,MLOps match | Power BI match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+11,15,1.0,0.2365,0.5167,0.598,FastAPI match | Power BI match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+11,176,0.82,0.1989,0.9333,0.5942,MLOps match | Power BI match | Snowflake match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector public | Domain aligned
+12,11,0.87,0.293,0.64,0.5932,AWS match | DevOps match | GCP match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector assurance
+12,297,0.74,0.2764,0.83,0.5726,AWS match | DevOps match | GCP match | Language compatible | Location compatible | Rate within budget | Sector assurance | Domain aligned
+12,144,0.77,0.3354,0.63,0.5682,AWS match | DevOps match | GCP match | Seniority compatible | Language compatible | Rate within budget | Sector assurance
+12,275,0.73,0.1705,1.0,0.5602,AWS match | DevOps match | GCP match | Location compatible | Available in 15 days | Rate within budget | Sector assurance | Domain aligned
+12,277,0.76,0.2242,0.83,0.5597,AWS match | DevOps match | Kubernetes match | Seniority compatible | Location compatible | Rate within budget | Sector assurance | Domain aligned
+12,59,0.87,0.2351,0.54,0.55,DevOps match | GCP match | Kubernetes match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Domain aligned
+12,296,0.63,0.2693,0.89,0.5377,AWS match | DevOps match | Kubernetes match | Seniority compatible | Available in 30 days | Rate within budget | Sector assurance | Domain aligned
+12,299,0.786,0.1309,0.8542,0.5376,AWS match | DevOps match | GCP match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Sector assurance | Domain aligned
+12,142,0.82,0.2177,0.6,0.5351,AWS match | DevOps match | GCP match | Seniority compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+12,138,0.92,0.0857,0.65,0.5323,DevOps match | GCP match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector assurance
+13,323,0.9475,0.2563,0.65,0.6115,Power BI match | Python match | SAP match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+13,254,0.9075,0.1358,0.9312,0.6036,Power BI match | Python match | SAP match | Seniority compatible | Language compatible | Available in 30 days | Rate within budget | Sector assurance | Domain aligned
+13,301,0.84,0.1633,1.0,0.6013,Power BI match | Python match | SAP match | Language compatible | Available in 15 days | Rate within budget | Sector assurance | Domain aligned
+13,209,0.8035,0.2669,0.8,0.5881,Power BI match | Python match | SAP match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Sector assurance | Domain aligned
+13,45,0.9475,0.1712,0.65,0.5775,Power BI match | Python match | SAP match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+13,86,0.83,0.2817,0.53,0.5507,Power BI match | Python match | SAP match | Seniority compatible | Language compatible | Rate within budget | Domain aligned
+13,256,0.9075,0.1322,0.5633,0.5286,C# match | Power BI match | Python match | Seniority compatible | Language compatible | Rate within budget | Sector assurance
+13,77,0.8975,0.2113,0.4033,0.5242,Python match | SAP match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Domain aligned
+13,37,0.8075,0.1892,0.6077,0.5202,C# match | Python match | SAP match | Seniority compatible | Language compatible | Available in 30 days | Rate within budget | Sector assurance
+13,309,0.7225,0.1984,0.7467,0.5177,SAP match | Location compatible | Rate within budget | Sector assurance | Domain aligned
+14,169,0.866,0.2735,0.6933,0.5944,Azure match | DevOps match | GCP match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Sector public
+14,132,0.81,0.1411,0.86,0.5524,Azure match | DevOps match | Python match | Seniority compatible | Language compatible | Available in 30 days | Rate within budget | Sector public | Domain aligned
+14,82,0.866,0.1937,0.6328,0.5504,Azure match | DevOps match | GCP match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Sector public
+14,88,0.8135,0.2073,0.71,0.5503,Azure match | DevOps match | GCP match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Sector public
+14,71,0.86,0.3271,0.36,0.5468,Azure match | DevOps match | GCP match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget
+14,302,0.86,0.1495,0.71,0.5458,Azure match | DevOps match | GCP match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Sector public
+14,128,0.86,0.1281,0.71,0.5372,Azure match | DevOps match | GCP match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Sector public
+14,147,0.836,0.0797,0.8077,0.5278,GCP match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Sector public | Domain aligned
+14,187,0.95,0.0746,0.59,0.5278,DevOps match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector public
+14,208,0.781,0.1394,0.7617,0.5205,GCP match | IAM match | Terraform match | Seniority compatible | Language compatible | Available in 15 days | Sector public | Domain aligned
+15,61,0.97,0.1835,0.95,0.6514,Airflow match | Power BI match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector banque | Domain aligned
+15,285,0.97,0.2097,0.65,0.6019,Airflow match | Power BI match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector banque
+15,218,0.8875,0.1518,0.929,0.6015,Airflow match | Power BI match | Python match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Sector banque | Domain aligned
+15,148,1.0,0.1031,0.78,0.5972,Python match | SQL match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector banque | Domain aligned
+15,324,0.97,0.0719,0.85,0.5867,Airflow match | SQL match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector banque | Domain aligned
+15,117,0.8875,0.1069,0.9384,0.5854,Power BI match | Python match | SQL match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Sector banque | Domain aligned
+15,310,0.91,0.2563,0.58,0.5825,Airflow match | Azure match | Power BI match | Seniority compatible | Language compatible | Rate within budget | Sector banque
+15,322,0.97,0.0689,0.8,0.5756,Airflow match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector banque | Domain aligned
+15,217,0.8875,0.0978,0.8785,0.5698,Power BI match | Python match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Sector banque | Domain aligned
+15,227,0.91,0.2094,0.59,0.5658,Airflow match | Power BI match | Python match | Seniority compatible | Language compatible | Available in 30 days | Rate within budget | Sector banque
+16,120,0.8375,0.1602,1.0,0.5991,AWS match | Azure match | DevOps match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Sector industrie | Domain aligned
+16,78,0.8375,0.0893,1.0,0.5707,AWS match | Azure match | SQL match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Sector industrie | Domain aligned
+16,250,0.81,0.094,0.94,0.5496,AWS match | Azure match | SQL match | Seniority compatible | Language compatible | Available in 30 days | Rate within budget | Sector industrie | Domain aligned
+16,142,0.836,0.2276,0.5976,0.5449,AWS match | Azure match | DevOps match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Sector industrie
+16,169,0.95,0.2439,0.3333,0.5442,AWS match | Azure match | DevOps match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget
+16,82,0.95,0.2145,0.3333,0.5325,AWS match | Azure match | DevOps match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget
+16,116,0.81,0.0742,0.8733,0.5284,AWS match | SQL match | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector industrie | Domain aligned
+16,171,0.8475,0.181,0.5567,0.5227,Azure match | DevOps match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector industrie
+16,275,0.8975,0.2315,0.3333,0.5183,AWS match | Azure match | DevOps match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget
+16,245,0.81,0.047,0.8733,0.5174,Azure match | SQL match | Seniority compatible | Language compatible | Available in 30 days | Rate within budget | Sector industrie | Domain aligned
+17,280,0.72,0.1573,0.96,0.5429,Docker match | Python match | SOC match | Available in 15 days | Rate within budget | Sector retail | Domain aligned
+17,192,0.83,0.07,0.86,0.532,AWS match | Python match | SOC match | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector retail | Domain aligned
+17,60,0.76,0.1229,0.86,0.5252,AWS match | Docker match | Python match | Location compatible | Available in 30 days | Rate within budget | Sector retail | Domain aligned
+17,250,0.71,0.144,0.9,0.5216,AWS match | Docker match | Python match | Language compatible | Available in 30 days | Rate within budget | Sector retail | Domain aligned
+17,25,0.83,0.0535,0.82,0.5174,Python match | SOC match | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector retail | Domain aligned
+17,291,0.75,0.1078,0.8362,0.5104,AWS match | Python match | SOC match | Seniority compatible | Available in 15 days | Sector retail | Domain aligned
+17,208,0.76,0.0316,0.84,0.4847,SOC match | Language compatible | Available in 15 days | Rate within budget | Sector retail | Domain aligned
+17,344,0.91,0.1382,0.32,0.4833,AWS match | Python match | SOC match | Language compatible | Location compatible | Available in 15 days | Rate within budget
+17,58,0.7,0.0653,0.86,0.4781,AWS match | Python match | SOC match | Location compatible | Available in 30 days | Rate within budget | Sector retail | Domain aligned
+17,92,0.76,0.0824,0.67,0.471,AWS match | Docker match | Python match | Language compatible | Available in 15 days | Rate within budget | Sector retail
+18,59,0.9475,0.2953,0.8834,0.6738,DevOps match | GCP match | Kubernetes match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector retail | Domain aligned
+18,92,0.82,0.3199,0.75,0.606,DevOps match | Docker match | GCP match | Language compatible | Available in 15 days | Rate within budget | Sector retail
+18,281,0.97,0.2872,0.51,0.6049,DevOps match | Docker match | GCP match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Domain aligned
+18,345,0.8875,0.3255,0.59,0.6032,DevOps match | Docker match | GCP match | Seniority compatible | Language compatible | Available in 30 days | Rate within budget | Domain aligned
+18,223,0.88,0.3104,0.55,0.5862,DevOps match | Docker match | GCP match | Language compatible | Location compatible | Available in 30 days | Rate within budget | Domain aligned
+18,346,0.73,0.3133,0.8,0.5773,DevOps match | Docker match | GCP match | Location compatible | Rate within budget | Sector retail | Domain aligned
+18,70,0.77,0.2539,0.8,0.5695,DevOps match | Docker match | GCP match | Language compatible | Location compatible | Rate within budget | Sector retail | Domain aligned
+18,266,0.9775,0.1635,0.55,0.5664,DevOps match | Docker match | GCP match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Domain aligned
+18,258,0.9775,0.0895,0.67,0.5608,Docker match | Spark match | Terraform match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector retail
+18,100,0.8375,0.1693,0.786,0.5599,DevOps match | Docker match | GCP match | Seniority compatible | Language compatible | Rate within budget | Sector retail | Domain aligned
+19,90,1.0,0.1262,0.9,0.6305,NLP match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector energie | Domain aligned
+19,278,0.8875,0.2449,0.7285,0.5987,Airflow match | Tableau match | Seniority compatible | Language compatible | Available in 30 days | Rate within budget | Sector energie | Domain aligned
+19,307,0.91,0.1353,0.9,0.5981,NLP match | Tableau match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector energie | Domain aligned
+19,203,0.97,0.0925,0.84,0.593,NLP match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector energie | Domain aligned
+19,32,0.9275,0.1395,0.78,0.5828,NLP match | Tableau match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector energie | Domain aligned
+19,96,0.83,0.2514,0.72,0.5766,Airflow match | NLP match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector energie | Domain aligned
+19,82,0.9775,0.0817,0.75,0.5737,NLP match | Terraform match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector energie
+19,322,0.886,0.2864,0.4655,0.5621,Airflow match | NLP match | Tableau match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Domain aligned
+19,129,0.82,0.1056,0.9,0.5503,NLP match | Tableau match | Language compatible | Available in 15 days | Rate within budget | Sector energie | Domain aligned
+19,204,0.826,0.1891,0.6582,0.5377,Seniority compatible | Language compatible | Available in 30 days | Sector energie | Domain aligned
+20,164,0.846,0.2138,0.9576,0.6154,AWS match | Azure match | Python match | Seniority compatible | Language compatible | Available in 15 days | Sector industrie | Domain aligned
+20,78,0.83,0.1826,0.9667,0.5984,AWS match | Azure match | Python match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Sector industrie | Domain aligned
+20,279,0.88,0.1386,0.8733,0.5821,Python match | SIEM match | SQL match | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector industrie | Domain aligned
+20,219,0.93,0.2271,0.55,0.5728,Azure match | Python match | SIEM match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Domain aligned
+20,250,0.83,0.1424,0.9067,0.5703,AWS match | Azure match | Python match | Seniority compatible | Language compatible | Available in 30 days | Rate within budget | Sector industrie | Domain aligned
+20,147,0.97,0.145,0.5833,0.5627,AWS match | Python match | SIEM match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+20,306,0.91,0.2282,0.5233,0.5599,AWS match | Python match | SIEM match | Language compatible | Location compatible | Available in 30 days | Rate within budget | Domain aligned
+20,185,0.92,0.2216,0.4967,0.556,AWS match | Azure match | Python match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Domain aligned
+20,132,0.74,0.1773,0.9067,0.5483,Azure match | Python match | SIEM match | Language compatible | Available in 30 days | Rate within budget | Sector industrie | Domain aligned
+20,280,0.801,0.19,0.704,0.5372,Python match | SQL match | Seniority compatible | Language compatible | Available in 15 days | Sector industrie | Domain aligned
+21,222,0.9775,0.2869,0.6286,0.6315,FastAPI match | Snowflake match | Spark match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+21,61,0.9475,0.2395,0.65,0.6048,Airflow match | Spark match | dbt match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+21,155,0.91,0.1009,0.94,0.5924,FastAPI match | Spark match | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector industrie | Domain aligned
+21,322,0.9475,0.1276,0.8,0.59,Airflow match | Snowflake match | dbt match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector industrie | Domain aligned
+21,324,0.9475,0.1212,0.8,0.5875,Airflow match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector industrie | Domain aligned
+21,57,0.815,0.2517,0.7621,0.5791,Airflow match | Snowflake match | Spark match | Seniority compatible | Language compatible | Location compatible | Sector industrie | Domain aligned
+21,278,0.82,0.136,0.94,0.5704,Airflow match | Snowflake match | Spark match | Language compatible | Available in 30 days | Rate within budget | Sector industrie | Domain aligned
+21,159,0.82,0.1058,1.0,0.5703,FastAPI match | Spark match | Language compatible | Available in 15 days | Rate within budget | Sector industrie | Domain aligned
+21,251,0.9475,0.2519,0.45,0.5698,Airflow match | FastAPI match | Snowflake match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+21,238,0.86,0.1411,0.8128,0.563,Snowflake match | Spark match | dbt match | Seniority compatible | Language compatible | Location compatible | Sector industrie | Domain aligned
+22,94,0.87,0.1754,0.8965,0.5975,AWS match | Azure match | GCP match | Seniority compatible | Language compatible | Available in 30 days | Sector sante | Domain aligned
+22,11,0.97,0.1237,0.65,0.5675,AWS match | Azure match | GCP match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector sante
+22,25,0.97,0.1718,0.55,0.5667,Azure match | GCP match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Domain aligned
+22,100,0.9275,0.1937,0.59,0.5665,AWS match | Azure match | GCP match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector sante
+22,286,0.8875,0.1378,0.75,0.5601,AWS match | Azure match | GCP match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Sector sante
+22,308,0.88,0.1614,0.71,0.5586,AWS match | Azure match | GCP match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector sante
+22,142,0.9475,0.2461,0.4,0.5574,AWS match | Azure match | GCP match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget
+22,237,0.9475,0.0915,0.67,0.5496,Azure match | Python match | Terraform match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector sante
+22,192,0.9475,0.1269,0.59,0.5478,AWS match | Azure match | GCP match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Domain aligned
+22,272,0.8575,0.2498,0.5219,0.5473,AWS match | Azure match | GCP match | Seniority compatible | Language compatible | Rate within budget | Domain aligned
+23,120,0.76,0.2598,0.96,0.5999,AWS match | DevOps match | GCP match | Language compatible | Available in 15 days | Rate within budget | Sector industrie | Domain aligned
+23,257,0.8975,0.1206,0.86,0.5793,AWS match | GCP match | SIEM match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector industrie | Domain aligned
+23,142,0.88,0.186,0.67,0.5604,AWS match | DevOps match | GCP match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector industrie
+23,78,0.85,0.0842,0.92,0.5577,AWS match | GCP match | SIEM match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector industrie | Domain aligned
+23,291,0.85,0.1073,0.862,0.5553,AWS match | SIEM match | Terraform match | Seniority compatible | Language compatible | Available in 15 days | Sector industrie | Domain aligned
+23,59,0.83,0.2296,0.65,0.5538,DevOps match | GCP match | SIEM match | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector industrie
+23,250,0.8,0.0828,0.86,0.5251,AWS match | GCP match | Terraform match | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector industrie | Domain aligned
+23,113,0.8475,0.1881,0.55,0.5242,AWS match | DevOps match | GCP match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector industrie
+23,266,0.86,0.1192,0.61,0.5137,AWS match | DevOps match | GCP match | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector industrie
+23,161,0.8875,0.0618,0.63,0.5057,AWS match | Spark match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Sector industrie
+24,71,0.97,0.1194,0.92,0.6198,Azure match | Kubernetes match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector telecom | Domain aligned
+24,105,0.9235,0.1643,0.92,0.6191,AWS match | Azure match | Kubernetes match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector telecom | Domain aligned
+24,275,0.871,0.187,0.9011,0.6034,AWS match | Azure match | Docker match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Sector telecom | Domain aligned
+24,200,0.836,0.2148,0.7643,0.5732,AWS match | Azure match | Docker match | Seniority compatible | Language compatible | Location compatible | Sector telecom | Domain aligned
+24,308,0.916,0.1722,0.6075,0.5568,AWS match | Azure match | Docker match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Domain aligned
+24,327,0.836,0.1709,0.7697,0.5567,AWS match | Azure match | Docker match | Seniority compatible | Language compatible | Location compatible | Sector telecom | Domain aligned
+24,281,0.847,0.1554,0.7784,0.5566,AWS match | Azure match | Docker match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Sector telecom | Domain aligned
+24,306,0.97,0.1279,0.57,0.5531,AWS match | Python match | React match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector telecom
+24,328,0.7825,0.254,0.65,0.5446,AWS match | Azure match | Docker match | Seniority compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+24,123,0.946,0.0885,0.65,0.5438,AWS match | Docker match | Kubernetes match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector telecom
+25,78,0.94,0.1308,0.9701,0.6223,AWS match | IAM match | SIEM match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Sector telecom | Domain aligned
+25,208,0.94,0.3485,0.5174,0.6189,IAM match | SIEM match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Domain aligned
+25,147,0.9475,0.2419,0.5833,0.5924,AWS match | C# match | SIEM match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+25,58,0.91,0.2504,0.59,0.5822,AWS match | C# match | IAM match | Seniority compatible | Language compatible | Available in 30 days | Rate within budget | Domain aligned
+25,120,0.8875,0.104,0.9109,0.5788,AWS match | SIEM match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Sector telecom | Domain aligned
+25,145,0.77,0.2535,0.8133,0.5721,IAM match | SIEM match | Language compatible | Rate within budget | Sector telecom | Domain aligned
+25,131,0.86,0.1251,0.88,0.57,AWS match | IAM match | SIEM match | Seniority compatible | Language compatible | Rate within budget | Sector telecom | Domain aligned
+25,174,0.82,0.2629,0.65,0.5632,AWS match | IAM match | SIEM match | Language compatible | Available in 15 days | Rate within budget | Domain aligned
+25,306,0.74,0.1534,0.94,0.5454,AWS match | IAM match | SIEM match | Language compatible | Available in 30 days | Rate within budget | Sector telecom | Domain aligned
+25,275,0.9475,0.08,0.6629,0.5436,AWS match | IAM match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector telecom
+26,84,0.886,0.1947,0.7161,0.5755,Azure match | Docker match | GCP match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Sector public
+26,20,0.8475,0.1444,0.88,0.5728,Azure match | Docker match | GCP match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector public | Domain aligned
+26,207,0.8375,0.1275,0.7533,0.5367,Azure match | Docker match | Java match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector public | Domain aligned
+26,328,0.97,0.0802,0.5833,0.5367,Azure match | Docker match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+26,302,0.76,0.1869,0.75,0.5288,Azure match | Docker match | GCP match | Seniority compatible | Location compatible | Available in 15 days | Rate within budget | Sector public
+26,110,0.841,0.1732,0.596,0.5249,Azure match | Docker match | GCP match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Sector public
+26,8,0.95,0.1,0.5233,0.5247,Docker match | GCP match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Domain aligned
+26,223,0.821,0.1028,0.7344,0.5164,Docker match | GCP match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Sector public | Domain aligned
+26,31,0.97,0.031,0.55,0.5104,Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector public
+26,176,0.97,0.0294,0.55,0.5097,Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector public
+27,308,0.9775,0.1205,0.746,0.5884,Python match | SAP match | Tableau match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector sante
+27,75,0.73,0.3055,0.82,0.5782,FastAPI match | Python match | React match | Seniority compatible | Location compatible | Rate within budget | Sector sante | Domain aligned
+27,31,0.88,0.1005,0.9,0.5722,Python match | React match | Tableau match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector sante | Domain aligned
+27,289,0.87,0.1576,0.78,0.567,Java match | Python match | React match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector sante | Domain aligned
+27,348,0.82,0.301,0.59,0.5664,FastAPI match | Python match | React match | Seniority compatible | Location compatible | Available in 30 days | Rate within budget | Domain aligned
+27,124,0.82,0.3333,0.49,0.5593,FastAPI match | Java match | Python match | Seniority compatible | Location compatible | Available in 30 days | Rate within budget | Domain aligned
+27,274,0.87,0.2496,0.55,0.5578,FastAPI match | Java match | Python match | Seniority compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+27,303,0.88,0.2884,0.45,0.5574,FastAPI match | Java match | React match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+27,260,0.83,0.2813,0.49,0.5425,FastAPI match | Java match | Python match | Language compatible | Location compatible | Available in 30 days | Rate within budget | Domain aligned
+27,203,0.9275,0.1,0.59,0.529,FastAPI match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector sante
+28,275,0.78,0.2306,1.0,0.6042,AWS match | Azure match | Docker match | Location compatible | Available in 15 days | Rate within budget | Sector assurance | Domain aligned
+28,296,0.7575,0.3025,0.8485,0.5937,AWS match | Docker match | Python match | Seniority compatible | Available in 30 days | Rate within budget | Sector assurance | Domain aligned
+28,200,0.72,0.3131,0.88,0.5892,AWS match | Azure match | Docker match | Language compatible | Rate within budget | Sector assurance | Domain aligned
+28,345,0.9275,0.1952,0.59,0.5671,AWS match | Azure match | Docker match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Domain aligned
+28,281,0.92,0.1909,0.59,0.5624,AWS match | Azure match | Docker match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Domain aligned
+28,299,0.791,0.2125,0.8001,0.5614,AWS match | Azure match | Docker match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Sector assurance | Domain aligned
+28,308,0.88,0.197,0.65,0.5608,AWS match | Azure match | Docker match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+28,105,0.81,0.1502,0.88,0.5601,AWS match | Azure match | Location compatible | Available in 15 days | Rate within budget | Sector assurance | Domain aligned
+28,142,0.8475,0.2327,0.61,0.5541,AWS match | Azure match | GCP match | Seniority compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+28,46,0.76,0.3193,0.59,0.5497,AWS match | Azure match | Docker match | Location compatible | Available in 30 days | Rate within budget | Domain aligned
+29,203,0.88,0.2261,0.89,0.6204,Databricks match | FastAPI match | NLP match | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector sante | Domain aligned
+29,251,0.7825,0.255,0.85,0.585,Databricks match | FastAPI match | dbt match | Seniority compatible | Location compatible | Available in 15 days | Rate within budget | Sector sante | Domain aligned
+29,117,0.94,0.256,0.4864,0.5757,Databricks match | FastAPI match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Domain aligned
+29,312,0.6725,0.2804,0.78,0.5371,Databricks match | FastAPI match | NLP match | Location compatible | Rate within budget | Sector sante | Domain aligned
+29,194,0.8875,0.1262,0.64,0.5335,Databricks match | NLP match | Python match | Seniority compatible | Language compatible | Available in 30 days | Rate within budget | Sector sante
+29,233,0.8075,0.2501,0.5493,0.5329,Databricks match | FastAPI match | Python match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Domain aligned
+29,154,0.9075,0.1591,0.5269,0.532,Databricks match | NLP match | Python match | Seniority compatible | Language compatible | Available in 30 days | Rate within budget | Domain aligned
+29,125,0.8,0.2259,0.6023,0.5308,FastAPI match | NLP match | Tableau match | Seniority compatible | Language compatible | Location compatible | Sector sante | Domain aligned
+29,138,0.9475,0.1052,0.5225,0.5256,FastAPI match | NLP match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+29,16,0.85,0.2074,0.49,0.521,FastAPI match | IAM match | Python match | Language compatible | Location compatible | Available in 30 days | Rate within budget | Domain aligned
+30,38,1.0,0.212,0.7,0.6248,Airflow match | Power BI match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector public
+30,324,0.9475,0.0669,0.85,0.5758,Airflow match | SQL match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector public | Domain aligned
+30,323,0.88,0.1819,0.7,0.5648,Power BI match | Python match | SQL match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector public
+30,209,0.91,0.1748,0.5736,0.5486,Power BI match | Python match | Snowflake match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Sector public
+30,305,0.91,0.1351,0.64,0.546,Power BI match | Python match | SQL match | Seniority compatible | Language compatible | Available in 30 days | Rate within budget | Sector public
+30,269,0.8875,0.1789,0.58,0.5425,Airflow match | Power BI match | Python match | Seniority compatible | Language compatible | Rate within budget | Sector public
+30,203,0.88,0.0483,0.84,0.5393,Python match | SQL match | Snowflake match | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector public | Domain aligned
+30,281,0.9475,0.0753,0.64,0.5371,Azure match | Power BI match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector public
+30,176,0.68,0.1596,0.95,0.5258,Airflow match | Power BI match | Python match | Language compatible | Available in 15 days | Rate within budget | Sector public | Domain aligned
+30,349,0.82,0.1698,0.64,0.5239,Airflow match | Power BI match | Python match | Language compatible | Available in 30 days | Rate within budget | Sector public
+31,141,0.9,0.303,0.76,0.6332,AWS match | DevOps match | Docker match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector energie | Domain aligned
+31,299,0.836,0.2746,0.822,0.6087,AWS match | DevOps match | Docker match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Sector energie | Domain aligned
+31,281,0.92,0.2911,0.55,0.5944,AWS match | DevOps match | Docker match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Domain aligned
+31,223,0.83,0.3707,0.55,0.5903,AWS match | DevOps match | Docker match | Language compatible | Location compatible | Available in 30 days | Rate within budget | Domain aligned
+31,211,0.8735,0.1348,0.8872,0.5808,AWS match | DevOps match | Docker match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector energie | Domain aligned
+31,8,0.77,0.2143,0.86,0.5657,AWS match | Docker match | GCP match | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector energie | Domain aligned
+31,59,0.92,0.2044,0.47,0.5438,DevOps match | GCP match | Kubernetes match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Domain aligned
+31,308,0.88,0.1546,0.61,0.5359,AWS match | DevOps match | Docker match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+31,345,0.78,0.2817,0.55,0.5347,AWS match | DevOps match | Docker match | Seniority compatible | Language compatible | Available in 30 days | Rate within budget | Domain aligned
+31,147,0.88,0.0993,0.71,0.5337,AWS match | GCP match | Kubernetes match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector energie
+32,336,0.97,0.2654,0.89,0.6722,Docker match | Python match | React match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector banque | Domain aligned
+32,210,0.9075,0.1726,0.69,0.57,Docker match | MLOps match | Python match | Seniority compatible | Language compatible | Available in 30 days | Rate within budget | Sector banque
+32,30,0.801,0.1428,0.8578,0.5491,Docker match | MLOps match | Python match | Seniority compatible | Language compatible | Available in 15 days | Sector banque | Domain aligned
+32,97,0.86,0.2757,0.42,0.5383,Docker match | Python match | React match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Domain aligned
+32,45,0.9475,0.0715,0.65,0.5376,MLOps match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector banque
+32,308,0.9475,0.0707,0.65,0.5373,Docker match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector banque
+32,242,0.8835,0.2204,0.4745,0.5365,Python match | React match | SQL match | Seniority compatible | Language compatible | Available in 30 days | Rate within budget | Domain aligned
+32,237,0.841,0.2442,0.497,0.5335,Docker match | Python match | React match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Domain aligned
+32,213,0.821,0.1436,0.7309,0.532,Docker match | Python match | React match | Seniority compatible | Language compatible | Location compatible | Sector banque | Domain aligned
+32,303,0.91,0.1301,0.55,0.5261,Docker match | React match | SQL match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+33,31,0.95,0.1683,0.6833,0.584,Python match | SQL match | Snowflake match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector public
+33,128,0.95,0.1069,0.6833,0.5594,Databricks match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector public
+33,203,0.786,0.1521,0.8985,0.5549,Databricks match | FastAPI match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Sector public | Domain aligned
+33,43,0.8535,0.0842,0.8586,0.5468,Databricks match | Python match | Snowflake match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector public | Domain aligned
+33,334,0.86,0.0719,0.8133,0.5354,FastAPI match | Python match | SQL match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector public | Domain aligned
+33,90,0.776,0.12,0.8556,0.5295,Databricks match | FastAPI match | SQL match | Seniority compatible | Language compatible | Available in 15 days | Sector public | Domain aligned
+33,176,0.78,0.0753,0.9333,0.5288,Python match | SQL match | Snowflake match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Sector public | Domain aligned
+33,66,0.7875,0.1341,0.7533,0.5193,Databricks match | FastAPI match | SQL match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector public | Domain aligned
+33,265,0.77,0.0806,0.88,0.5162,Databricks match | Python match | SQL match | Seniority compatible | Language compatible | Rate within budget | Sector public | Domain aligned
+33,302,0.9275,0.0462,0.6167,0.5128,Python match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector public
+34,164,0.9775,0.1119,0.95,0.6257,AWS match | SQL match | Terraform match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector assurance | Domain aligned
+34,104,0.8875,0.1045,0.83,0.5628,AWS match | SQL match | Terraform match | Seniority compatible | Language compatible | Rate within budget | Sector assurance | Domain aligned
+34,11,0.97,0.09,0.64,0.552,AWS match | Kubernetes match | Terraform match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector assurance
+34,78,0.82,0.0723,0.95,0.5469,AWS match | Kubernetes match | SQL match | Language compatible | Available in 15 days | Rate within budget | Sector assurance | Domain aligned
+34,274,0.91,0.0803,0.65,0.5261,SQL match | Terraform match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector assurance
+34,296,0.9075,0.1076,0.566,0.5192,AWS match | Kubernetes match | Seniority compatible | Language compatible | Available in 30 days | Rate within budget | Sector assurance
+34,134,0.95,0.0862,0.52,0.5185,AWS match | Kubernetes match | Terraform match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector assurance
+34,297,0.88,0.1375,0.53,0.513,AWS match | Kubernetes match | Language compatible | Location compatible | Rate within budget | Sector assurance
+34,117,0.94,0.0426,0.5891,0.5109,SQL match | Terraform match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Sector assurance
+34,192,0.9475,0.0589,0.54,0.5105,AWS match | SQL match | Terraform match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Domain aligned
+35,142,0.841,0.1545,0.8587,0.57,GCP match | Python match | Terraform match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Sector industrie | Domain aligned
+35,59,0.841,0.1641,0.8037,0.5628,GCP match | Kubernetes match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Sector industrie | Domain aligned
+35,308,0.97,0.1202,0.6,0.5561,GCP match | Kubernetes match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+35,275,0.9475,0.1264,0.6,0.5496,GCP match | Kubernetes match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+35,84,0.83,0.1889,0.7,0.5476,GCP match | Kubernetes match | Python match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Sector industrie
+35,8,0.88,0.0612,0.84,0.5445,GCP match | Terraform match | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector industrie | Domain aligned
+35,171,0.9475,0.1146,0.59,0.5428,Kubernetes match | Terraform match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector industrie
+35,223,0.9475,0.1251,0.54,0.537,GCP match | Kubernetes match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Domain aligned
+35,70,0.83,0.0787,0.83,0.5295,GCP match | Python match | Terraform match | Language compatible | Location compatible | Rate within budget | Sector industrie | Domain aligned
+35,327,0.7575,0.1365,0.83,0.5236,GCP match | Kubernetes match | Terraform match | Seniority compatible | Language compatible | Rate within budget | Sector industrie | Domain aligned
+36,38,0.86,0.1741,1.0,0.6136,GCP match | SAP match | SQL match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Sector sante | Domain aligned
+36,209,0.8975,0.165,0.9333,0.6116,GCP match | SAP match | Snowflake match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector sante | Domain aligned
+36,349,0.81,0.1885,0.8733,0.5741,SAP match | SQL match | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector sante | Domain aligned
+36,194,0.81,0.1758,0.8733,0.569,SAP match | SQL match | Snowflake match | Seniority compatible | Language compatible | Available in 30 days | Rate within budget | Sector sante | Domain aligned
+36,285,0.7325,0.2451,0.8667,0.5644,SAP match | Snowflake match | Seniority compatible | Location compatible | Available in 15 days | Rate within budget | Sector sante | Domain aligned
+36,269,0.77,0.1712,0.8133,0.5392,SAP match | SQL match | Snowflake match | Seniority compatible | Language compatible | Rate within budget | Sector sante | Domain aligned
+36,254,0.72,0.1523,0.8733,0.5236,SAP match | SQL match | Language compatible | Available in 30 days | Rate within budget | Sector sante | Domain aligned
+36,323,0.83,0.1674,0.5833,0.5156,SAP match | SQL match | Snowflake match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+36,193,0.69,0.1547,0.88,0.5139,GCP match | SAP match | SQL match | Seniority compatible | Language compatible | Rate within budget | Sector sante | Domain aligned
+36,286,0.91,0.0346,0.6167,0.5012,GCP match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Sector sante
+37,336,0.97,0.109,0.94,0.6196,C# match | DevOps match | Java match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector energie | Domain aligned
+37,274,0.83,0.1227,1.0,0.5811,C# match | Java match | Python match | Seniority compatible | Available in 15 days | Rate within budget | Sector energie | Domain aligned
+37,3,0.86,0.118,0.82,0.5552,C# match | Java match | Python match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector energie | Domain aligned
+37,31,0.84,0.0397,1.0,0.5519,C# match | Python match | SQL match | Language compatible | Available in 15 days | Rate within budget | Sector energie | Domain aligned
+37,255,1.0,0.0761,0.59,0.5484,Python match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector energie
+37,45,0.97,0.0679,0.65,0.5451,Python match | dbt match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector energie
+37,147,0.9475,0.0401,0.75,0.545,C# match | Python match | SQL match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector energie
+37,203,0.97,0.0395,0.69,0.5418,Python match | SQL match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector energie
+37,248,0.9775,0.0852,0.49,0.5231,DevOps match | dbt match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector energie
+37,276,0.871,0.0658,0.7337,0.5215,Java match | SQL match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Sector energie | Domain aligned
+38,110,0.9475,0.2778,0.7424,0.6386,AWS match | Azure match | Docker match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector public
+38,223,0.9275,0.1867,0.9067,0.627,AWS match | Docker match | GCP match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector public | Domain aligned
+38,84,0.97,0.2197,0.6833,0.6126,Azure match | Docker match | GCP match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector public
+38,72,0.8475,0.1802,0.9667,0.6044,AWS match | Azure match | Docker match | Seniority compatible | Location compatible | Available in 15 days | Rate within budget | Sector public | Domain aligned
+38,308,0.9775,0.2221,0.6167,0.6032,AWS match | Azure match | Docker match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+38,297,0.8775,0.2044,0.78,0.5888,AWS match | Azure match | GCP match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector public | Domain aligned
+38,92,0.97,0.2839,0.4,0.5816,AWS match | Azure match | Docker match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget
+38,281,0.821,0.2114,0.8139,0.5757,AWS match | Azure match | Docker match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Sector public | Domain aligned
+38,302,0.78,0.2622,0.75,0.5669,AWS match | Azure match | Docker match | Location compatible | Available in 15 days | Rate within budget | Sector public
+38,46,0.76,0.2172,0.8739,0.5657,AWS match | Azure match | Docker match | Seniority compatible | Location compatible | Available in 30 days | Sector public | Domain aligned
+39,324,0.97,0.1487,0.9,0.6275,NLP match | SQL match | Tableau match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector public | Domain aligned
+39,203,0.83,0.292,0.89,0.6268,NLP match | Python match | SQL match | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector public | Domain aligned
+39,217,0.8075,0.1886,0.95,0.5884,NLP match | Python match | Snowflake match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Sector public | Domain aligned
+39,138,0.97,0.2076,0.55,0.5811,NLP match | Python match | Snowflake match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+39,176,0.68,0.2848,0.95,0.5759,Python match | SQL match | Snowflake match | Language compatible | Available in 15 days | Rate within budget | Sector public | Domain aligned
+39,154,0.95,0.1934,0.54,0.5653,NLP match | Python match | Spark match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Domain aligned
+39,151,0.91,0.2279,0.55,0.5652,NLP match | SQL match | Snowflake match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+39,218,0.9075,0.1545,0.65,0.5548,NLP match | Python match | SQL match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Domain aligned
+39,322,0.97,0.1398,0.5,0.5439,NLP match | Snowflake match | Tableau match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+39,90,0.74,0.1369,0.95,0.5407,NLP match | SQL match | Spark match | Language compatible | Available in 15 days | Rate within budget | Sector public | Domain aligned
+40,259,0.8375,0.265,0.82,0.605,C# match | Python match | Tableau match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector telecom | Domain aligned
+40,237,0.78,0.1172,1.0,0.5589,C# match | Python match | React match | Location compatible | Available in 15 days | Rate within budget | Sector telecom | Domain aligned
+40,258,0.74,0.1058,1.0,0.5383,C# match | Python match | React match | Language compatible | Available in 15 days | Rate within budget | Sector telecom | Domain aligned
+40,55,0.91,0.0525,0.65,0.515,Python match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector telecom
+40,173,0.91,0.0485,0.65,0.5134,Python match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector telecom
+40,336,0.77,0.0851,0.84,0.51,C# match | Python match | React match | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector telecom | Domain aligned
+40,348,0.7,0.2631,0.59,0.5033,C# match | Python match | React match | Location compatible | Available in 30 days | Rate within budget | Domain aligned
+40,260,0.59,0.2282,0.84,0.4953,C# match | Python match | React match | Language compatible | Available in 30 days | Rate within budget | Sector telecom | Domain aligned
+40,232,0.87,0.0879,0.55,0.4932,C# match | Python match | React match | Seniority compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+40,229,0.9,0.0625,0.53,0.491,C# match | Python match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector telecom
+41,308,0.92,0.1519,0.67,0.5627,GCP match | Kubernetes match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector sante
+41,110,0.93,0.0935,0.71,0.5514,GCP match | Kubernetes match | Python match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Sector sante
+41,147,0.92,0.143,0.61,0.5472,GCP match | Kubernetes match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+41,255,0.83,0.1986,0.65,0.5415,GCP match | Kubernetes match | Python match | Seniority compatible | Language compatible | Available in 30 days | Rate within budget | Sector sante
+41,111,0.85,0.0909,0.71,0.5184,GCP match | Kubernetes match | Python match | Seniority compatible | Location compatible | Available in 15 days | Rate within budget | Sector sante
+41,84,0.95,0.1807,0.32,0.5163,GCP match | Kubernetes match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget
+41,208,0.8875,0.0884,0.57,0.5044,GCP match | SOC match | Terraform match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Domain aligned
+41,92,0.95,0.1197,0.36,0.4999,GCP match | Kubernetes match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget
+41,185,0.73,0.0896,0.84,0.4958,GCP match | Python match | SOC match | Seniority compatible | Location compatible | Rate within budget | Sector sante | Domain aligned
+41,72,0.81,0.2279,0.4,0.4951,GCP match | Kubernetes match | Python match | Seniority compatible | Available in 15 days | Rate within budget
+42,299,0.9475,0.0958,0.89,0.5953,Azure match | Docker match | Terraform match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector banque | Domain aligned
+42,211,0.9475,0.0828,0.89,0.5901,Azure match | Docker match | Kubernetes match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector banque | Domain aligned
+42,308,0.82,0.0774,0.95,0.5489,Azure match | Docker match | Kubernetes match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector banque | Domain aligned
+42,11,0.88,0.1603,0.64,0.5441,Azure match | Kubernetes match | Terraform match | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector banque
+42,171,0.82,0.1857,0.69,0.5403,Azure match | Docker match | Kubernetes match | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector banque
+42,149,0.82,0.0814,0.83,0.5265,Azure match | Kubernetes match | Terraform match | Language compatible | Location compatible | Rate within budget | Sector banque | Domain aligned
+42,345,0.74,0.0875,0.94,0.519,Azure match | Docker match | Kubernetes match | Language compatible | Available in 30 days | Rate within budget | Sector banque | Domain aligned
+42,103,0.8975,0.1901,0.4187,0.5188,Azure match | Kubernetes match | Terraform match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Domain aligned
+42,229,1.0,0.0602,0.43,0.5101,Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector banque
+42,286,0.74,0.159,0.75,0.5096,Azure match | Docker match | Kubernetes match | Language compatible | Available in 15 days | Rate within budget | Sector banque
+43,38,0.95,0.2293,0.7,0.6117,Power BI match | Python match | SAP match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector telecom
+43,254,0.72,0.4258,0.64,0.5863,Power BI match | Python match | SAP match | Language compatible | Available in 30 days | Rate within budget | Sector telecom
+43,173,0.77,0.1052,0.8572,0.5215,Power BI match | Python match | Seniority compatible | Language compatible | Available in 15 days | Sector telecom | Domain aligned
+43,218,0.755,0.1125,0.8136,0.5097,Power BI match | Python match | Tableau match | Seniority compatible | Language compatible | Available in 15 days | Sector telecom | Domain aligned
+43,45,0.88,0.2106,0.35,0.5062,Power BI match | Python match | SAP match | Language compatible | Location compatible | Available in 15 days | Rate within budget
+43,151,0.69,0.1174,0.9,0.503,Power BI match | SOC match | Snowflake match | Language compatible | Available in 15 days | Rate within budget | Sector telecom | Domain aligned
+43,278,0.71,0.1274,0.84,0.503,Power BI match | Python match | Snowflake match | Location compatible | Available in 30 days | Rate within budget | Sector telecom | Domain aligned
+43,281,0.87,0.0747,0.59,0.4959,Power BI match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector telecom
+43,167,0.95,0.1394,0.3,0.4958,Power BI match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget
+43,227,0.6875,0.4017,0.29,0.4937,Power BI match | Python match | SAP match | Seniority compatible | Available in 30 days | Rate within budget
+44,328,0.97,0.2085,0.92,0.6554,Docker match | Kubernetes match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector retail | Domain aligned
+44,70,0.95,0.1006,0.8,0.5802,Docker match | Python match | Terraform match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector retail | Domain aligned
+44,121,0.97,0.0976,0.71,0.5691,Docker match | Kubernetes match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector retail
+44,135,0.8975,0.1049,0.76,0.553,Docker match | Terraform match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector retail | Domain aligned
+44,340,0.97,0.0676,0.63,0.541,NLP match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector retail
+44,20,0.8975,0.1806,0.53,0.5372,Docker match | Kubernetes match | NLP match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Domain aligned
+44,92,0.9235,0.0618,0.71,0.5361,Docker match | Kubernetes match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector retail
+44,41,0.6985,0.2297,0.8138,0.5341,Docker match | Python match | Terraform match | Seniority compatible | Location compatible | Available in 30 days | Sector retail | Domain aligned
+44,8,1.0,0.0987,0.47,0.5335,Docker match | Terraform match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Domain aligned
+44,46,0.8035,0.3136,0.4065,0.5281,Docker match | Kubernetes match | NLP match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Domain aligned
+45,18,0.81,0.247,0.8733,0.5975,FastAPI match | Java match | Python match | Seniority compatible | Language compatible | Available in 30 days | Rate within budget | Sector energie | Domain aligned
+45,260,0.81,0.1669,0.8733,0.5654,FastAPI match | Java match | Python match | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector energie | Domain aligned
+45,336,0.8475,0.1068,0.8733,0.5564,Java match | Python match | SQL match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector energie | Domain aligned
+45,274,0.6725,0.2468,0.9333,0.5544,FastAPI match | Java match | Python match | Seniority compatible | Available in 15 days | Rate within budget | Sector energie | Domain aligned
+45,31,0.77,0.1417,0.9333,0.5513,Python match | SQL match | Tableau match | Language compatible | Available in 15 days | Rate within budget | Sector energie | Domain aligned
+45,45,0.9475,0.0511,0.6833,0.5361,AWS match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector energie
+45,147,0.8975,0.057,0.75,0.5318,AWS match | Python match | SQL match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector energie
+45,250,0.9,0.0738,0.69,0.5275,AWS match | Python match | SQL match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector energie
+45,263,0.86,0.2188,0.4633,0.5242,FastAPI match | Java match | Python match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Domain aligned
+45,3,0.64,0.2479,0.82,0.5191,AWS match | FastAPI match | Java match | Seniority compatible | Language compatible | Rate within budget | Sector energie | Domain aligned
+46,308,0.97,0.1167,0.65,0.5647,AWS match | Docker match | Kubernetes match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+46,207,0.74,0.2461,0.82,0.5584,AWS match | Docker match | Java match | Language compatible | Location compatible | Rate within budget | Sector energie | Domain aligned
+46,46,0.9275,0.1431,0.59,0.5462,AWS match | Docker match | Kubernetes match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Domain aligned
+46,147,0.9475,0.0611,0.6833,0.5401,AWS match | Kubernetes match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector energie
+46,92,1.0,0.1447,0.4,0.5379,AWS match | Docker match | Kubernetes match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget
+46,274,1.0,0.0666,0.55,0.5366,Java match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector energie
+46,8,0.83,0.0695,0.8733,0.5345,AWS match | Docker match | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector energie | Domain aligned
+46,171,0.8975,0.1154,0.6233,0.5298,Docker match | Kubernetes match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector energie
+46,45,0.9475,0.0435,0.6167,0.5197,AWS match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector energie
+46,223,0.8975,0.1062,0.59,0.5195,AWS match | Docker match | Kubernetes match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Domain aligned
+47,120,0.9,0.2403,0.61,0.5781,Azure match | DevOps match | GCP match | Seniority compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+47,88,0.81,0.2975,0.67,0.577,Azure match | DevOps match | GCP match | Seniority compatible | Available in 15 days | Rate within budget | Sector sante
+47,308,0.97,0.1198,0.67,0.5699,Azure match | DevOps match | GCP match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector sante
+47,147,0.97,0.1055,0.61,0.5522,GCP match | Python match | SIEM match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+47,110,0.83,0.2044,0.67,0.5478,Azure match | DevOps match | GCP match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Sector sante
+47,11,0.8735,0.2108,0.57,0.5477,Azure match | DevOps match | GCP match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector sante
+47,38,0.976,0.0536,0.63,0.5379,GCP match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector sante
+47,25,0.8735,0.1655,0.59,0.5336,Azure match | GCP match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Domain aligned
+47,78,0.91,0.1071,0.61,0.5289,Azure match | GCP match | Python match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Domain aligned
+47,179,0.7875,0.0941,0.8,0.5127,Azure match | GCP match | SOC match | Seniority compatible | Language compatible | Rate within budget | Sector sante | Domain aligned
+48,343,0.92,0.1681,0.6233,0.5599,MLOps match | SQL match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector banque
+48,301,1.0,0.0846,0.6167,0.5572,SQL match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector banque
+48,153,0.9475,0.0897,0.6167,0.5382,Azure match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector banque
+48,334,0.9,0.1606,0.5633,0.5369,C# match | Java match | MLOps match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector banque
+48,92,0.9535,0.0624,0.6167,0.5297,Azure match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector banque
+48,31,1.0,0.0461,0.5167,0.5218,C# match | SQL match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+48,128,0.9,0.0563,0.6167,0.5059,Azure match | Seniority compatible | Location compatible | Available in 15 days | Rate within budget | Sector banque
+48,174,0.8775,0.0658,0.5979,0.4969,SQL match | Seniority compatible | Location compatible | Available in 15 days | Rate within budget | Sector banque
+48,303,0.93,0.0489,0.5167,0.4949,C# match | Java match | SQL match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Domain aligned
+48,30,0.7095,0.1571,0.7333,0.4933,C# match | Java match | MLOps match | Seniority compatible | Location compatible | Available in 15 days | Sector banque | Domain aligned
+49,276,0.95,0.0798,0.79,0.5699,Java match | SQL match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector retail | Domain aligned
+49,242,0.88,0.0947,0.84,0.5579,Java match | Python match | React match | Seniority compatible | Language compatible | Available in 30 days | Rate within budget | Sector retail | Domain aligned
+49,237,0.97,0.1103,0.6,0.5521,Azure match | Java match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+49,258,0.83,0.0687,0.9,0.5395,Java match | Python match | React match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Sector retail | Domain aligned
+49,27,0.9275,0.1428,0.49,0.5261,Java match | Power BI match | React match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Domain aligned
+49,25,0.92,0.098,0.59,0.5252,Azure match | Python match | React match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector retail
+49,209,0.9475,0.1955,0.3,0.5172,Power BI match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget
+49,192,0.92,0.0455,0.64,0.5142,Azure match | Python match | SQL match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector retail
+49,193,0.9,0.0931,0.58,0.5132,Power BI match | Python match | SQL match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector retail
+49,173,0.83,0.0918,0.7,0.5087,Power BI match | Python match | SQL match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Sector retail
+50,233,0.88,0.3181,1.0,0.6792,FastAPI match | Power BI match | Python match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector assurance | Domain aligned
+50,301,0.78,0.388,0.75,0.6172,Power BI match | Python match | SAP match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector assurance
+50,209,0.91,0.2213,0.7,0.5925,Power BI match | Python match | SAP match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector assurance
+50,117,0.88,0.1175,0.95,0.589,FastAPI match | Power BI match | Python match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector assurance | Domain aligned
+50,138,0.91,0.0994,0.9,0.5838,FastAPI match | Power BI match | Python match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector assurance | Domain aligned
+50,161,0.91,0.0847,0.8521,0.5683,FastAPI match | Python match | SQL match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Sector assurance | Domain aligned
+50,267,0.7975,0.1597,0.89,0.5609,Power BI match | Python match | SQL match | Seniority compatible | Location compatible | Available in 30 days | Rate within budget | Sector assurance | Domain aligned
+50,45,0.85,0.36,0.35,0.554,Power BI match | Python match | SAP match | Language compatible | Location compatible | Available in 15 days | Rate within budget
+50,254,0.77,0.22,0.69,0.534,Power BI match | Python match | SAP match | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector assurance
+50,251,0.81,0.0915,0.85,0.5306,FastAPI match | SQL match | Snowflake match | Location compatible | Available in 15 days | Rate within budget | Sector assurance | Domain aligned
+51,25,0.97,0.2452,0.84,0.6541,GCP match | Terraform match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector retail | Domain aligned
+51,192,0.9475,0.2421,0.89,0.6538,GCP match | SQL match | Terraform match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector retail | Domain aligned
+51,60,0.8775,0.1404,0.94,0.5952,GCP match | SAP match | SQL match | Seniority compatible | Location compatible | Available in 30 days | Rate within budget | Sector retail | Domain aligned
+51,208,0.82,0.2176,0.9,0.5951,GCP match | Terraform match | Language compatible | Available in 15 days | Rate within budget | Sector retail | Domain aligned
+51,58,0.81,0.2253,0.84,0.5821,GCP match | SQL match | Location compatible | Available in 30 days | Rate within budget | Sector retail | Domain aligned
+51,147,0.88,0.2259,0.55,0.5523,GCP match | SQL match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+51,250,0.82,0.1081,0.89,0.5492,GCP match | SQL match | Terraform match | Language compatible | Available in 30 days | Rate within budget | Sector retail | Domain aligned
+51,280,0.75,0.1298,0.8541,0.5228,GCP match | SQL match | Seniority compatible | Available in 15 days | Sector retail | Domain aligned
+51,59,0.9475,0.0579,0.59,0.5202,GCP match | Terraform match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector retail
+51,168,1.0,0.0527,0.48,0.5171,Terraform match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector retail
+52,72,0.91,0.2177,0.96,0.6431,Azure match | DevOps match | Docker match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Sector public | Domain aligned
+52,169,1.0,0.233,0.67,0.6272,Azure match | DevOps match | Kubernetes match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector public
+52,65,0.9535,0.2601,0.6854,0.6225,Azure match | DevOps match | Docker match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector public
+52,281,0.9235,0.1808,0.9,0.6217,Azure match | DevOps match | Docker match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector public | Domain aligned
+52,223,0.97,0.1531,0.86,0.6212,DevOps match | Docker match | Kubernetes match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector public | Domain aligned
+52,82,1.0,0.205,0.63,0.608,Azure match | DevOps match | Kubernetes match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector public
+52,297,0.92,0.179,0.8,0.5996,Azure match | DevOps match | Kubernetes match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector public | Domain aligned
+52,84,0.91,0.2306,0.71,0.5982,Azure match | Docker match | Kubernetes match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Sector public
+52,275,0.97,0.1969,0.61,0.5888,Azure match | DevOps match | Docker match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+52,118,0.9,0.2765,0.59,0.5886,Azure match | DevOps match | Docker match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector public
+53,336,0.92,0.0966,0.94,0.5947,C# match | Java match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector banque | Domain aligned
+53,45,0.97,0.0696,0.65,0.5459,Python match | dbt match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector banque
+53,308,0.97,0.0688,0.65,0.5455,Python match | Tableau match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector banque
+53,147,0.9475,0.0404,0.75,0.5452,C# match | Python match | SQL match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector banque
+53,258,0.916,0.1054,0.5935,0.5273,C# match | Java match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Domain aligned
+53,274,0.81,0.1485,0.65,0.5134,C# match | Java match | Python match | Seniority compatible | Available in 15 days | Rate within budget | Domain aligned
+53,301,0.82,0.079,0.75,0.5096,Python match | SQL match | Tableau match | Language compatible | Available in 15 days | Rate within budget | Sector banque
+53,92,0.91,0.0359,0.65,0.5084,Python match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Sector banque
+53,124,0.85,0.1182,0.59,0.5053,C# match | Java match | Python match | Seniority compatible | Location compatible | Available in 30 days | Rate within budget | Domain aligned
+53,148,0.8535,0.1027,0.6052,0.5035,C# match | Python match | SQL match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector banque
+54,43,1.0,0.1719,0.49,0.5667,Python match | Salesforce match | Snowflake match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Domain aligned
+54,105,1.0,0.0851,0.6,0.554,AWS match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector telecom
+54,312,0.9275,0.0521,0.73,0.5378,SQL match | Snowflake match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector telecom | Domain aligned
+54,343,0.88,0.0458,0.79,0.5283,SQL match | Snowflake match | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector telecom | Domain aligned
+54,151,0.87,0.0529,0.7903,0.5272,SQL match | Snowflake match | Seniority compatible | Language compatible | Available in 15 days | Sector telecom | Domain aligned
+54,159,0.9775,0.0487,0.55,0.5205,Python match | SQL match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+54,336,0.9475,0.057,0.59,0.5198,Python match | SQL match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector telecom
+54,220,0.88,0.0352,0.73,0.5121,Python match | Seniority compatible | Language compatible | Rate within budget | Sector telecom | Domain aligned
+54,123,0.93,0.0546,0.59,0.5118,AWS match | Python match | Seniority compatible | Language compatible | Available in 30 days | Rate within budget | Sector telecom
+54,69,0.8375,0.0747,0.72,0.5089,Python match | SQL match | Snowflake match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector telecom | Domain aligned
+55,232,0.92,0.1457,0.55,0.5363,Docker match | FastAPI match | Tableau match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+55,237,0.83,0.1965,0.55,0.5206,Docker match | FastAPI match | Java match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+55,215,0.74,0.1811,0.72,0.5125,Docker match | FastAPI match | Seniority compatible | Language compatible | Rate within budget | Sector industrie | Domain aligned
+55,268,0.74,0.2307,0.59,0.5063,Databricks match | Docker match | FastAPI match | Language compatible | Available in 30 days | Rate within budget | Domain aligned
+55,27,0.81,0.2034,0.49,0.5034,Docker match | FastAPI match | Java match | Language compatible | Location compatible | Available in 30 days | Rate within budget | Domain aligned
+55,15,0.83,0.0988,0.65,0.5015,Databricks match | FastAPI match | Tableau match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector industrie
+55,283,0.78,0.1986,0.55,0.5014,Docker match | FastAPI match | Java match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Domain aligned
+55,213,0.77,0.2667,0.43,0.5007,Docker match | FastAPI match | Java match | Language compatible | Location compatible | Rate within budget | Domain aligned
+55,303,0.76,0.2052,0.55,0.4961,Docker match | FastAPI match | Java match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+55,30,0.79,0.1688,0.55,0.4935,Docker match | FastAPI match | Java match | Language compatible | Available in 15 days | Rate within budget | Domain aligned
+56,148,0.97,0.352,0.88,0.7048,Databricks match | NLP match | SQL match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector energie | Domain aligned
+56,203,0.91,0.2467,0.94,0.6507,Databricks match | NLP match | SQL match | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector energie | Domain aligned
+56,90,0.88,0.2193,1.0,0.6397,Databricks match | NLP match | SQL match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector energie | Domain aligned
+56,324,1.0,0.2527,0.5833,0.6177,Airflow match | NLP match | SQL match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+56,194,0.9475,0.2318,0.69,0.6097,Airflow match | Databricks match | NLP match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector energie
+56,138,0.9775,0.2642,0.5099,0.5987,Airflow match | NLP match | Snowflake match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+56,251,0.9,0.2686,0.5833,0.5841,Airflow match | Databricks match | SQL match | Seniority compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+56,129,0.82,0.1857,0.8667,0.5756,NLP match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector energie | Domain aligned
+56,166,0.9475,0.2588,0.4633,0.5752,Airflow match | Databricks match | SQL match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Domain aligned
+56,307,0.82,0.1465,0.9333,0.5733,NLP match | SQL match | Snowflake match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector energie | Domain aligned
+57,84,0.86,0.1517,0.75,0.5547,Azure match | Docker match | Python match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Sector public
+57,9,0.76,0.156,0.9333,0.5531,Azure match | FastAPI match | Python match | Seniority compatible | Available in 15 days | Rate within budget | Sector public | Domain aligned
+57,79,0.7375,0.1842,0.8133,0.5314,Docker match | FastAPI match | Python match | Seniority compatible | Location compatible | Rate within budget | Sector public | Domain aligned
+57,110,0.8075,0.0819,0.75,0.5058,Azure match | Docker match | Python match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Sector public
+57,72,0.7875,0.0965,0.75,0.5036,Azure match | Docker match | Python match | Seniority compatible | Available in 15 days | Rate within budget | Sector public
+57,124,0.71,0.1013,0.8733,0.4992,Docker match | FastAPI match | Python match | Seniority compatible | Available in 30 days | Rate within budget | Sector public | Domain aligned
+57,258,0.731,0.0938,0.846,0.4991,Docker match | FastAPI match | Python match | Seniority compatible | Language compatible | Available in 15 days | Sector public | Domain aligned
+57,38,0.9035,0.0406,0.5927,0.4962,Python match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector public
+57,147,0.8975,0.0334,0.6167,0.4957,Python match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector public
+57,323,0.8975,0.0291,0.6167,0.494,Python match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector public
+58,266,0.9,0.269,0.59,0.5856,Azure match | Docker match | GCP match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Domain aligned
+58,275,0.6425,0.3139,1.0,0.5826,Azure match | Docker match | GCP match | Location compatible | Available in 15 days | Rate within budget | Sector assurance | Domain aligned
+58,299,0.786,0.1965,0.879,0.5688,Azure match | Docker match | GCP match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Sector assurance | Domain aligned
+58,200,0.68,0.2871,0.88,0.5628,Azure match | Docker match | GCP match | Language compatible | Rate within budget | Sector assurance | Domain aligned
+58,142,0.7325,0.3141,0.6,0.5387,Azure match | GCP match | Python match | Seniority compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+58,281,0.87,0.1603,0.59,0.5301,Azure match | Docker match | GCP match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Domain aligned
+58,308,0.83,0.1625,0.65,0.527,Azure match | Docker match | GCP match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+58,226,0.81,0.2153,0.54,0.5181,Azure match | GCP match | Python match | Seniority compatible | Language compatible | Available in 30 days | Rate within budget | Domain aligned
+58,78,0.86,0.0721,0.7,0.5129,Azure match | GCP match | Python match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector assurance
+58,297,0.74,0.1401,0.78,0.508,Azure match | GCP match | Language compatible | Location compatible | Rate within budget | Sector assurance | Domain aligned
+59,192,0.9475,0.0709,0.94,0.5954,AWS match | GCP match | SOC match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector retail | Domain aligned
+59,25,0.97,0.0509,0.8733,0.583,GCP match | SOC match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector retail | Domain aligned
+59,59,0.9475,0.231,0.5567,0.5827,DevOps match | GCP match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector retail
+59,346,0.83,0.2773,0.5633,0.5556,AWS match | DevOps match | GCP match | Language compatible | Location compatible | Rate within budget | Sector retail
+59,250,0.82,0.0927,0.94,0.5531,AWS match | GCP match | SOC match | Language compatible | Available in 30 days | Rate within budget | Sector retail | Domain aligned
+59,111,0.82,0.2047,0.6833,0.5466,AWS match | DevOps match | GCP match | Language compatible | Available in 15 days | Rate within budget | Sector retail
+59,169,0.82,0.195,0.6833,0.5427,AWS match | DevOps match | GCP match | Language compatible | Available in 15 days | Rate within budget | Sector retail
+59,58,0.82,0.0648,0.94,0.5419,AWS match | GCP match | SOC match | Language compatible | Available in 30 days | Rate within budget | Sector retail | Domain aligned
+59,121,0.85,0.1623,0.6833,0.5416,AWS match | DevOps match | GCP match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector retail
+59,92,0.82,0.174,0.6833,0.5343,AWS match | DevOps match | GCP match | Language compatible | Available in 15 days | Rate within budget | Sector retail
+60,31,0.92,0.1057,0.8667,0.5836,C# match | Python match | React match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector sante | Domain aligned
+60,303,0.92,0.2554,0.5167,0.5735,C# match | Docker match | Java match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+60,260,0.87,0.2497,0.5233,0.5525,C# match | Docker match | Java match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Domain aligned
+60,182,0.83,0.1552,0.7467,0.5434,C# match | Docker match | Java match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector sante | Domain aligned
+60,75,0.7335,0.2407,0.7533,0.5403,C# match | Docker match | Python match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector sante | Domain aligned
+60,302,0.8975,0.0637,0.6833,0.5212,Docker match | Java match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector sante
+60,289,0.7835,0.1452,0.7467,0.5208,C# match | Java match | Python match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector sante | Domain aligned
+60,237,0.7595,0.1454,0.7333,0.5086,C# match | Docker match | Java match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Sector sante | Domain aligned
+60,205,0.7335,0.3318,0.4033,0.5068,Java match | Python match | React match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Domain aligned
+60,187,0.8975,0.0596,0.6167,0.5062,C# match | Java match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector sante
+61,129,0.71,0.2777,0.9333,0.5817,Power BI match | Spark match | Tableau match | Language compatible | Available in 15 days | Rate within budget | Sector energie | Domain aligned
+61,203,0.78,0.2668,0.8067,0.5801,Databricks match | FastAPI match | Snowflake match | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector energie | Domain aligned
+61,15,0.82,0.3342,0.5833,0.5783,Databricks match | FastAPI match | Power BI match | Seniority compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+61,90,0.77,0.1819,0.9333,0.5674,Databricks match | FastAPI match | Spark match | Language compatible | Available in 15 days | Rate within budget | Sector energie | Domain aligned
+61,238,0.83,0.3236,0.53,0.5674,Databricks match | Power BI match | Snowflake match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Domain aligned
+61,233,0.78,0.3116,0.65,0.5666,Databricks match | FastAPI match | Power BI match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Domain aligned
+61,117,0.8375,0.2462,0.65,0.5635,Databricks match | FastAPI match | Power BI match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Domain aligned
+61,148,0.77,0.2333,0.7467,0.5507,Databricks match | Snowflake match | Tableau match | Seniority compatible | Language compatible | Rate within budget | Sector energie | Domain aligned
+61,138,0.92,0.1955,0.5167,0.5495,FastAPI match | Power BI match | Snowflake match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+61,167,0.86,0.2005,0.6167,0.5475,FastAPI match | Power BI match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Sector energie
+62,223,0.97,0.0976,0.89,0.6051,AWS match | Kubernetes match | Spark match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector public | Domain aligned
+62,297,0.92,0.1601,0.83,0.5981,AWS match | Azure match | Kubernetes match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector public | Domain aligned
+62,281,0.9235,0.0989,0.89,0.587,AWS match | Azure match | Kubernetes match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector public | Domain aligned
+62,308,0.97,0.1275,0.6,0.559,AWS match | Azure match | Kubernetes match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+62,72,0.81,0.1022,0.95,0.5549,AWS match | Azure match | Kubernetes match | Seniority compatible | Available in 15 days | Rate within budget | Sector public | Domain aligned
+62,46,0.81,0.1083,0.89,0.5453,AWS match | Azure match | Kubernetes match | Seniority compatible | Available in 30 days | Rate within budget | Sector public | Domain aligned
+62,147,0.97,0.0655,0.65,0.5442,AWS match | Kubernetes match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector public
+62,82,0.9,0.1098,0.7,0.5439,AWS match | Azure match | Kubernetes match | Seniority compatible | Location compatible | Available in 15 days | Rate within budget | Sector public
+62,65,0.9535,0.0856,0.6391,0.5435,AWS match | Azure match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector public
+62,90,1.0,0.052,0.6,0.5408,Spark match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector public
+63,25,0.91,0.1997,0.94,0.6319,Azure match | GCP match | Python match | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector public | Domain aligned
+63,192,0.91,0.099,0.94,0.5916,Azure match | GCP match | Python match | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector public | Domain aligned
+63,272,0.83,0.1782,0.88,0.5793,Azure match | GCP match | Python match | Language compatible | Location compatible | Rate within budget | Sector public | Domain aligned
+63,65,0.88,0.1582,0.75,0.5653,Azure match | GCP match | Python match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector public
+63,212,0.86,0.1378,0.7901,0.5571,Azure match | GCP match | Python match | Seniority compatible | Language compatible | Location compatible | Sector public | Domain aligned
+63,219,0.72,0.1856,0.95,0.5522,Azure match | GCP match | Python match | Location compatible | Available in 15 days | Rate within budget | Sector public | Domain aligned
+63,147,0.85,0.0537,0.9,0.5415,GCP match | Python match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector public | Domain aligned
+63,281,0.91,0.1211,0.64,0.5404,Azure match | GCP match | Python match | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector public
+63,299,0.9775,0.1919,0.3321,0.5342,Azure match | GCP match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget
+63,110,0.82,0.1404,0.75,0.5341,Azure match | GCP match | Python match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector public
+64,18,0.91,0.1539,0.94,0.6136,FastAPI match | Java match | Python match | Seniority compatible | Language compatible | Available in 30 days | Rate within budget | Sector assurance | Domain aligned
+64,112,0.8125,0.2171,0.75,0.5618,C# match | Java match | Python match | Seniority compatible | Location compatible | Available in 15 days | Rate within budget | Sector assurance
+64,274,0.7225,0.1679,1.0,0.5562,C# match | FastAPI match | Java match | Seniority compatible | Available in 15 days | Rate within budget | Sector assurance | Domain aligned
+64,58,1.0,0.0452,0.69,0.5561,C# match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector assurance
+64,260,0.82,0.0919,0.94,0.5528,C# match | FastAPI match | Java match | Language compatible | Available in 30 days | Rate within budget | Sector assurance | Domain aligned
+64,37,0.8875,0.1449,0.69,0.551,C# match | Java match | Python match | Seniority compatible | Language compatible | Available in 30 days | Rate within budget | Sector assurance
+64,275,0.9475,0.0382,0.75,0.5443,Python match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector assurance
+64,47,0.86,0.0597,0.88,0.5439,FastAPI match | Python match | Seniority compatible | Language compatible | Rate within budget | Sector assurance | Domain aligned
+64,88,0.91,0.0376,0.75,0.5291,Python match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Sector assurance
+64,323,0.97,0.1456,0.4,0.5263,Python match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget
+65,281,0.97,0.1944,0.61,0.5878,Azure match | Kubernetes match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector telecom
+65,78,0.82,0.0639,0.96,0.5456,Azure match | Kubernetes match | Python match | Language compatible | Available in 15 days | Rate within budget | Sector telecom | Domain aligned
+65,258,0.91,0.0611,0.67,0.5225,Python match | SQL match | Terraform match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Sector telecom
+65,237,0.87,0.0651,0.71,0.516,Azure match | Python match | SQL match | Seniority compatible | Location compatible | Available in 15 days | Rate within budget | Sector telecom
+65,25,0.97,0.0581,0.51,0.5132,Azure match | Python match | Terraform match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Domain aligned
+65,19,0.77,0.1027,0.82,0.5131,Azure match | Kubernetes match | Python match | Seniority compatible | Language compatible | Rate within budget | Sector telecom | Domain aligned
+65,59,0.9475,0.1993,0.26,0.5107,Kubernetes match | Python match | Terraform match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget
+65,192,0.9475,0.0511,0.55,0.5094,Azure match | Python match | SQL match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Domain aligned
+65,38,0.91,0.0348,0.63,0.5039,Python match | SQL match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Sector telecom
+65,145,0.8,0.0548,0.8,0.5019,Python match | SQL match | Terraform match | Language compatible | Location compatible | Rate within budget | Sector telecom | Domain aligned
+66,41,0.92,0.2389,0.86,0.6356,AWS match | GCP match | Python match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector retail | Domain aligned
+66,92,0.97,0.1706,0.75,0.6062,AWS match | GCP match | Kubernetes match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector retail
+66,157,0.8075,0.2881,0.74,0.5862,AWS match | GCP match | Kubernetes match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector retail | Domain aligned
+66,147,0.9775,0.299,0.36,0.5826,AWS match | GCP match | Kubernetes match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget
+66,275,0.9775,0.1714,0.6045,0.5805,AWS match | GCP match | Kubernetes match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+66,346,0.8775,0.1734,0.8,0.5803,AWS match | GCP match | Kubernetes match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector retail | Domain aligned
+66,308,0.9775,0.1599,0.61,0.5769,AWS match | GCP match | Kubernetes match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+66,130,0.81,0.2506,0.74,0.5722,AWS match | GCP match | Python match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector retail | Domain aligned
+66,111,0.97,0.0937,0.71,0.5675,AWS match | GCP match | Kubernetes match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector retail
+66,123,0.92,0.1455,0.69,0.5642,AWS match | GCP match | Kubernetes match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector retail
+67,312,0.9,0.2958,0.88,0.6543,Databricks match | Power BI match | SQL match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector retail | Domain aligned
+67,43,0.95,0.1046,0.8067,0.5832,Databricks match | Tableau match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector retail | Domain aligned
+67,151,0.9075,0.2265,0.5803,0.5697,Power BI match | SQL match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Domain aligned
+67,159,1.0,0.1287,0.5833,0.5681,Databricks match | SQL match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+67,210,0.9275,0.1755,0.59,0.5592,Databricks match | Power BI match | SQL match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Domain aligned
+67,251,0.886,0.2126,0.5325,0.5459,Databricks match | SQL match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Domain aligned
+67,15,0.841,0.2765,0.4923,0.5455,Databricks match | Power BI match | SQL match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Domain aligned
+67,234,0.8375,0.1638,0.6867,0.5378,Databricks match | Tableau match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector retail | Domain aligned
+67,155,0.86,0.0788,0.8067,0.5368,SQL match | Tableau match | Seniority compatible | Language compatible | Available in 30 days | Rate within budget | Sector retail | Domain aligned
+67,96,0.83,0.1347,0.7533,0.5365,Power BI match | SQL match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector retail | Domain aligned
+68,291,0.85,0.1659,0.872,0.5808,AWS match | Azure match | SOC match | Seniority compatible | Language compatible | Available in 15 days | Sector retail | Domain aligned
+68,192,0.88,0.1162,0.86,0.5705,AWS match | Azure match | SOC match | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector retail | Domain aligned
+68,257,0.9475,0.1792,0.55,0.5607,AWS match | Azure match | IAM match | Seniority compatible | Language compatible | Location compatible | Available in 30 days | Rate within budget | Domain aligned
+68,25,0.88,0.0905,0.82,0.5522,Azure match | SOC match | Language compatible | Location compatible | Available in 30 days | Rate within budget | Sector retail | Domain aligned
+68,111,0.85,0.1862,0.67,0.5485,AWS match | IAM match | Java match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector retail
+68,250,0.76,0.1196,0.86,0.5238,AWS match | Azure match | SOC match | Language compatible | Available in 30 days | Rate within budget | Sector retail | Domain aligned
+68,212,0.8575,0.2066,0.49,0.5236,AWS match | Azure match | IAM match | Seniority compatible | Language compatible | Rate within budget | Domain aligned
+68,179,0.71,0.1714,0.84,0.5206,AWS match | Azure match | IAM match | Language compatible | Rate within budget | Sector retail | Domain aligned
+68,58,0.76,0.1073,0.86,0.5189,AWS match | IAM match | SOC match | Language compatible | Available in 30 days | Rate within budget | Sector retail | Domain aligned
+68,208,0.76,0.0954,0.88,0.5181,IAM match | SOC match | Language compatible | Available in 15 days | Rate within budget | Sector retail | Domain aligned
+69,328,0.81,0.2767,0.9667,0.628,AWS match | Azure match | Docker match | Location compatible | Available in 15 days | Rate within budget | Sector retail | Domain aligned
+69,41,0.78,0.2803,0.9067,0.6054,AWS match | Azure match | Docker match | Seniority compatible | Available in 30 days | Rate within budget | Sector retail | Domain aligned
+69,92,0.93,0.1569,0.75,0.5848,AWS match | Azure match | Docker match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Sector retail
+69,308,0.9475,0.1779,0.6167,0.5735,AWS match | Azure match | Docker match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+69,130,0.78,0.2764,0.7533,0.5732,AWS match | Azure match | Python match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Sector retail | Domain aligned
+69,46,0.7575,0.2997,0.571,0.5371,AWS match | Azure match | Docker match | Seniority compatible | Available in 30 days | Rate within budget | Domain aligned
+69,275,0.8475,0.1955,0.5942,0.5361,AWS match | Azure match | Docker match | Seniority compatible | Location compatible | Available in 15 days | Rate within budget | Domain aligned
+69,110,0.9775,0.1563,0.4,0.5335,AWS match | Azure match | Docker match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Rate within budget
+69,123,0.85,0.117,0.6567,0.5181,AWS match | Docker match | Kubernetes match | Seniority compatible | Location compatible | Available in 30 days | Rate within budget | Sector retail
+69,228,0.83,0.2239,0.47,0.5156,AWS match | Azure match | Docker match | Seniority compatible | Language compatible | Location compatible | Rate within budget | Domain aligned
+70,243,0.7875,0.1984,0.78,0.5503,Java match | Power BI match | Seniority compatible | Language compatible | Rate within budget | Sector retail | Domain aligned
+70,190,0.82,0.1993,0.55,0.5177,C# match | Java match | Power BI match | Language compatible | Available in 15 days | Rate within budget | Domain aligned
+70,302,0.81,0.1079,0.75,0.5172,GCP match | Java match | Power BI match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector retail
+70,40,0.8075,0.2059,0.55,0.5154,C# match | Java match | Power BI match | Seniority compatible | Language compatible | Available in 15 days | Rate within budget | Domain aligned
+70,67,0.81,0.1978,0.53,0.5091,C# match | GCP match | Power BI match | Language compatible | Location compatible | Rate within budget | Domain aligned
+70,163,0.94,0.0462,0.5685,0.5082,GCP match | Seniority compatible | Language compatible | Location compatible | Available in 15 days | Sector retail
+70,209,0.88,0.1885,0.4,0.5074,GCP match | Power BI match | Language compatible | Location compatible | Available in 15 days | Rate within budget
+70,111,0.85,0.0603,0.65,0.4941,GCP match | Java match | Language compatible | Location compatible | Available in 15 days | Rate within budget | Sector retail
+70,340,0.6225,0.1564,0.9,0.4915,Java match | Power BI match | Location compatible | Available in 15 days | Rate within budget | Sector retail | Domain aligned
+70,167,0.82,0.1335,0.55,0.4914,C# match | Power BI match | Language compatible | Available in 15 days | Rate within budget | Domain aligned

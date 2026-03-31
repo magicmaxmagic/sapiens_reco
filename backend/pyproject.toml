@@ -17,6 +17,7 @@ dependencies = [
 	"scikit-learn==1.6.1",
 	"numpy==2.2.3",
 	"pandas==2.2.3",
+	"Faker==37.1.0",
 ]
 
 [tool.ruff]

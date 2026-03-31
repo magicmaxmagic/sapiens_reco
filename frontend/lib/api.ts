@@ -12,6 +12,25 @@ export type Profile = {
   updated_at: string;
 };
 
+export type ProfileSearchParams = {
+  q?: string;
+  language?: string;
+  location?: string;
+  seniority?: string;
+  availability?: string;
+  skill?: string;
+  skills?: string[];
+  skillMode?: "any" | "all";
+  sortBy?: "relevance" | "date" | "seniority";
+  limit?: number;
+  offset?: number;
+};
+
+export type ProfileSearchResponse = {
+  total: number;
+  items: Profile[];
+};
+
 export type Mission = {
   id: number;
   title: string;
@@ -153,11 +172,68 @@ export async function getAdminMe(): Promise<AdminIdentity | null> {
   }
 }
 
-export async function getProfiles(): Promise<Profile[]> {
+function toSearchQuery(params: ProfileSearchParams): string {
+  const search = new URLSearchParams();
+
+  if (params.q) {
+    search.set("q", params.q);
+  }
+  if (params.language) {
+    search.set("language", params.language);
+  }
+  if (params.location) {
+    search.set("location", params.location);
+  }
+  if (params.seniority) {
+    search.set("seniority", params.seniority);
+  }
+  if (params.availability) {
+    search.set("availability", params.availability);
+  }
+  if (params.skill) {
+    search.set("skill", params.skill);
+  }
+  if (params.skills && params.skills.length > 0) {
+    const values = params.skills.map((value) => value.trim()).filter(Boolean);
+    if (values.length > 0) {
+      search.set("skills", values.join(","));
+    }
+  }
+  if (params.skillMode) {
+    search.set("skill_mode", params.skillMode);
+  }
+  if (params.sortBy) {
+    search.set("sort_by", params.sortBy);
+  }
+  if (typeof params.limit === "number") {
+    search.set("limit", String(params.limit));
+  }
+  if (typeof params.offset === "number") {
+    search.set("offset", String(params.offset));
+  }
+
+  const query = search.toString();
+  return query ? `?${query}` : "";
+}
+
+export async function getProfiles(filters: ProfileSearchParams = {}): Promise<Profile[]> {
   try {
-    return await apiFetch<Profile[]>("/profiles");
+    return await apiFetch<Profile[]>(`/profiles${toSearchQuery(filters)}`);
   } catch {
     return [];
+  }
+}
+
+export async function searchProfiles(
+  filters: ProfileSearchParams = {},
+): Promise<ProfileSearchResponse> {
+  try {
+    return await apiFetch<ProfileSearchResponse>(`/search/profiles${toSearchQuery(filters)}`);
+  } catch {
+    return {
+      total: 0,
+      items: [],
+    };
   }
 }
 
