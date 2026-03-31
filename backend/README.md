@@ -38,6 +38,38 @@ uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 
 - http://localhost:8000/docs
 
+## Deploy backend on Vercel
+
+Le backend FastAPI peut etre deploye sur Vercel comme projet separe.
+
+Prerequis:
+- le fichier [vercel.json](vercel.json) route toutes les requetes vers [api/index.py](api/index.py)
+- l'entrypoint [api/index.py](api/index.py) expose l'application FastAPI
+
+Vercel project settings:
+- Root Directory: `backend`
+- Framework Preset: `Other`
+
+Variables recommandees (Environment Variables Vercel):
+- APP_ENV=production
+- APP_DEBUG=false
+- DATABASE_URL=<supabase-postgres-url-with-sslmode-require>
+- ALLOWED_ORIGINS=<frontend-vercel-urls>
+- TRUSTED_HOSTS=<backend-vercel-domain>,localhost,127.0.0.1,testserver
+- AUTH_REQUIRED=true
+- ADMIN_USERNAME=<admin-user>
+- ADMIN_PASSWORD=<complex-password>
+- ADMIN_PASSWORD_MIN_LENGTH=12
+- JWT_SECRET_KEY=<long-random-secret>
+- JWT_ALGORITHM=HS256
+- JWT_ACCESS_TOKEN_MINUTES=60
+- AUDIT_LOG_PATH=/tmp/audit.jsonl
+
+Notes serverless:
+- le rate limiting in-memory repart de zero selon les invocations
+- le filesystem est ephemere: utiliser `/tmp` pour les fichiers runtime
+- les migrations doivent etre appliquees sur la base cible (ex: `alembic upgrade head`)
+
 ## Demo seed data
 
 Generate synthetic data for demos (profiles between 50 and 200):
