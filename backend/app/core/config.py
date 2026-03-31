@@ -1,6 +1,9 @@
 from functools import lru_cache
 
+from pydantic import model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+DEFAULT_DATABASE_URL = "postgresql+psycopg://optimus:optimus@localhost:5432/optimus"
 
 
 class Settings(BaseSettings):
@@ -11,7 +14,9 @@ class Settings(BaseSettings):
     app_debug: bool = True
     auto_create_tables: bool = False
 
-    database_url: str = "postgresql+psycopg://optimus:optimus@localhost:5432/optimus"
+    database_url: str | None = None
+    postgres_url: str | None = None
+    postgres_url_non_pooling: str | None = None
 
     allowed_origins: str = "http://localhost:3000"
     trusted_hosts: str = "localhost,127.0.0.1,testserver"
@@ -31,6 +36,20 @@ class Settings(BaseSettings):
 
     audit_log_path: str = "logs/audit.jsonl"
     audit_export_max_lines: int = 5_000
+
+    @model_validator(mode="after")
+    def resolve_database_url(self) -> "Settings":
+        # Prefer explicit DATABASE_URL, then non-pooling pooled URLs if provided.
+        candidate = self.database_url or self.postgres_url_non_pooling or self.postgres_url
+        if candidate is None:
+            self.database_url = DEFAULT_DATABASE_URL
+            return self
+
+        if candidate.startswith("postgres://"):
+            candidate = candidate.replace("postgres://", "postgresql+psycopg://", 1)
+
+        self.database_url = candidate
+        return self
 
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 
