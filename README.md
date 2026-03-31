@@ -123,6 +123,8 @@ Retour:
 - backend-ci.yml: ruff + tests + migration check (PR, main, uat)
 - vercel-preview.yml: deploy preview frontend (PR et push uat)
 - vercel-deploy.yml: deploy production frontend (push main)
+- vercel-backend-preview.yml: deploy preview backend (PR backend/** et push uat)
+- vercel-backend-deploy.yml: deploy production backend (push main)
 
 ## Deploiement full Vercel
 
@@ -149,15 +151,18 @@ Variables backend minimales sur Vercel:
 Secrets GitHub requis pour Vercel:
 - VERCEL_TOKEN
 - VERCEL_ORG_ID
-- VERCEL_PROJECT_ID
+- VERCEL_PROJECT_ID (projet frontend)
+- VERCEL_BACKEND_PROJECT_ID (projet backend)
 
 Recommandation GitHub:
 - definir les secrets au niveau repository ou environment
 - utiliser l'environment `preview` pour vercel-preview.yml
 - utiliser l'environment `production` pour vercel-deploy.yml
+- utiliser l'environment `preview` pour vercel-backend-preview.yml
+- utiliser l'environment `production` pour vercel-backend-deploy.yml
 
 Troubleshooting Vercel CI (`no-credentials-found`):
-- verifier que `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID` sont bien des **Secrets** GitHub (pas des Variables)
+- verifier que `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`, `VERCEL_BACKEND_PROJECT_ID` sont bien des **Secrets** GitHub (pas des Variables)
 - verifier que les secrets existent dans l'environment utilise (`preview` ou `production`) ou au niveau repository
 - si workflow `pull_request` depuis un fork: les secrets ne sont pas exposes par GitHub (deploy preview ignore dans ce cas)
 
