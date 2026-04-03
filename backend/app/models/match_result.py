@@ -1,7 +1,10 @@
+"""Match result model for storing matching scores."""
+
 from __future__ import annotations
 
 from datetime import datetime
 from typing import TYPE_CHECKING
+from uuid import UUID
 
 from sqlalchemy import JSON, Float, ForeignKey, String, Text, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column, relationship
@@ -15,8 +18,9 @@ if TYPE_CHECKING:
 
 
 class MatchResult(Base, TimestampMixin):
-    __tablename__ = "match_results"
+    """Match result between a profile and a mission."""
 
+    __tablename__ = "match_results"
     __table_args__ = (
         UniqueConstraint("mission_id", "profile_id", name="uq_mission_profile"),
     )
@@ -35,12 +39,16 @@ class MatchResult(Base, TimestampMixin):
     semantic_score: Mapped[float] = mapped_column(Float, default=0.0, nullable=False)
     business_score: Mapped[float] = mapped_column(Float, default=0.0, nullable=False)
     final_score: Mapped[float] = mapped_column(Float, default=0.0, nullable=False)
-    explanation_tags: Mapped[list[str]] = mapped_column(JSON, default=list, nullable=False)
-    
-    # Feedback fields
-    feedback: Mapped[str | None] = mapped_column(String(20), nullable=True)  # accepted, rejected, maybe
+    explanation_tags: Mapped[list[str]] = mapped_column(
+        JSON, default=list, nullable=False
+    )
+
+    # Feedback fields - accepted, rejected, maybe
+    feedback: Mapped[str | None] = mapped_column(String(20), nullable=True)
     notes: Mapped[str | None] = mapped_column(Text, nullable=True)
-    feedback_by: Mapped[int | None] = mapped_column(ForeignKey("users.id", ondelete="SET NULL"), nullable=True)
+    feedback_by: Mapped[UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True
+    )
     feedback_at: Mapped[datetime | None] = mapped_column(nullable=True)
 
     mission: Mapped[Mission] = relationship(back_populates="matches")

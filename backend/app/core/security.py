@@ -1,25 +1,24 @@
-"""Security utilities for authentication and authorization."""
+"""Security utilities for password hashing and brute force protection."""
 
 from __future__ import annotations
 
 import hashlib
 import secrets
-from collections import defaultdict, deque
-from datetime import datetime, timedelta
+from dataclasses import dataclass, field
 from threading import Lock
 from time import monotonic
-from typing import Any
 
 from argon2 import PasswordHasher
-from argon2.exceptions import VerifyMismatchError
 
-# Argon2id for password hashing (more secure than bcrypt)
+from app.core.config import get_settings
+
+# Argon2id password hasher - more secure than bcrypt
 ph = PasswordHasher(
-    time_cost=3,  # Number of iterations
+    time_cost=2,  # Number of iterations
     memory_cost=65536,  # 64 MB
-    parallelism=4,  # Number of threads
-    hash_len=32,
-    salt_len=16,
+    parallelism=2,  # Number of threads
+    hash_len=32,  # Hash length
+    salt_len=16,  # Salt length
 )
 
 
@@ -33,142 +32,119 @@ def verify_password(password: str, password_hash: str) -> bool:
     try:
         ph.verify(password_hash, password)
         return True
-    except VerifyMismatchError:
+    except Exception:
         return False
 
 
-def generate_token(length: int = 32) -> str:
-    """Generate a secure random token."""
-    return secrets.token_urlsafe(length)
-
-
 def hash_token(token: str) -> str:
-    """Hash a token for storage (SHA256)."""
+    """Hash a token using SHA256."""
     return hashlib.sha256(token.encode()).hexdigest()
 
 
+def generate_token() -> str:
+    """Generate a secure random token."""
+    return secrets.token_urlsafe(32)
+
+
 def validate_password_strength(password: str) -> tuple[bool, list[str]]:
-    """Validate password strength.
-    
-    Returns (is_valid, list_of_violations).
-    """
-    violations = []
-    
-    if len(password) < 8:
-        violations.append("Password must be at least 8 characters long")
-    
-    if len(password) > 128:
-        violations.append("Password must be less than 128 characters")
-    
-    if not any(c.isupper() for c in password):
-        violations.append("Password must contain at least one uppercase letter")
-    
-    if not any(c.islower() for c in password):
-        violations.append("Password must contain at least one lowercase letter")
-    
-    if not any(c.isdigit() for c in password):
-        violations.append("Password must contain at least one digit")
-    
-    if not any(c in "!@#$%^&*()_+-=[]{}|;:,.<>?" for c in password):
-        violations.append("Password must contain at least one special character")
-    
+    """Validate password meets minimum security requirements."""
+    settings = get_settings()
+    violations: list[str] = []
+
+    if len(password) < settings.password_min_length:
+        violations.append(f"minimum_length<{settings.password_min_length}")
+
+    if settings.password_require_uppercase and not any(c.isupper() for c in password):
+        violations.append("missing_uppercase")
+
+    if settings.password_require_lowercase and not any(c.islower() for c in password):
+        violations.append("missing_lowercase")
+
+    if settings.password_require_digit and not any(c.isdigit() for c in password):
+        violations.append("missing_digit")
+
+    if settings.password_require_special and not any(
+        (not c.isalnum()) and (not c.isspace()) for c in password
+    ):
+        violations.append("missing_special_char")
+
     return len(violations) == 0, violations
 
 
-class InMemoryRateLimiter:
-    """Rate limiter using sliding window algorithm."""
+@dataclass
+class FailedAttempt:
+    """Track failed login attempts for an identifier."""
 
-    def __init__(self, max_requests: int, window_seconds: int) -> None:
-        self.max_requests = max_requests
-        self.window_seconds = window_seconds
-        self._events: dict[str, deque[float]] = defaultdict(deque)
-        self._lock = Lock()
-
-    def allow(self, key: str) -> bool:
-        now = monotonic()
-        with self._lock:
-            queue = self._events[key]
-            threshold = now - self.window_seconds
-            while queue and queue[0] < threshold:
-                queue.popleft()
-
-            if len(queue) >= self.max_requests:
-                return False
-
-            queue.append(now)
-            return True
-
-    def get_remaining(self, key: str) -> int:
-        """Get remaining requests for a key."""
-        now = monotonic()
-        with self._lock:
-            queue = self._events[key]
-            threshold = now - self.window_seconds
-            while queue and queue[0] < threshold:
-                queue.popleft()
-            return max(0, self.max_requests - len(queue))
+    count: int = 0
+    first_attempt: float = field(default_factory=monotonic)
+    locked_until: float | None = None
 
 
+@dataclass
 class BruteForceProtection:
     """Brute force protection for login attempts."""
 
-    def __init__(
-        self,
-        max_attempts: int = 5,
-        lockout_minutes: int = 15,
-        incremental_lockout: bool = True,
-    ) -> None:
-        self.max_attempts = max_attempts
-        self.lockout_minutes = lockout_minutes
-        self.incremental_lockout = incremental_lockout
-        self._attempts: dict[str, int] = defaultdict(int)
-        self._lockouts: dict[str, datetime] = {}
-        self._lock = Lock()
+    max_attempts: int = 5
+    lockout_duration: float = 900.0  # 15 minutes in seconds
+    cleanup_interval: float = 3600.0  # 1 hour in seconds
+    _attempts: dict[str, FailedAttempt] = field(default_factory=dict)
+    _lock: Lock = field(default_factory=Lock)
+    _last_cleanup: float = field(default_factory=monotonic)
 
-    def record_failure(self, key: str) -> tuple[bool, int]:
-        """Record a failed login attempt.
-        
-        Returns (is_locked, remaining_attempts).
-        """
+    def record_failure(self, identifier: str) -> None:
+        """Record a failed login attempt."""
         with self._lock:
-            self._attempts[key] += 1
-            remaining = self.max_attempts - self._attempts[key]
-            
-            if remaining <= 0:
-                # Lock the account
-                lockout_duration = self.lockout_minutes
-                if self.incremental_lockout:
-                    # Incremental lockout: 15, 30, 60, 120, 240 minutes
-                    multiplier = 2 ** min(self._attempts[key] // self.max_attempts - 1, 4)
-                    lockout_duration = self.lockout_minutes * multiplier
-                
-                self._lockouts[key] = datetime.utcnow() + timedelta(minutes=lockout_duration)
-                return True, 0
-            
-            return False, remaining
+            now = monotonic()
 
-    def is_locked(self, key: str) -> tuple[bool, datetime | None]:
-        """Check if a key is locked out."""
+            # Cleanup old entries periodically
+            if now - self._last_cleanup > self.cleanup_interval:
+                self._cleanup(now)
+                self._last_cleanup = now
+
+            attempt = self._attempts.get(identifier)
+            if attempt is None:
+                attempt = FailedAttempt()
+                self._attempts[identifier] = attempt
+
+            attempt.count += 1
+
+            # Lock the account if max attempts reached
+            if attempt.count >= self.max_attempts:
+                attempt.locked_until = now + self.lockout_duration
+
+    def is_locked(self, identifier: str) -> bool:
+        """Check if an identifier is locked out."""
         with self._lock:
-            if key not in self._lockouts:
-                return False, None
-            
-            if datetime.utcnow() > self._lockouts[key]:
-                # Lockout expired, reset
-                del self._lockouts[key]
-                self._attempts[key] = 0
-                return False, None
-            
-            return True, self._lockouts[key]
+            attempt = self._attempts.get(identifier)
+            if attempt is None:
+                return False
 
-    def reset(self, key: str) -> None:
-        """Reset attempts for a key (after successful login)."""
+            if attempt.locked_until is None:
+                return False
+
+            # Check if lockout period has passed
+            if monotonic() > attempt.locked_until:
+                # Reset after lockout expires
+                del self._attempts[identifier]
+                return False
+
+            return True
+
+    def reset(self, identifier: str) -> None:
+        """Reset failed attempts for an identifier."""
         with self._lock:
-            self._attempts[key] = 0
-            if key in self._lockouts:
-                del self._lockouts[key]
+            self._attempts.pop(identifier, None)
+
+    def _cleanup(self, now: float) -> None:
+        """Remove expired entries."""
+        expired = [
+            identifier
+            for identifier, attempt in self._attempts.items()
+            if attempt.locked_until and now > attempt.locked_until
+        ]
+        for identifier in expired:
+            del self._attempts[identifier]
 
 
-# Global instances
-rate_limiter = InMemoryRateLimiter(max_requests=180, window_seconds=60)
-brute_force_protection = BruteForceProtection(max_attempts=5, lockout_minutes=15)
+# Global brute force protection instance
+brute_force_protection = BruteForceProtection()

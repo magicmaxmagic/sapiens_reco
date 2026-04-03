@@ -1,10 +1,8 @@
 """Authentication service for user management."""
 
 from datetime import datetime, timedelta
-from typing import Any
 from uuid import UUID, uuid4
 
-from sqlalchemy import and_, or_
 from sqlalchemy.orm import Session
 
 from app.core.config import get_settings
@@ -13,21 +11,19 @@ from app.core.security import (
     generate_token,
     hash_password,
     hash_token,
-    validate_password_strength,
     verify_password,
 )
-from app.models.audit_log import AuditAction, AuditLog
+from app.models.audit_log import AuditAction
 from app.models.session import Session as UserSession
 from app.models.user import User, UserRole
 from app.schemas.auth import (
+    ChangePasswordRequest,
     LoginRequest,
     LoginResponse,
-    PasswordChange,
-    PasswordResetConfirm,
     RefreshResponse,
-    RegisterRequest,
+    UserResponse,
 )
-from app.schemas.user import UserCreate, UserUpdate
+from app.schemas.user import UserCreate
 
 settings = get_settings()
 
@@ -38,17 +34,12 @@ class AuthService:
     def __init__(self, db: Session):
         self.db = db
 
-    def register(self, data: UserCreate) -> User:
+    def create_user(self, data: UserCreate) -> User:
         """Create a new user."""
-        # Check if email already exists
-        existing = self.db.query(User).filter(User.email == data.email).first()
-        if existing:
-            raise ValueError("Email already registered")
-
         # Validate password strength
-        is_valid, violations = validate_password_strength(data.password)
+        is_valid, violations = self._validate_password(data.password)
         if not is_valid:
-            raise ValueError(f"Password too weak: {', '.join(violations)}")
+            raise ValueError(f"Password does not meet requirements: {violations}")
 
         # Create user
         user = User(
@@ -64,41 +55,47 @@ class AuthService:
         self.db.commit()
         self.db.refresh(user)
 
-        # Log audit
-        self._log_action(user.id, AuditAction.USER_CREATED, "user", user.id)
-
+        self._log_action(
+            user.id, AuditAction.USER_CREATED, "user", user.id, details={"email": data.email}
+        )
         return user
 
-    def login(self, data: LoginRequest, ip_address: str | None = None, user_agent: str | None = None) -> LoginResponse:
+    def login(
+        self, data: LoginRequest, ip_address: str | None = None, user_agent: str | None = None
+    ) -> LoginResponse:
         """Authenticate a user and return tokens."""
         # Check brute force protection
-        is_locked, locked_until = brute_force_protection.is_locked(data.email)
-        if is_locked and locked_until:
-            raise ValueError(f"Account locked until {locked_until.isoformat()}")
+        if brute_force_protection.is_locked(data.email):
+            self._log_action(None, AuditAction.LOGIN_FAILED, "user", None, ip_address=ip_address)
+            raise ValueError("Account temporarily locked due to too many failed attempts")
 
-        # Find user
         user = self.db.query(User).filter(User.email == data.email).first()
         if not user:
             brute_force_protection.record_failure(data.email)
+            self._log_action(None, AuditAction.LOGIN_FAILED, "user", None, ip_address=ip_address)
             raise ValueError("Invalid credentials")
 
-        # Verify password
-        if not verify_password(data.password, user.password_hash):
-            brute_force_protection.record_failure(data.email)
-            self._log_action(user.id, AuditAction.LOGIN_FAILED, "user", user.id, ip_address=ip_address)
-            raise ValueError("Invalid credentials")
-
-        # Check if user is active
         if not user.is_active:
+            self._log_action(
+                user.id, AuditAction.LOGIN_FAILED, "user", user.id,
+                ip_address=ip_address
+            )
             raise ValueError("Account is deactivated")
 
-        # Reset brute force protection on successful login
+        if not verify_password(data.password, user.password_hash):
+            brute_force_protection.record_failure(data.email)
+            self._log_action(
+                user.id, AuditAction.LOGIN_FAILED, "user", user.id,
+                ip_address=ip_address
+            )
+            raise ValueError("Invalid credentials")
+
+        # Reset failed attempts on successful login
         brute_force_protection.reset(data.email)
 
         # Create session
-        access_token = generate_token(32)
-        refresh_token = generate_token(32)
-        expires_at = datetime.utcnow() + timedelta(seconds=settings.jwt_access_token_minutes * 60)
+        access_token = generate_token()
+        refresh_token = generate_token()
 
         session = UserSession(
             id=uuid4(),
@@ -107,59 +104,63 @@ class AuthService:
             refresh_token_hash=hash_token(refresh_token),
             ip_address=ip_address,
             user_agent=user_agent,
-            expires_at=expires_at,
+            expires_at=datetime.utcnow() + timedelta(days=30),
         )
         self.db.add(session)
 
         # Update user last login
         user.last_login = datetime.utcnow()
+        user.failed_login_attempts = 0
         self.db.commit()
 
-        # Log audit
-        self._log_action(user.id, AuditAction.LOGIN, "user", user.id, ip_address=ip_address)
+        self._log_action(user.id, AuditAction.LOGIN, "session", session.id, ip_address=ip_address)
 
         return LoginResponse(
             access_token=access_token,
             refresh_token=refresh_token,
             token_type="bearer",
             expires_in=settings.jwt_access_token_minutes * 60,
-            user_id=user.id,
-            role=user.role.value,
+            user=UserResponse.model_validate(user),
         )
 
-    def refresh(self, refresh_token: str, ip_address: str | None = None) -> RefreshResponse:
-        """Refresh access token using refresh token."""
+    def refresh_token(
+        self, refresh_token: str, ip_address: str | None = None, user_agent: str | None = None
+    ) -> RefreshResponse:
+        """Refresh access token."""
         token_hash = hash_token(refresh_token)
-        session = self.db.query(UserSession).filter(
-            UserSession.refresh_token_hash == token_hash,
-            UserSession.is_revoked == False,
-            UserSession.expires_at > datetime.utcnow(),
-        ).first()
+
+        session = (
+            self.db.query(UserSession)
+            .filter(
+                UserSession.refresh_token_hash == token_hash,
+                UserSession.is_revoked.is_(False),
+                UserSession.expires_at > datetime.utcnow(),
+            )
+            .first()
+        )
 
         if not session:
             raise ValueError("Invalid or expired refresh token")
 
-        # Generate new tokens
-        new_access_token = generate_token(32)
-        new_refresh_token = generate_token(32)
-        expires_at = datetime.utcnow() + timedelta(seconds=settings.jwt_access_token_minutes * 60)
+        user = self.db.query(User).filter(User.id == session.user_id).first()
+        if not user or not user.is_active:
+            raise ValueError("User not found or deactivated")
 
-        # Revoke old session and create new one
-        session.is_revoked = True
-        new_session = UserSession(
-            id=uuid4(),
-            user_id=session.user_id,
-            token_hash=hash_token(new_access_token),
-            refresh_token_hash=hash_token(new_refresh_token),
-            ip_address=ip_address,
-            user_agent=session.user_agent,
-            expires_at=expires_at,
-        )
-        self.db.add(new_session)
-        self.db.commit()
+        # Generate new tokens
+        new_access_token = generate_token()
+        new_refresh_token = generate_token()
+
+        # Update session
+        session.token_hash = hash_token(new_access_token)
+        session.refresh_token_hash = hash_token(new_refresh_token)
+        session.last_used_at = datetime.utcnow()
 
         # Log audit
-        self._log_action(session.user_id, AuditAction.TOKEN_REFRESH, "session", new_session.id, ip_address=ip_address)
+        self._log_action(
+            session.user_id, AuditAction.TOKEN_REFRESH, "session", session.id, ip_address=ip_address
+        )
+
+        self.db.commit()
 
         return RefreshResponse(
             access_token=new_access_token,
@@ -168,139 +169,157 @@ class AuthService:
             expires_in=settings.jwt_access_token_minutes * 60,
         )
 
-    def logout(self, access_token: str) -> bool:
-        """Logout user by revoking their session."""
-        token_hash = hash_token(access_token)
-        session = self.db.query(UserSession).filter(UserSession.token_hash == token_hash).first()
+    def logout(self, user_id: UUID, token: str) -> None:
+        """Logout user by revoking session."""
+        token_hash = hash_token(token)
+
+        session = (
+            self.db.query(UserSession)
+            .filter(
+                UserSession.token_hash == token_hash,
+                UserSession.is_revoked.is_(False),
+            )
+            .first()
+        )
 
         if session:
             session.is_revoked = True
             self.db.commit()
-            self._log_action(session.user_id, AuditAction.LOGOUT, "session", session.id)
-            return True
 
-        return False
+        self._log_action(user_id, AuditAction.LOGOUT, "session", session.id if session else None)
 
-    def logout_all(self, user_id: UUID) -> int:
-        """Logout all sessions for a user."""
-        result = self.db.query(UserSession).filter(
-            UserSession.user_id == user_id,
-            UserSession.is_revoked == False,
+    def logout_all_sessions(self, user_id: UUID) -> None:
+        """Revoke all sessions for a user."""
+        self.db.query(UserSession).filter(
+            UserSession.user_id == user_id
         ).update({"is_revoked": True})
         self.db.commit()
+
         self._log_action(user_id, AuditAction.LOGOUT, "user", user_id)
-        return result
-
-    def change_password(self, user_id: UUID, data: PasswordChange) -> bool:
-        """Change user password."""
-        user = self.db.query(User).filter(User.id == user_id).first()
-        if not user:
-            raise ValueError("User not found")
-
-        # Verify current password
-        if not verify_password(data.current_password, user.password_hash):
-            raise ValueError("Current password is incorrect")
-
-        # Validate new password strength
-        is_valid, violations = validate_password_strength(data.new_password)
-        if not is_valid:
-            raise ValueError(f"Password too weak: {', '.join(violations)}")
-
-        # Update password
-        user.password_hash = hash_password(data.new_password)
-        user.updated_at = datetime.utcnow()
-        self.db.commit()
-
-        # Revoke all sessions
-        self.db.query(UserSession).filter(UserSession.user_id == user_id).update({"is_revoked": True})
-        self.db.commit()
-
-        self._log_action(user_id, AuditAction.PASSWORD_CHANGED, "user", user_id)
-
-        return True
 
     def request_password_reset(self, email: str) -> str:
-        """Request password reset token."""
+        """Request password reset."""
         user = self.db.query(User).filter(User.email == email).first()
         if not user:
-            # Don't reveal if email exists
+            # Don't reveal if user exists or not
             return "If the email exists, a reset link will be sent"
 
         # Generate reset token
-        reset_token = generate_token(32)
-        user.reset_token = hash_token(reset_token)
+        reset_token = generate_token()
+        user.reset_token = reset_token
         user.reset_token_expires = datetime.utcnow() + timedelta(hours=1)
         self.db.commit()
 
         self._log_action(user.id, AuditAction.PASSWORD_RESET, "user", user.id)
 
-        # In a real app, send email here
+        # In production, send email with reset link
         return reset_token
 
-    def confirm_password_reset(self, data: PasswordResetConfirm) -> bool:
+    def confirm_password_reset(self, token: str, new_password: str) -> None:
         """Confirm password reset."""
-        token_hash = hash_token(data.token)
-        user = self.db.query(User).filter(
-            User.reset_token == token_hash,
-            User.reset_token_expires > datetime.utcnow(),
-        ).first()
+        user = (
+            self.db.query(User)
+            .filter(
+                User.reset_token == token,
+                User.reset_token_expires > datetime.utcnow(),
+            )
+            .first()
+        )
 
         if not user:
             raise ValueError("Invalid or expired reset token")
 
-        # Validate password strength
-        is_valid, violations = validate_password_strength(data.new_password)
+        # Validate password
+        is_valid, violations = self._validate_password(new_password)
         if not is_valid:
-            raise ValueError(f"Password too weak: {', '.join(violations)}")
+            raise ValueError(f"Password does not meet requirements: {violations}")
 
-        # Update password and clear reset token
-        user.password_hash = hash_password(data.new_password)
+        # Update password
+        user.password_hash = hash_password(new_password)
         user.reset_token = None
         user.reset_token_expires = None
-        user.updated_at = datetime.utcnow()
         self.db.commit()
 
         # Revoke all sessions
-        self.db.query(UserSession).filter(UserSession.user_id == user.id).update({"is_revoked": True})
+        self.db.query(UserSession).filter(
+            UserSession.user_id == user.id
+        ).update({"is_revoked": True})
         self.db.commit()
 
         self._log_action(user.id, AuditAction.PASSWORD_CHANGED, "user", user.id)
 
-        return True
+    def change_password(self, user_id: UUID, data: ChangePasswordRequest) -> None:
+        """Change user password."""
+        user = self.db.query(User).filter(User.id == user_id).first()
+        if not user:
+            raise ValueError("User not found")
 
-    def verify_token(self, access_token: str) -> User | None:
-        """Verify access token and return user."""
-        token_hash = hash_token(access_token)
-        session = self.db.query(UserSession).filter(
-            UserSession.token_hash == token_hash,
-            UserSession.is_revoked == False,
-            UserSession.expires_at > datetime.utcnow(),
-        ).first()
+        if not verify_password(data.current_password, user.password_hash):
+            raise ValueError("Invalid current password")
 
-        if not session:
-            return None
+        # Validate new password
+        is_valid, violations = self._validate_password(data.new_password)
+        if not is_valid:
+            raise ValueError(f"Password does not meet requirements: {violations}")
 
-        # Update session last used
-        session.last_used_at = datetime.utcnow()
+        user.password_hash = hash_password(data.new_password)
         self.db.commit()
 
-        return self.db.query(User).filter(User.id == session.user_id).first()
+        self._log_action(user_id, AuditAction.PASSWORD_CHANGED, "user", user_id)
+
+    def verify_email(self, user_id: UUID) -> None:
+        """Verify user email."""
+        user = self.db.query(User).filter(User.id == user_id).first()
+        if not user:
+            raise ValueError("User not found")
+
+        user.is_verified = True
+        self.db.commit()
+
+        self._log_action(user_id, AuditAction.USER_UPDATED, "user", user_id)
+
+    def _validate_password(self, password: str) -> tuple[bool, list[str]]:
+        """Validate password meets requirements."""
+        violations = []
+
+        if len(password) < settings.password_min_length:
+            violations.append(f"minimum_length<{settings.password_min_length}")
+
+        if settings.password_require_uppercase and not any(c.isupper() for c in password):
+            violations.append("missing_uppercase")
+
+        if settings.password_require_lowercase and not any(c.islower() for c in password):
+            violations.append("missing_lowercase")
+
+        if settings.password_require_digit and not any(c.isdigit() for c in password):
+            violations.append("missing_digit")
+
+        if settings.password_require_special and not any(
+            (not c.isalnum()) and (not c.isspace()) for c in password
+        ):
+            violations.append("missing_special_char")
+
+        return len(violations) == 0, violations
 
     def _log_action(
         self,
         user_id: UUID | None,
         action: AuditAction,
-        resource_type: str | None,
-        resource_id: UUID | None,
+        resource_type: str | None = None,
+        resource_id: UUID | None = None,
+        details: dict | None = None,
         ip_address: str | None = None,
     ) -> None:
         """Log an audit action."""
-        log = AuditLog(
-            user_id=user_id,
-            action=action,
-            resource_type=resource_type,
-            resource_id=resource_id,
-            ip_address=ip_address,
+        from app.services.audit_log_service import append_audit_event
+
+        append_audit_event(
+            action.value,
+            {
+                "user_id": str(user_id) if user_id else None,
+                "resource_type": resource_type,
+                "resource_id": str(resource_id) if resource_id else None,
+                "details": details,
+                "ip_address": ip_address,
+            },
         )
-        self.db.add(log)
-        self.db.commit()

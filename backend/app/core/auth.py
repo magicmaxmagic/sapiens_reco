@@ -16,8 +16,8 @@ from sqlalchemy.orm import Session
 from app.core.config import get_settings
 from app.core.database import get_db
 from app.core.security import hash_token
-from app.models.user import User, UserRole
 from app.models.session import Session as UserSession
+from app.models.user import User, UserRole
 from app.services.audit_log_service import append_audit_event
 
 bearer_scheme = HTTPBearer(auto_error=False)
@@ -26,6 +26,7 @@ bearer_scheme = HTTPBearer(auto_error=False)
 @dataclass(slots=True)
 class AuthContext:
     """Authentication context extracted from token."""
+
     subject: str
     role: str
     user_id: str | None = None
@@ -64,8 +65,7 @@ def validate_admin_credentials(username: str, password: str) -> bool:
     """Validate admin credentials (legacy single-admin mode)."""
     settings = get_settings()
     return compare_digest(username, settings.admin_username) and compare_digest(
-        password,
-        settings.admin_password,
+        password, settings.admin_password
     )
 
 
@@ -154,12 +154,16 @@ def get_current_user(
     # Try session-based auth first
     token = credentials.credentials
     token_hash = hash_token(token)
-    
-    session = db.query(UserSession).filter(
-        UserSession.token_hash == token_hash,
-        UserSession.is_revoked == False,
-        UserSession.expires_at > datetime.utcnow(),
-    ).first()
+
+    session = (
+        db.query(UserSession)
+        .filter(
+            UserSession.token_hash == token_hash,
+            UserSession.is_revoked.is_(False),
+            UserSession.expires_at > datetime.utcnow(),
+        )
+        .first()
+    )
 
     if session:
         user = db.query(User).filter(User.id == session.user_id).first()
@@ -242,15 +246,15 @@ def require_auth(
 
 def require_role(*roles: UserRole):
     """Require specific role(s) for access."""
-    async def role_checker(
-        current_user: User = Depends(require_auth),
-    ) -> User:
+
+    async def role_checker(current_user: User = Depends(require_auth)) -> User:
         if current_user.role not in roles and current_user.role != UserRole.ADMIN:
             raise HTTPException(
                 status_code=status.HTTP_403_FORBIDDEN,
                 detail=f"Required role: {', '.join(r.value for r in roles)}",
             )
         return current_user
+
     return role_checker
 
 
