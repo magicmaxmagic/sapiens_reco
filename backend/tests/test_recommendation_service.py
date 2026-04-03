@@ -3,13 +3,13 @@
 import json
 from pathlib import Path
 
+import numpy as np
 import pytest
+from sklearn.metrics.pairwise import cosine_similarity
 
 from app.models.mission import Mission
 from app.models.profile import Profile
 from app.services.recommendation_service import (
-    MISSION_WEIGHTS,
-    PROFILE_WEIGHTS,
     MissionEmbedding,
     MissionEncoder,
     ProfileEmbedding,
@@ -444,8 +444,3 @@ class TestSkillEmbeddings:
 
         # Same category should be more similar
         assert similarity_python_docker < similarity_python_react or similarity_python_react < 0.5
-
-
-# Import numpy for tests
-import numpy as np
-from sklearn.metrics.pairwise import cosine_similarity

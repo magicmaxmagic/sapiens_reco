@@ -488,7 +488,7 @@ class MetricsTracker:
                     value = value.get(key)
                 else:
                     break
-            if isinstance(value, (int, float)):
+            if isinstance(value, int | float):
                 trend.append(value)
         return trend
 

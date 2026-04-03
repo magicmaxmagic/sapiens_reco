@@ -169,7 +169,7 @@ class ProfileEncoder:
 
         # Create a compact language representation
         vec = np.zeros(self._embedding_dim)
-        for i, lang in enumerate(sorted(set(l.lower() for l in languages))):
+        for i, lang in enumerate(sorted(set(lang.lower() for lang in languages))):
             if i < self._embedding_dim:
                 vec[i] = 1.0
         return vec
@@ -521,7 +521,7 @@ class RecommendationService:
 
         # Language match
         if mission.required_language:
-            profile_langs = [l.lower() for l in profile.parsed_languages]
+            profile_langs = [lang.lower() for lang in profile.parsed_languages]
             if mission.required_language.lower() in profile_langs:
                 tags.append("language_match")
 
