@@ -265,6 +265,60 @@ def require_admin_user(
         Depends(bearer_scheme),
     ] = None,
     db: Session = Depends(get_db),
-) -> User:
+) -> AuthContext:
     """Require admin role for access."""
-    return Depends(require_role(UserRole.ADMIN))
+    settings = get_settings()
+
+    # Dev mode - no auth required
+    if not settings.auth_required:
+        return AuthContext(subject="dev-admin", role="admin")
+
+    if credentials is None:
+        append_audit_event(
+            "auth_failure",
+            {
+                "reason": "missing_bearer_token",
+                "path": request.url.path,
+                "method": request.method,
+                "client_ip": request.client.host if request.client else "unknown",
+            },
+        )
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Missing Bearer token",
+        )
+
+    context = try_extract_auth_context(f"Bearer {credentials.credentials}")
+    if context is None:
+        append_audit_event(
+            "auth_failure",
+            {
+                "reason": "invalid_or_expired_token",
+                "path": request.url.path,
+                "method": request.method,
+                "client_ip": request.client.host if request.client else "unknown",
+            },
+        )
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid or expired token",
+        )
+
+    if context.role != "admin":
+        append_audit_event(
+            "auth_failure",
+            {
+                "reason": "insufficient_role",
+                "subject": context.subject,
+                "role": context.role,
+                "path": request.url.path,
+                "method": request.method,
+                "client_ip": request.client.host if request.client else "unknown",
+            },
+        )
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Admin access required",
+        )
+
+    return context
