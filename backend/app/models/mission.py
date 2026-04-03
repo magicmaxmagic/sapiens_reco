@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from datetime import date
 from typing import TYPE_CHECKING
+from uuid import UUID
 
 from sqlalchemy import JSON, Date, String, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
@@ -24,6 +25,10 @@ class Mission(Base, TimestampMixin):
     required_location: Mapped[str | None] = mapped_column(String(255), nullable=True)
     required_seniority: Mapped[str | None] = mapped_column(String(100), nullable=True)
     desired_start_date: Mapped[date | None] = mapped_column(Date, nullable=True)
+    status: Mapped[str] = mapped_column(String(50), default="draft", nullable=False, index=True)
+    priority: Mapped[str] = mapped_column(String(50), default="medium", nullable=False)
+    created_by: Mapped[UUID | None] = mapped_column(nullable=True, index=True)
+    is_active: Mapped[bool] = mapped_column(default=True, nullable=False)
 
     matches: Mapped[list[MatchResult]] = relationship(
         back_populates="mission", cascade="all, delete-orphan"
