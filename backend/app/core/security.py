@@ -148,3 +148,36 @@ class BruteForceProtection:
 
 # Global brute force protection instance
 brute_force_protection = BruteForceProtection()
+
+
+@dataclass
+class InMemoryRateLimiter:
+    """Simple in-memory rate limiter."""
+
+    max_requests: int = 100
+    window_seconds: float = 60.0
+    _requests: dict[str, list[float]] = field(default_factory=dict)
+    _lock: Lock = field(default_factory=Lock)
+
+    def allow(self, key: str) -> bool:
+        """Check if a request is allowed for the given key."""
+        with self._lock:
+            now = monotonic()
+            cutoff = now - self.window_seconds
+
+            # Get or create request list
+            if key not in self._requests:
+                self._requests[key] = []
+
+            # Remove old requests outside the window
+            self._requests[key] = [
+                ts for ts in self._requests[key] if ts > cutoff
+            ]
+
+            # Check if under limit
+            if len(self._requests[key]) >= self.max_requests:
+                return False
+
+            # Record this request
+            self._requests[key].append(now)
+            return True

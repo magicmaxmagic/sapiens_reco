@@ -8,7 +8,7 @@ from pydantic import BaseModel, EmailStr
 class LoginRequest(BaseModel):
     """Login request."""
 
-    email: EmailStr
+    username: str
     password: str
 
 
@@ -16,7 +16,6 @@ class TokenResponse(BaseModel):
     """Token response."""
 
     access_token: str
-    refresh_token: str
     token_type: str = "bearer"
     expires_in: int
 
