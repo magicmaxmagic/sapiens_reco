@@ -26,7 +26,7 @@ def upgrade() -> None:
         sa.Column('email', sa.String(255), nullable=False),
         sa.Column('password_hash', sa.Text(), nullable=False),
         sa.Column('full_name', sa.String(255), nullable=True),
-        sa.Column('role', sa.Enum('admin', 'rm', 'viewer', name='userrole'), nullable=False, server_default='viewer'),
+        sa.Column('role', sa.String(50), nullable=False, server_default='viewer'),
         sa.Column('is_active', sa.Boolean(), nullable=False, server_default='true'),
         sa.Column('is_verified', sa.Boolean(), nullable=False, server_default='false'),
         sa.Column('created_at', sa.DateTime(), nullable=False, server_default=sa.func.now()),
@@ -67,15 +67,7 @@ def upgrade() -> None:
         'audit_logs',
         sa.Column('id', sa.UUID(), nullable=False),
         sa.Column('user_id', sa.UUID(), nullable=True),
-        sa.Column('action', sa.Enum(
-            'login', 'logout', 'login_failed', 'token_refresh', 'password_reset',
-            'password_changed', 'user_created', 'user_updated', 'user_deleted',
-            'user_locked', 'user_unlocked', 'profile_created', 'profile_updated',
-            'profile_deleted', 'profile_uploaded', 'mission_created', 'mission_updated',
-            'mission_deleted', 'mission_matched', 'data_exported',
-            'rate_limit_exceeded', 'security_event',
-            name='auditaction'
-        ), nullable=False),
+        sa.Column('action', sa.String(50), nullable=False),
         sa.Column('resource_type', sa.String(50), nullable=True),
         sa.Column('resource_id', sa.UUID(), nullable=True),
         sa.Column('details', sa.Text(), nullable=True),
@@ -89,15 +81,58 @@ def upgrade() -> None:
     op.create_index('ix_audit_logs_action', 'audit_logs', ['action'])
     op.create_index('ix_audit_logs_created_at', 'audit_logs', ['created_at'])
     
-    # Add indexes to existing tables
+    # Add new columns to existing tables
+    # Profiles table
+    op.add_column('profiles', sa.Column('created_by', sa.UUID(), nullable=True))
+    op.add_column('profiles', sa.Column('updated_by', sa.UUID(), nullable=True))
+    op.add_column('profiles', sa.Column('is_active', sa.Boolean(), nullable=False, server_default='true'))
+    op.add_column('profiles', sa.Column('tags', sa.JSON(), nullable=False, server_default='[]'))
+    
+    # Missions table
+    op.add_column('missions', sa.Column('status', sa.String(50), nullable=False, server_default='draft'))
+    op.add_column('missions', sa.Column('priority', sa.String(50), nullable=False, server_default='medium'))
+    op.add_column('missions', sa.Column('created_by', sa.UUID(), nullable=True))
+    op.add_column('missions', sa.Column('is_active', sa.Boolean(), nullable=False, server_default='true'))
+    
+    # Create indexes on new columns
     op.create_index('ix_profiles_created_by', 'profiles', ['created_by'], unique=False)
     op.create_index('ix_missions_created_by', 'missions', ['created_by'], unique=False)
+    op.create_index('ix_missions_status', 'missions', ['status'], unique=False)
+    
+    # Add feedback columns to match_results
+    op.add_column('match_results', sa.Column('feedback', sa.String(20), nullable=True))
+    op.add_column('match_results', sa.Column('notes', sa.Text(), nullable=True))
+    op.add_column('match_results', sa.Column('feedback_by', sa.UUID(), nullable=True))
+    op.add_column('match_results', sa.Column('feedback_at', sa.DateTime(), nullable=True))
+    op.create_foreign_key('fk_match_results_feedback_by', 'match_results', 'users', ['feedback_by'], ['id'], ondelete='SET NULL')
 
 
 def downgrade() -> None:
+    # Drop foreign key first
+    op.drop_constraint('fk_match_results_feedback_by', 'match_results', type_='foreignkey')
+    
+    # Drop columns from match_results
+    op.drop_column('match_results', 'feedback_at')
+    op.drop_column('match_results', 'feedback_by')
+    op.drop_column('match_results', 'notes')
+    op.drop_column('match_results', 'feedback')
+    
     # Drop indexes
+    op.drop_index('ix_missions_status', 'missions')
     op.drop_index('ix_missions_created_by', 'missions')
     op.drop_index('ix_profiles_created_by', 'profiles')
+    
+    # Drop columns from missions
+    op.drop_column('missions', 'is_active')
+    op.drop_column('missions', 'created_by')
+    op.drop_column('missions', 'priority')
+    op.drop_column('missions', 'status')
+    
+    # Drop columns from profiles
+    op.drop_column('profiles', 'tags')
+    op.drop_column('profiles', 'is_active')
+    op.drop_column('profiles', 'updated_by')
+    op.drop_column('profiles', 'created_by')
     
     # Drop tables
     op.drop_index('ix_audit_logs_created_at', 'audit_logs')
@@ -110,7 +145,3 @@ def downgrade() -> None:
     
     op.drop_index('ix_users_email', 'users')
     op.drop_table('users')
-    
-    # Drop enums
-    op.execute("DROP TYPE IF EXISTS auditaction")
-    op.execute("DROP TYPE IF EXISTS userrole")
