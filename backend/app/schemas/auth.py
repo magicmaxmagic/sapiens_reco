@@ -12,6 +12,26 @@ class LoginRequest(BaseModel):
     password: str
 
 
+class TokenResponse(BaseModel):
+    """Token response."""
+
+    access_token: str
+    refresh_token: str
+    token_type: str = "bearer"
+    expires_in: int
+
+
+class AuthMeResponse(BaseModel):
+    """Current user response."""
+
+    id: UUID
+    email: str
+    full_name: str | None = None
+    role: str
+    is_active: bool
+    is_verified: bool
+
+
 class LoginResponse(BaseModel):
     """Login response."""
 
