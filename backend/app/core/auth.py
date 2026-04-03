@@ -1,3 +1,5 @@
+"""Authentication utilities for FastAPI."""
+
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -9,8 +11,13 @@ import jwt
 from fastapi import Depends, HTTPException, Request, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from jwt import InvalidTokenError
+from sqlalchemy.orm import Session
 
 from app.core.config import get_settings
+from app.core.database import get_db
+from app.core.security import hash_token
+from app.models.session import Session as UserSession
+from app.models.user import User, UserRole
 from app.services.audit_log_service import append_audit_event
 
 bearer_scheme = HTTPBearer(auto_error=False)
@@ -18,8 +25,11 @@ bearer_scheme = HTTPBearer(auto_error=False)
 
 @dataclass(slots=True)
 class AuthContext:
+    """Authentication context extracted from token."""
+
     subject: str
     role: str
+    user_id: str | None = None
 
 
 def _epoch_seconds(value: datetime) -> int:
@@ -30,6 +40,7 @@ def validate_admin_password_policy(
     password: str,
     min_length: int,
 ) -> tuple[bool, list[str]]:
+    """Validate admin password meets security requirements."""
     violations: list[str] = []
 
     if len(password) < min_length:
@@ -51,14 +62,15 @@ def validate_admin_password_policy(
 
 
 def validate_admin_credentials(username: str, password: str) -> bool:
+    """Validate admin credentials (legacy single-admin mode)."""
     settings = get_settings()
     return compare_digest(username, settings.admin_username) and compare_digest(
-        password,
-        settings.admin_password,
+        password, settings.admin_password
     )
 
 
 def create_access_token(subject: str, role: str = "admin") -> tuple[str, int]:
+    """Create a JWT access token."""
     settings = get_settings()
     issued_at = datetime.now(timezone.utc)
     expires_at = issued_at + timedelta(minutes=settings.jwt_access_token_minutes)
@@ -80,6 +92,7 @@ def create_access_token(subject: str, role: str = "admin") -> tuple[str, int]:
 
 
 def decode_access_token(token: str) -> dict[str, Any]:
+    """Decode and verify a JWT access token."""
     settings = get_settings()
     return jwt.decode(
         token,
@@ -89,6 +102,7 @@ def decode_access_token(token: str) -> dict[str, Any]:
 
 
 def try_extract_auth_context(authorization: str | None) -> AuthContext | None:
+    """Extract auth context from Authorization header (JWT mode)."""
     if not authorization:
         return None
 
@@ -112,15 +126,150 @@ def try_extract_auth_context(authorization: str | None) -> AuthContext | None:
     return AuthContext(subject=subject, role=role)
 
 
+def get_current_user(
+    request: Request,
+    credentials: Annotated[
+        HTTPAuthorizationCredentials | None,
+        Depends(bearer_scheme),
+    ] = None,
+    db: Session = Depends(get_db),
+) -> User | None:
+    """Get current authenticated user from token or session."""
+    settings = get_settings()
+
+    # Dev mode - no auth required
+    if not settings.auth_required:
+        # Return a dev admin user
+        dev_user = User(
+            id="dev-admin",
+            email="dev@localhost",
+            role=UserRole.ADMIN,
+            is_active=True,
+        )
+        return dev_user
+
+    if credentials is None:
+        return None
+
+    # Try session-based auth first
+    token = credentials.credentials
+    token_hash = hash_token(token)
+
+    session = (
+        db.query(UserSession)
+        .filter(
+            UserSession.token_hash == token_hash,
+            UserSession.is_revoked.is_(False),
+            UserSession.expires_at > datetime.utcnow(),
+        )
+        .first()
+    )
+
+    if session:
+        user = db.query(User).filter(User.id == session.user_id).first()
+        if user and user.is_active:
+            # Update session last used
+            session.last_used_at = datetime.utcnow()
+            db.commit()
+            return user
+        return None
+
+    # Fall back to JWT auth (legacy)
+    context = try_extract_auth_context(f"Bearer {token}")
+    if context is None:
+        return None
+
+    # For JWT auth, get user by email or id
+    user = db.query(User).filter(
+        (User.email == context.subject) | (User.id == context.subject)
+    ).first()
+
+    if user and user.is_active:
+        return user
+
+    return None
+
+
+def require_auth(
+    request: Request,
+    credentials: Annotated[
+        HTTPAuthorizationCredentials | None,
+        Depends(bearer_scheme),
+    ] = None,
+    db: Session = Depends(get_db),
+) -> User:
+    """Require authentication and return current user."""
+    settings = get_settings()
+
+    # Dev mode - no auth required
+    if not settings.auth_required:
+        return User(
+            id="dev-admin",
+            email="dev@localhost",
+            role=UserRole.ADMIN,
+            is_active=True,
+        )
+
+    if credentials is None:
+        append_audit_event(
+            "auth_failure",
+            {
+                "reason": "missing_bearer_token",
+                "path": request.url.path,
+                "method": request.method,
+                "client_ip": request.client.host if request.client else "unknown",
+            },
+        )
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Authentication required",
+        )
+
+    user = get_current_user(request, credentials, db)
+    if user is None:
+        append_audit_event(
+            "auth_failure",
+            {
+                "reason": "invalid_or_expired_token",
+                "path": request.url.path,
+                "method": request.method,
+                "client_ip": request.client.host if request.client else "unknown",
+            },
+        )
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid or expired token",
+        )
+
+    return user
+
+
+def require_role(*roles: UserRole):
+    """Require specific role(s) for access."""
+
+    async def role_checker(current_user: User = Depends(require_auth)) -> User:
+        if current_user.role not in roles and current_user.role != UserRole.ADMIN:
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail=f"Required role: {', '.join(r.value for r in roles)}",
+            )
+        return current_user
+
+    return role_checker
+
+
 def require_admin_user(
     request: Request,
     credentials: Annotated[
         HTTPAuthorizationCredentials | None,
         Depends(bearer_scheme),
     ] = None,
+    db: Session = Depends(get_db),
 ) -> AuthContext:
+    """Require admin role for access."""
     settings = get_settings()
 
+    # Dev mode - no auth required
     if not settings.auth_required:
         return AuthContext(subject="dev-admin", role="admin")
 
@@ -137,21 +286,6 @@ def require_admin_user(
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Missing Bearer token",
-        )
-
-    if credentials.scheme.lower() != "bearer":
-        append_audit_event(
-            "auth_failure",
-            {
-                "reason": "invalid_auth_scheme",
-                "path": request.url.path,
-                "method": request.method,
-                "client_ip": request.client.host if request.client else "unknown",
-            },
-        )
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Invalid authentication scheme",
         )
 
     context = try_extract_auth_context(f"Bearer {credentials.credentials}")
@@ -175,8 +309,8 @@ def require_admin_user(
             "auth_failure",
             {
                 "reason": "insufficient_role",
-                "role": context.role,
                 "subject": context.subject,
+                "role": context.role,
                 "path": request.url.path,
                 "method": request.method,
                 "client_ip": request.client.host if request.client else "unknown",
@@ -184,7 +318,7 @@ def require_admin_user(
         )
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
-            detail="Admin role required",
+            detail="Admin access required",
         )
 
     return context

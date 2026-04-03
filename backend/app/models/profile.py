@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from typing import TYPE_CHECKING
+from uuid import UUID
 
 from sqlalchemy import JSON, String, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
@@ -25,6 +26,10 @@ class Profile(Base, TimestampMixin):
     parsed_seniority: Mapped[str | None] = mapped_column(String(100), nullable=True)
     availability_status: Mapped[str] = mapped_column(String(100), default="unknown", nullable=False)
     source: Mapped[str] = mapped_column(String(255), default="upload", nullable=False)
+    created_by: Mapped[UUID | None] = mapped_column(nullable=True, index=True)
+    updated_by: Mapped[UUID | None] = mapped_column(nullable=True)
+    is_active: Mapped[bool] = mapped_column(default=True, nullable=False)
+    tags: Mapped[list[str]] = mapped_column(JSON, default=list, nullable=False)
 
     experiences: Mapped[list[Experience]] = relationship(
         back_populates="profile", cascade="all, delete-orphan"

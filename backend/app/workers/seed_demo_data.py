@@ -208,7 +208,7 @@ def run_seed(
     with_matches: bool,
     seed: int,
 ) -> None:
-    rng = random.Random(seed)
+    rng = random.Random(seed)  # nosec B311: Deterministic RNG for reproducible demo data, not used for security purposes
 
     db = SessionLocal()
     try:
