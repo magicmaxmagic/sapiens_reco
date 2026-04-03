@@ -67,34 +67,52 @@ npm run build
 
 ## Vercel setup (production)
 
-1. Link the project locally (one-time)
+### IMPORTANT: Environment Variables
+
+The `APP_LOGIN_SESSION_SECRET` environment variable **MUST** be set in Vercel before deployment. Without it, the app will show a configuration error page and be inaccessible.
+
+### Local Setup
+
+1. Copy environment file:
+```bash
+cp .env.example .env.local
+```
+
+2. Generate a secure session secret:
+```bash
+openssl rand -base64 48
+```
+
+3. Set the secret in `.env.local`:
+```
+APP_LOGIN_SESSION_SECRET=<your-generated-secret>
+```
+
+### Vercel Project Setup
+
+1. Link the project locally (one-time):
 
 ```bash
 npx vercel link
 ```
 
-2. Set frontend runtime variable in Vercel project settings
+2. **Set required environment variables in Vercel dashboard** (Project Settings → Environment Variables):
 
-- NEXT_PUBLIC_API_URL=https://your-backend-public-url/api
-- APP_LOGIN_SESSION_SECRET=<random-long-secret>
-- APP_LOGIN_SESSION_MAX_AGE_SECONDS=3600 (optional)
-- NEXT_PUBLIC_SUPABASE_URL=https://your-project-ref.supabase.co
-- NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+   | Variable | Description | Required |
+   |----------|-------------|----------|
+   | `NEXT_PUBLIC_API_URL` | Backend API URL (e.g., `https://api.example.com/api`) | Yes |
+   | `APP_LOGIN_SESSION_SECRET` | Secure random string for session signing (min 32 chars) | **Yes** |
+   | `APP_LOGIN_SESSION_MAX_AGE_SECONDS` | Session duration in seconds (default: 3600) | No |
+   | `NEXT_PUBLIC_SUPABASE_URL` | Supabase project URL | No |
+   | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase anon key | No |
 
-3. Configure GitHub secrets
+3. Configure GitHub secrets (repository Settings → Secrets and variables → Actions):
 
-- VERCEL_TOKEN
-- VERCEL_ORG_ID
-- VERCEL_PROJECT_ID
+   - `VERCEL_TOKEN` - Vercel API token
+   - `VERCEL_ORG_ID` - Vercel team/org ID
+   - `VERCEL_PROJECT_ID` - Vercel project ID
 
-4. Push strategy
+4. Deploy:
 
-- Push on uat (or open PR): triggers preview deploy via [../.github/workflows/vercel-preview.yml](../.github/workflows/vercel-preview.yml)
-- Push on main: triggers production deploy via [../.github/workflows/vercel-deploy.yml](../.github/workflows/vercel-deploy.yml)
-
-Production workflow does:
-- npm ci
-- lint + typecheck
-- vercel pull (production)
-- vercel build --prod
-- vercel deploy --prebuilt --prod
+   - Push to `uat` branch: triggers preview deploy
+   - Push to `main` branch: triggers production deploy
