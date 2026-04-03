@@ -1,0 +1,134 @@
+[
+  {
+    "id": 1,
+    "full_name": "Junior Developer - Alex Martin",
+    "raw_text": "Alex Martin\nJunior Software Developer\n\nSkills: Python, JavaScript, Git\nExperience: 1 year as intern at TechStartup\nLocation: Paris, France\nLanguages: French (native), English (B1)\nAvailability: Available immediately\nEducation: Bachelor's in Computer Science",
+    "parsed_skills": ["python", "javascript", "git"],
+    "parsed_languages": ["fr", "en"],
+    "parsed_location": "paris",
+    "parsed_seniority": "junior",
+    "availability_status": "available",
+    "source": "upload"
+  },
+  {
+    "id": 2,
+    "full_name": "Mid Developer - Sarah Chen",
+    "raw_text": "Sarah Chen\nFull-Stack Developer\n\nSkills: Python, FastAPI, React, PostgreSQL, Docker, AWS\nExperience: 4 years professional experience\n- 2 years at CompanyA building REST APIs\n- 2 years at CompanyB working on React frontend\nLocation: Lyon, France\nLanguages: French (native), English (fluent), Mandarin (native)\nAvailability: Available in 1 month\nEducation: Master's in Software Engineering",
+    "parsed_skills": ["python", "fastapi", "react", "postgresql", "docker", "aws"],
+    "parsed_languages": ["fr", "en", "zh"],
+    "parsed_location": "lyon",
+    "parsed_seniority": "mid",
+    "availability_status": "soon",
+    "source": "linkedin"
+  },
+  {
+    "id": 3,
+    "full_name": "Senior Engineer - Marc Dubois",
+    "raw_text": "Marc Dubois\nSenior Backend Engineer\n\nSkills: Python, Django, FastAPI, PostgreSQL, Redis, Kubernetes, AWS, Terraform\nExperience: 7 years\n- Lead backend team at FinTech Corp\n- Architected microservices handling 10M+ requests/day\n- Mentored junior developers\nLocation: Paris, France (open to remote)\nLanguages: French (native), English (fluent)\nAvailability: Available immediately\nEducation: Engineering degree from École Polytechnique",
+    "parsed_skills": ["python", "django", "fastapi", "postgresql", "kubernetes", "aws", "terraform"],
+    "parsed_languages": ["fr", "en"],
+    "parsed_location": "paris",
+    "parsed_seniority": "senior",
+    "availability_status": "available",
+    "source": "upload"
+  },
+  {
+    "id": 4,
+    "full_name": "Tech Lead - Jean-Pierre Laurent",
+    "raw_text": "Jean-Pierre Laurent\nTechnical Lead / Staff Engineer\n\nSkills: Python, Go, Kubernetes, AWS, GCP, Terraform, System Design, Team Leadership\nExperience: 12 years\n- Led teams of 10+ engineers\n- Designed platform serving 100M+ users\n- Expert in distributed systems\nLocation: Remote (based in Bordeaux)\nLanguages: French (native), English (native-level)\nAvailability: Open to opportunities\nEducation: PhD in Computer Science",
+    "parsed_skills": ["python", "kubernetes", "aws", "gcp", "terraform"],
+    "parsed_languages": ["fr", "en"],
+    "parsed_location": "remote",
+    "parsed_seniority": "lead",
+    "availability_status": "open",
+    "source": "referral"
+  },
+  {
+    "id": 5,
+    "full_name": "Data Scientist - Marie Leblanc",
+    "raw_text": "Marie Leblanc\nData Scientist / ML Engineer\n\nSkills: Python, scikit-learn, TensorFlow, pandas, numpy, SQL, Spark\nExperience: 5 years\n- Built ML pipelines for recommendation systems\n- Expertise in NLP and computer vision\nLocation: Toulouse, France\nLanguages: French (native), English (fluent), Spanish (intermediate)\nAvailability: Available immediately\nEducation: Master's in Data Science",
+    "parsed_skills": ["python", "scikit-learn", "tensorflow", "pandas", "numpy", "sql", "spark"],
+    "parsed_languages": ["fr", "en", "es"],
+    "parsed_location": "toulouse",
+    "parsed_seniority": "senior",
+    "availability_status": "available",
+    "source": "upload"
+  },
+  {
+    "id": 6,
+    "full_name": "Junior Data Analyst - Lucas Bernard",
+    "raw_text": "Lucas Bernard\nJunior Data Analyst\n\nSkills: Python, SQL, Excel, Tableau, pandas\nExperience: 2 years\n- Data analysis intern at RetailCompany\n- Built dashboards for sales team\nLocation: Marseille, France\nLanguages: French (native), English (B2)\nAvailability: Available immediately\nEducation: Master's in Statistics",
+    "parsed_skills": ["python", "sql", "pandas"],
+    "parsed_languages": ["fr", "en"],
+    "parsed_location": "marseille",
+    "parsed_seniority": "junior",
+    "availability_status": "available",
+    "source": "linkedin"
+  },
+  {
+    "id": 7,
+    "full_name": "Mid DevOps - Sophie Martin",
+    "raw_text": "Sophie Martin\nDevOps Engineer\n\nSkills: Docker, Kubernetes, AWS, Terraform, CI/CD, Linux, Python, Bash\nExperience: 4 years\n- Managed cloud infrastructure for SaaS company\n- Automated deployment pipelines\nLocation: Lille, France\nLanguages: French (native), English (professional)\nAvailability: Available in 2 weeks\nEducation: Engineering degree",
+    "parsed_skills": ["docker", "kubernetes", "aws", "terraform", "python"],
+    "parsed_languages": ["fr", "en"],
+    "parsed_location": "lille",
+    "parsed_seniority": "mid",
+    "availability_status": "soon",
+    "source": "upload"
+  },
+  {
+    "id": 8,
+    "full_name": "Senior Frontend - Thomas Petit",
+    "raw_text": "Thomas Petit\nSenior Frontend Developer\n\nSkills: React, TypeScript, Next.js, Vue.js, TailwindCSS, Jest, Cypress\nExperience: 6 years\n- Led frontend architecture at E-commerce company\n- Expert in performance optimization\nLocation: Nantes, France\nLanguages: French (native), English (fluent)\nAvailability: Available immediately\nEducation: Bachelor's in Web Development",
+    "parsed_skills": ["react", "typescript", "next.js", "docker"],
+    "parsed_languages": ["fr", "en"],
+    "parsed_location": "nantes",
+    "parsed_seniority": "senior",
+    "availability_status": "available",
+    "source": "referral"
+  },
+  {
+    "id": 9,
+    "full_name": "Junior Backend - Emma Rousseau",
+    "raw_text": "Emma Rousseau\nJunior Backend Developer\n\nSkills: Python, Django, SQL, Git, Docker\nExperience: 1.5 years\n- Developed REST APIs at StartupXYZ\n- Integrated third-party APIs\nLocation: Rennes, France\nLanguages: French (native), English (B2)\nAvailability: Available immediately\nEducation: Bachelor's in Computer Science",
+    "parsed_skills": ["python", "django", "sql", "docker"],
+    "parsed_languages": ["fr", "en"],
+    "parsed_location": "rennes",
+    "parsed_seniority": "junior",
+    "availability_status": "available",
+    "source": "upload"
+  },
+  {
+    "id": 10,
+    "full_name": "Mid Full-Stack - Antoine Mercier",
+    "raw_text": "Antoine Mercier\nFull-Stack Developer\n\nSkills: Python, FastAPI, React, PostgreSQL, MongoDB, Docker, Kubernetes\nExperience: 3 years\n- Built full-stack applications for various clients\n- Experienced in agile methodologies\nLocation: Bordeaux, France\nLanguages: French (native), English (professional)\nAvailability: Available in 1 month\nEducation: Master's in Computer Science",
+    "parsed_skills": ["python", "fastapi", "react", "postgresql", "docker", "kubernetes"],
+    "parsed_languages": ["fr", "en"],
+    "parsed_location": "bordeaux",
+    "parsed_seniority": "mid",
+    "availability_status": "soon",
+    "source": "linkedin"
+  },
+  {
+    "id": 11,
+    "full_name": "Senior ML Engineer - Claire Fontaine",
+    "raw_text": "Claire Fontaine\nSenior Machine Learning Engineer\n\nSkills: Python, TensorFlow, PyTorch, Kubernetes, AWS, MLOps, Spark\nExperience: 8 years\n- Built ML platforms at BigTech\n- Expert in deep learning and distributed training\nLocation: Paris, France\nLanguages: French (native), English (native-level)\nAvailability: Open to opportunities\nEducation: PhD in Machine Learning",
+    "parsed_skills": ["python", "tensorflow", "kubernetes", "aws", "spark"],
+    "parsed_languages": ["fr", "en"],
+    "parsed_location": "paris",
+    "parsed_seniority": "senior",
+    "availability_status": "open",
+    "source": "upload"
+  },
+  {
+    "id": 12,
+    "full_name": "Junior DevOps - Hugo Leroy",
+    "raw_text": "Hugo Leroy\nJunior DevOps Engineer\n\nSkills: Docker, Linux, Bash, AWS basics, CI/CD\nExperience: 1 year\n- Internship at CloudCompany\n- Learned infrastructure basics\nLocation: Paris, France\nLanguages: French (native), English (B1)\nAvailability: Available immediately\nEducation: Bachelor's in IT",
+    "parsed_skills": ["docker", "aws"],
+    "parsed_languages": ["fr", "en"],
+    "parsed_location": "paris",
+    "parsed_seniority": "junior",
+    "availability_status": "available",
+    "source": "upload"
+  }
+]
