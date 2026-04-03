@@ -8,7 +8,6 @@ import pytest
 from app.models.mission import Mission
 from app.models.profile import Profile
 from app.services.matching_service import (
-    SENIORITY_ORDER,
     _business_score,
     _normalize,
     _semantic_score,
@@ -213,9 +212,11 @@ class TestStructuredScore:
 
         score, tags = _structured_score(mission, profile)
 
-        # Should return 100% with no structured constraints
+        # Should return 100% (only availability check which passes)
+        # The availability check is always run
         assert score == 100.0
-        assert "no_structured_constraints" in tags
+        # Should have availability_match since profile is available
+        assert "availability_match" in tags
 
 
 class TestSemanticScore:

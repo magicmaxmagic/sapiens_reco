@@ -10,12 +10,12 @@ from sklearn.metrics.pairwise import cosine_similarity
 from app.models.mission import Mission
 from app.models.profile import Profile
 from app.services.recommendation_service import (
+    SKILL_EMBEDDINGS,
     MissionEmbedding,
     MissionEncoder,
     ProfileEmbedding,
     ProfileEncoder,
     RecommendationService,
-    SKILL_EMBEDDINGS,
     clear_recommendation_cache,
     get_recommendation_service,
 )
@@ -354,11 +354,14 @@ class TestRecommendationService:
 
     def test_clear_cache(self, sample_profile, sample_mission):
         """Test cache clearing."""
-        service = RecommendationService()
+        # Use the singleton to ensure cache is shared
+        service = get_recommendation_service()
         service.score_profile_for_mission(sample_profile, sample_mission)
 
         clear_recommendation_cache()
 
+        # Check the singleton's cache (not a new instance)
+        service = get_recommendation_service()
         assert len(service._profile_cache) == 0
         assert len(service._mission_cache) == 0
 

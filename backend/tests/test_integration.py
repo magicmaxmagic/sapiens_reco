@@ -7,7 +7,6 @@ import pytest
 
 from app.models.mission import Mission
 from app.models.profile import Profile
-from app.services.matching_service import score_profile_for_mission
 from app.services.metrics_service import (
     MetricsService,
     RankingResult,
@@ -15,9 +14,8 @@ from app.services.metrics_service import (
     evaluate_matching_system,
 )
 from app.services.recommendation_service import (
-    RecommendationService,
-    get_recommendation_service,
     clear_recommendation_cache,
+    get_recommendation_service,
 )
 
 
@@ -372,9 +370,12 @@ class TestEndToEndMatching:
             profiles_fixture, mission, top_n=10
         )
 
+        # Verify rankings were returned
+        assert len(rankings) > 0
+
         # Create ground truth with different thresholds
-        gt_low = create_ground_truth(profiles_fixture, [mission], threshold=30.0)
-        gt_high = create_ground_truth(profiles_fixture, [mission], threshold=70.0)
+        gt_low = create_ground_truth(profiles_fixture, [mission], relevance_threshold=30.0)
+        gt_high = create_ground_truth(profiles_fixture, [mission], relevance_threshold=70.0)
 
         # Higher threshold should result in fewer relevant profiles
         assert len(gt_high.get(mission.id, set())) <= len(gt_low.get(mission.id, set()))

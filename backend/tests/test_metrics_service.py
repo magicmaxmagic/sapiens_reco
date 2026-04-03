@@ -7,7 +7,6 @@ from app.services.metrics_service import (
     MetricsService,
     MetricsTracker,
     RankingResult,
-    create_ground_truth,
     evaluate_matching_system,
     get_metrics_tracker,
 )
