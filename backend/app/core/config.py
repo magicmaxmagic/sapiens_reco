@@ -9,7 +9,7 @@ DEFAULT_DATABASE_URL = "postgresql+psycopg://optimus:optimus@localhost:5432/opti
 class Settings(BaseSettings):
     app_name: str = "Optimus API"
     app_env: str = "development"
-    app_host: str = "0.0.0.0"
+    app_host: str = "0.0.0.0"  # nosec B104: Binding to all interfaces is intentional for development; override via APP_HOST env var in production
     app_port: int = 8000
     app_debug: bool = True
     auto_create_tables: bool = False

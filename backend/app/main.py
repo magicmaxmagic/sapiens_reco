@@ -24,9 +24,9 @@ security_logger = logging.getLogger("optimus.security")
 @asynccontextmanager
 async def lifespan(_: FastAPI):
     insecure_defaults: list[str] = []
-    if settings.admin_password == "change-me":
+    if settings.admin_password == "change-me":  # nosec B105: Comparison against insecure default, not a hardcoded password
         insecure_defaults.append("ADMIN_PASSWORD")
-    if settings.jwt_secret_key == "change-this-jwt-secret-in-prod":
+    if settings.jwt_secret_key == "change-this-jwt-secret-in-prod":  # nosec B105: Comparison against insecure default, not a hardcoded password
         insecure_defaults.append("JWT_SECRET_KEY")
 
     if settings.auth_required and insecure_defaults:

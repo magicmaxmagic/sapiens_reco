@@ -24,9 +24,9 @@ class AuditAction(str, Enum):
     LOGIN = "login"
     LOGOUT = "logout"
     LOGIN_FAILED = "login_failed"
-    TOKEN_REFRESH = "token_refresh"
-    PASSWORD_RESET = "password_reset"
-    PASSWORD_CHANGED = "password_changed"
+    TOKEN_REFRESH = "token_refresh"  # nosec B105: Enum value for audit action type, not a password
+    PASSWORD_RESET = "password_reset"  # nosec B105: Enum value for audit action type, not a password
+    PASSWORD_CHANGED = "password_changed"  # nosec B105: Enum value for audit action type, not a password
     USER_CREATED = "user_created"
     USER_UPDATED = "user_updated"
     USER_DELETED = "user_deleted"

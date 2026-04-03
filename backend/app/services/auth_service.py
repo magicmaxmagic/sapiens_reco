@@ -118,7 +118,7 @@ class AuthService:
         return LoginResponse(
             access_token=access_token,
             refresh_token=refresh_token,
-            token_type="bearer",
+            token_type="bearer",  # nosec B106: OAuth2 standard token type, not a password
             expires_in=settings.jwt_access_token_minutes * 60,
             user=UserResponse.model_validate(user),
         )
@@ -165,7 +165,7 @@ class AuthService:
         return RefreshResponse(
             access_token=new_access_token,
             refresh_token=new_refresh_token,
-            token_type="bearer",
+            token_type="bearer",  # nosec B106: OAuth2 standard token type, not a password
             expires_in=settings.jwt_access_token_minutes * 60,
         )
 
