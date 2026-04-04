@@ -44,6 +44,7 @@ class AuthService:
         # Create user
         user = User(
             id=uuid4(),
+            username=data.username,
             email=data.email,
             password_hash=hash_password(data.password),
             full_name=data.full_name,

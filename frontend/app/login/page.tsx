@@ -13,6 +13,7 @@ type LoginErrorResponse = {
 export default function LoginPage() {
   const router = useRouter();
   const [nextPath, setNextPath] = useState("/dashboard");
+  const [signupSuccess, setSignupSuccess] = useState(false);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -20,9 +21,18 @@ export default function LoginPage() {
     if (next && next.startsWith("/") && !next.startsWith("//")) {
       setNextPath(next);
     }
+
+    // Check for signup success
+    if (params.get("signup") === "success") {
+      setSignupSuccess(true);
+      const signupUsername = params.get("username");
+      if (signupUsername) {
+        setUsername(signupUsername);
+      }
+    }
   }, []);
 
-  const [username, setUsername] = useState("admin");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -77,8 +87,14 @@ export default function LoginPage() {
         <p className="text-xs uppercase tracking-[0.16em] text-[color:var(--text-muted)]">Acces securise</p>
         <h1 className="mt-2 text-2xl font-semibold text-[color:var(--text-strong)]">Connexion Optimus</h1>
         <p className="mt-2 text-sm text-[color:var(--text)]">
-          Connecte-toi avec l&apos;identifiant admin et un mot de passe complexe.
+          Connecte-toi avec ton identifiant et mot de passe.
         </p>
+
+        {signupSuccess ? (
+          <p className="mt-3 rounded-md border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm text-emerald-700">
+            Compte cree avec succes ! Tu peux maintenant te connecter.
+          </p>
+        ) : null}
 
         <form onSubmit={onSubmit} className="mt-6 space-y-4">
           <div>
@@ -129,6 +145,13 @@ export default function LoginPage() {
             {isLoading ? "Connexion..." : "Se connecter"}
           </button>
         </form>
+
+        <p className="mt-4 text-center text-sm text-[color:var(--text-muted)]">
+          Pas de compte?{" "}
+          <a href="/signup" className="text-[color:var(--accent)] hover:underline">
+            Creer un compte
+          </a>
+        </p>
       </section>
     </main>
   );

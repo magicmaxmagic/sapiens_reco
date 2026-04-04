@@ -56,6 +56,11 @@ async def create_user(
     """Create a new user (admin only)."""
     auth_service = AuthService(db)
 
+    # Check if username already exists
+    existing_username = db.query(User).filter(User.username == data.username).first()
+    if existing_username:
+        raise HTTPException(status_code=400, detail="Username already taken")
+
     # Check if email already exists
     existing = db.query(User).filter(User.email == data.email).first()
     if existing:

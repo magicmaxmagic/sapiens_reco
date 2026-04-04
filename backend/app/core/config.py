@@ -29,6 +29,13 @@ class Settings(BaseSettings):
     jwt_algorithm: str = "HS256"
     jwt_access_token_minutes: int = 60
 
+    # Password policy for user registration
+    password_min_length: int = 8
+    password_require_uppercase: bool = True
+    password_require_lowercase: bool = True
+    password_require_digit: bool = True
+    password_require_special: bool = False
+
     max_upload_size_bytes: int = 5_000_000
     rate_limit_max_requests: int = 180
     rate_limit_window_seconds: int = 60
