@@ -7,7 +7,7 @@ import {
   verifySignedSessionToken,
 } from "@/lib/app-session";
 
-const PUBLIC_PATHS = new Set(["/favicon.ico", "/robots.txt", "/sitemap.xml"]);
+const PUBLIC_PATHS = new Set(["/", "/favicon.ico", "/robots.txt", "/sitemap.xml"]);
 const SETUP_ERROR_PATH = "/setup-error";
 
 function isPublicAsset(pathname: string): boolean {
@@ -45,9 +45,30 @@ function setupErrorRedirect(request: NextRequest): NextResponse {
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const isLoginRoute = pathname === "/login";
+  const isSignupRoute = pathname === "/signup";
+  const isAuthRoute = isLoginRoute || isSignupRoute;
   const isSetupErrorRoute = pathname === SETUP_ERROR_PATH;
 
-  if (isSetupErrorRoute || (!isLoginRoute && (PUBLIC_PATHS.has(pathname) || isPublicAsset(pathname)))) {
+  // Allow public access to landing page, auth pages, and static assets
+  if (isSetupErrorRoute || PUBLIC_PATHS.has(pathname) || isAuthRoute || isPublicAsset(pathname)) {
+    // For auth routes, if user is logged in, redirect to dashboard
+    if (isAuthRoute) {
+      const sessionSecret = getSessionSecret();
+      if (!sessionSecret) {
+        return NextResponse.next();
+      }
+      const rawCookie = request.cookies.get(APP_SESSION_COOKIE_NAME)?.value;
+      if (rawCookie) {
+        const session = await verifySignedSessionToken(rawCookie, sessionSecret);
+        if (session) {
+          // User is logged in, redirect away from auth pages
+          const url = request.nextUrl.clone();
+          url.pathname = "/dashboard";
+          url.search = "";
+          return NextResponse.redirect(url);
+        }
+      }
+    }
     return NextResponse.next();
   }
 

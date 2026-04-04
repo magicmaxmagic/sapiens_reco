@@ -1,5 +1,13 @@
-import { redirect } from "next/navigation";
+import { Hero, Features, Pricing, Testimonials, Footer } from "@/components/landing";
 
-export default function Home() {
-  redirect("/dashboard");
+export default function HomePage() {
+  return (
+    <>
+      <Hero />
+      <Features />
+      <Pricing />
+      <Testimonials />
+      <Footer />
+    </>
+  );
 }
