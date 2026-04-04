@@ -67,15 +67,37 @@ async function DashboardContent() {
   return (
     <>
       <section className="mb-8 rounded-2xl border border-black/10 bg-[linear-gradient(145deg,#fef3c7_0%,#ffffff_65%)] p-6">
-        <p className="text-xs uppercase tracking-[0.18em] text-[color:var(--text-muted)]">
-          Overview
-        </p>
-        <h1 className="mt-2 text-3xl font-semibold text-[color:var(--text-strong)]">
-          Dashboard RM
-        </h1>
-        <p className="mt-2 max-w-2xl text-sm text-[color:var(--text)]">
-          Vue synthétique du stock de profils, des missions ouvertes et des dernières actions de matching.
-        </p>
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p className="text-xs uppercase tracking-[0.18em] text-[color:var(--text-muted)]">
+              Overview
+            </p>
+            <h1 className="mt-2 text-3xl font-semibold text-[color:var(--text-strong)]">
+              Dashboard RM
+            </h1>
+            <p className="mt-2 max-w-2xl text-sm text-[color:var(--text)]">
+              Vue synthétique du stock de profils, des missions ouvertes et des dernières actions de matching.
+            </p>
+          </div>
+          <div className="flex flex-col gap-2 sm:items-end">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-[color:var(--accent)]/10 px-3 py-1 text-xs font-medium text-[color:var(--accent)]">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[color:var(--accent)] opacity-75"></span>
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-[color:var(--accent)]"></span>
+              </span>
+              Essai gratuit - 14 jours
+            </span>
+            <a
+              href="#"
+              className="inline-flex items-center gap-2 rounded-lg bg-[color:var(--accent)] px-4 py-2 text-sm font-semibold text-white shadow transition hover:opacity-90"
+            >
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+              </svg>
+              Upgrader vers Pro
+            </a>
+          </div>
+        </div>
       </section>
 
       <section className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
