@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 type SignupErrorResponse = {
@@ -9,15 +9,6 @@ type SignupErrorResponse = {
 
 export default function SignupPage() {
   const router = useRouter();
-  const [nextPath, setNextPath] = useState("/login");
-
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const next = params.get("next");
-    if (next && next.startsWith("/") && !next.startsWith("//")) {
-      setNextPath(next);
-    }
-  }, []);
 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");

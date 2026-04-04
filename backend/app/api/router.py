@@ -3,13 +3,13 @@ from fastapi import APIRouter
 from app.api.analytics import router as analytics_router
 from app.api.endpoints.audit import router as audit_router
 from app.api.endpoints.auth import router as auth_router
-from app.api.endpoints.signup import router as signup_router
 from app.api.endpoints.health import router as health_router
 from app.api.endpoints.matching import router as matching_router
 from app.api.endpoints.missions import router as missions_router
 from app.api.endpoints.notes import router as notes_router
 from app.api.endpoints.profiles import router as profiles_router
 from app.api.endpoints.search import router as search_router
+from app.api.endpoints.signup import router as signup_router
 from app.api.users import router as users_router
 
 api_router = APIRouter()
