@@ -13,7 +13,7 @@ import sqlalchemy as sa
 
 # revision identifiers, used by Alembic.
 revision: str = '20260413_add_skill_taxonomy'
-down_revision: Union[str, None] = '20260403_0001_add_users_tables'
+down_revision: Union[str, None] = '38344406fc89'
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
