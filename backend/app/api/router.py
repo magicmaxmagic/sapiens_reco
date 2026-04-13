@@ -12,6 +12,7 @@ from app.api.endpoints.notes import router as notes_router
 from app.api.endpoints.profiles import router as profiles_router
 from app.api.endpoints.search import router as search_router
 from app.api.endpoints.signup import router as signup_router
+from app.api.endpoints.skills import router as skills_router
 from app.api.users import router as users_router
 
 api_router = APIRouter()
@@ -28,3 +29,4 @@ api_router.include_router(search_router)
 api_router.include_router(notes_router)
 api_router.include_router(analytics_router)
 api_router.include_router(users_router)
+api_router.include_router(skills_router)

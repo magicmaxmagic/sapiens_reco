@@ -18,6 +18,7 @@ class Profile(Base, TimestampMixin):
     __tablename__ = "profiles"
 
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
+    email: Mapped[str | None] = mapped_column(String(255), nullable=True, index=True)
     full_name: Mapped[str] = mapped_column(String(255), nullable=False)
     raw_text: Mapped[str | None] = mapped_column(Text, nullable=True)
     parsed_skills: Mapped[list[str]] = mapped_column(JSON, default=list, nullable=False)

@@ -1,7 +1,10 @@
+import io
+import json
 import logging
 from pathlib import Path
 
 from fastapi import APIRouter, Depends, File, HTTPException, UploadFile
+from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
 from app.core.auth import AuthContext, require_admin_user
@@ -30,6 +33,12 @@ ALLOWED_CONTENT_TYPES = {
 }
 
 MAX_SKILLS_FILTER = 12
+
+
+class BatchImportResult(BaseModel):
+    imported: int
+    updated: int
+    errors: list[str]
 
 
 def _parse_skill_values(raw: str | None) -> list[str]:
@@ -102,6 +111,174 @@ def _sanitize_profile_updates(updates: dict[str, object]) -> dict[str, object]:
                 )
 
     return cleaned
+
+
+def _parse_csv_content(content: bytes) -> list[dict]:
+    """Parse CSV content into a list of dictionaries."""
+    try:
+        import pandas as pd
+    except ImportError:
+        raise HTTPException(status_code=500, detail="pandas not available")
+    
+    df = pd.read_csv(io.BytesIO(content))
+    # Normalize column names to lowercase
+    df.columns = df.columns.str.lower().str.strip()
+    return df.to_dict(orient="records")
+
+
+def _parse_json_content(content: bytes) -> list[dict]:
+    """Parse JSON content into a list of dictionaries."""
+    data = json.loads(content)
+    if isinstance(data, list):
+        return data
+    elif isinstance(data, dict):
+        # If it's a dict with a "data" or "profiles" key, use that
+        if "data" in data:
+            return data["data"]
+        if "profiles" in data:
+            return data["profiles"]
+        return [data]
+    raise HTTPException(status_code=400, detail="Invalid JSON format")
+
+
+def _parse_batch_record(record: dict) -> dict | None:
+    """Parse and validate a single batch import record."""
+    # Required fields
+    full_name = record.get("full_name") or record.get("name")
+    email = record.get("email")
+    
+    if not full_name:
+        return None
+    if not email:
+        return None
+    
+    # Sanitize required fields
+    full_name = sanitize_label(str(full_name), max_length=255)
+    email = sanitize_label(str(email), max_length=255)
+    
+    # Optional fields
+    skills = record.get("skills") or record.get("skill")
+    if skills:
+        if isinstance(skills, str):
+            skills = _parse_skill_values(skills)
+        elif isinstance(skills, list):
+            skills = sanitize_string_list(skills, max_items=40)
+        else:
+            skills = []
+    else:
+        skills = []
+    
+    languages = record.get("languages") or record.get("language")
+    if languages:
+        if isinstance(languages, str):
+            languages = [
+                sanitize_label(lang.strip(), max_length=32)
+                for lang in languages.split(",")
+            ]
+        elif isinstance(languages, list):
+            languages = sanitize_string_list(languages, max_items=10)
+        else:
+            languages = []
+    else:
+        languages = []
+    
+    location = record.get("location")
+    if location:
+        location = sanitize_label(str(location), max_length=255)
+    
+    seniority = record.get("seniority")
+    if seniority:
+        seniority = sanitize_label(str(seniority), max_length=100)
+    
+    return {
+        "full_name": full_name,
+        "email": email,
+        "parsed_skills": skills,
+        "parsed_languages": languages,
+        "parsed_location": location,
+        "parsed_seniority": seniority,
+    }
+
+
+@router.post("/batch", response_model=BatchImportResult)
+async def import_profiles_batch(
+    file: UploadFile = File(...),
+    db: Session = Depends(get_db),
+    _: AuthContext = Depends(require_admin_user),
+) -> BatchImportResult:
+    """Import profiles from CSV or JSON file.
+    
+    Required columns: full_name, email
+    Optional columns: skills, languages, location, seniority
+    """
+    safe_filename = Path(file.filename or "unknown").name
+    extension = Path(safe_filename).suffix.lower()
+    
+    # Validate file type
+    allowed_extensions = {".csv", ".json"}
+    if extension not in allowed_extensions:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Unsupported file extension '{extension}'. Allowed: csv, json",
+        )
+    
+    content = await file.read()
+    if not content:
+        raise HTTPException(status_code=400, detail="Uploaded file is empty")
+    
+    # Parse content based on file type
+    try:
+        if extension == ".csv":
+            records = _parse_csv_content(content)
+        else:  # .json
+            records = _parse_json_content(content)
+    except Exception as exc:
+        raise HTTPException(status_code=400, detail=f"Failed to parse file: {str(exc)}")
+    
+    imported = 0
+    updated = 0
+    errors: list[str] = []
+    
+    for i, record in enumerate(records):
+        try:
+            parsed = _parse_batch_record(record)
+            if parsed is None:
+                errors.append(f"Row {i + 1}: missing required field (full_name or email)")
+                continue
+            
+            # Check if profile with this email exists
+            existing = db.query(Profile).filter(Profile.email == parsed["email"]).first()
+            
+            if existing:
+                # Update existing profile
+                for field, value in parsed.items():
+                    setattr(existing, field, value)
+                existing.source = "batch_import"
+                updated += 1
+            else:
+                # Create new profile
+                profile = Profile(
+                    full_name=parsed["full_name"],
+                    email=parsed["email"],
+                    parsed_skills=parsed["parsed_skills"],
+                    parsed_languages=parsed["parsed_languages"],
+                    parsed_location=parsed["parsed_location"],
+                    parsed_seniority=parsed["parsed_seniority"],
+                    availability_status="unknown",
+                    source="batch_import",
+                )
+                db.add(profile)
+                imported += 1
+        except Exception as e:
+            errors.append(f"Row {i + 1}: {str(e)}")
+    
+    db.commit()
+    
+    return BatchImportResult(
+        imported=imported,
+        updated=updated,
+        errors=errors,
+    )
 
 
 @router.post("/upload", response_model=ProfileRead)
