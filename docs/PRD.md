@@ -1,79 +1,108 @@
-# PRD - Optimus MVP
+# PRD Sapiens Reco - MVP Simplifié
 
-## 1. Vision
+## Objectif
 
-Optimus aide les resource managers a centraliser des CV, rechercher rapidement des profils, lancer un matching explicable et produire une shortlist exploitable.
+Permettre à un Resource Manager d'obtenir une shortlist de profils en 3 étapes :
+1. Import CSV
+2. Lancer matching (1 clic)
+3. Consulter shortlist triée
 
-## 2. Objectif MVP
+---
 
-Prouver qu'a partir d'une mission et d'un stock CV local, le systeme fournit une shortlist pertinente plus rapidement qu'une recherche manuelle.
+## Scope MVP
 
-## 3. Scope MVP
+### Inclus ✅
 
-Inclus:
-- import CV PDF/DOCX
-- parsing texte + extraction basique
-- CRUD missions
-- recherche profils (texte + filtres)
-- matching V1 explicable
-- shortlist top 10
-- frontend deployable sur Vercel
-- CI/CD GitHub Actions front/back
+- Authentification simple (login/admin)
+- Import profils via CSV
+- Import manuel (copier-coller)
+- Gestion missions CRUD
+- Matching simple par compétences
+- Score : 60% skills + 30% seniority + 10% location
+- Shortlist triée
+- Notes basiques
 
-Exclus:
-- communication consultants
-- disponibilites automatisees
-- connecteurs ATS live
-- SSO enterprise
-- modeles ML avances (two-tower, RAG)
+### Exclus (Phase 2+) 🚧
 
-## 4. Personas
+- Parsing CV automatique
+- Intégration ATS/Boond/LinkedIn
+- Matching sémantique (embeddings)
+- Dashboard analytics
+- Feedback structuré
+- Multi-tenant
+- OpenClaw orchestration
 
-- Resource Manager: cree une mission, lance le matching, lit la shortlist.
-- Admin/Ops: importe des CV, corrige les champs parses.
+---
 
-## 5. User Stories cle
+## Données
 
-- En tant qu'admin, je peux importer un CV PDF/DOCX et visualiser les champs extraits.
-- En tant qu'admin, je peux corriger manuellement un profil et enregistrer les champs ajustes.
-- En tant que RM, je peux creer/editer une mission avec contraintes metier.
-- En tant que RM, je peux rechercher des profils avec filtres metier.
-- En tant que RM, je peux lancer un matching et obtenir un top 10 avec explications.
+### Profil
 
-## 6. Matching V1
+| Champ | Type | Obligatoire |
+|-------|------|-------------|
+| Nom | string | ✅ |
+| Email | string | ✅ |
+| Compétences | list | - |
+| Séniorité | enum (junior/mid/senior) | - |
+| Disponibilité | date | - |
+| Localisation | string | - |
 
-Pipeline:
-1. normalisation mission
-2. filtres structures
-3. similarite texte mission/CV
-4. score final explicable
+### Mission
 
-Score cible:
-- 40% compatibilite structuree
-- 40% similarite semantique texte
-- 20% bonus metier simple
+| Champ | Type | Obligatoire |
+|-------|------|-------------|
+| Titre | string | ✅ |
+| Description | text | - |
+| Compétences requises | list | - |
+| Séniorité requise | enum | - |
+| Localisation requise | string | - |
+| Statut | enum (open/closed) | - |
+| Priorité | int | - |
 
-Sortie:
-- top 10 profils
-- score final
-- tags de justification
+---
 
-## 7. Stack cible
+## Workflow
 
-- Frontend: Next.js, TypeScript, Tailwind
-- Backend: FastAPI, SQLAlchemy, Alembic
-- DB: PostgreSQL local (Docker Compose)
-- Parsing: pypdf, python-docx, regles metier
-- Matching: TF-IDF + regles explicables
-- CI/CD: GitHub Actions
-- Deploy front: Vercel
+```
+┌─────────────┐     ┌─────────────┐     ┌─────────────┐
+│  1. IMPORT  │ ──▶ │  2. MATCH   │ ──▶ │ 3. SHORTLIST│
+│   CSV/Manuel│     │   1 clic    │     │  Résultats  │
+└─────────────┘     └─────────────┘     └─────────────┘
+```
 
-## 8. Definition of Done MVP
+---
 
-Le MVP est pret quand:
-- un lot de 50 a 200 CV peut etre importe
-- les profils structures sont consultables
-- une mission peut etre creee
-- la shortlist top 10 est generee avec score
-- le frontend est deploye sur Vercel
-- la CI front/back passe sur PR
+## Roadmap
+
+| Phase | Durée | Objectif |
+|-------|-------|----------|
+| MVP | 1-2 semaines | Import CSV → Matching simple → Shortlist |
+| V1.5 | +1 semaine | Import manuel (copier-coller) |
+| V2 | +2 semaines | Parsing CV (optionnel) |
+| V3 | +? | Intégrations externes |
+
+---
+
+## Utilisateurs
+
+| Rôle | Permissions |
+|------|-------------|
+| **Resource Manager** | Crée missions, lance matching, consulte shortlist |
+| **Admin** | Importe profils, gère données |
+
+---
+
+## Architecture Technique
+
+- **Frontend** : Next.js (existant)
+- **Backend** : FastAPI (existant)
+- **DB** : Supabase PostgreSQL (existant)
+- **ML** : ❌ Pas d'embeddings pour le MVP
+
+---
+
+## KPIs MVP
+
+- Nombre de matching runs
+- Temps moyen pour obtenir une shortlist
+- Taux d'utilisation hebdomadaire
