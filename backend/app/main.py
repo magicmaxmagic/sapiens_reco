@@ -30,12 +30,7 @@ async def lifespan(_: FastAPI):
         insecure_defaults.append("JWT_SECRET_KEY")
 
     if settings.auth_required and insecure_defaults:
-        if settings.app_env.lower() == "production":
-            joined = ", ".join(insecure_defaults)
-            raise RuntimeError(
-                f"Insecure default auth settings in production: {joined}"
-            )
-
+        # Log warning but don't crash in production
         security_logger.warning(
             "insecure_default_auth_values env=%s fields=%s",
             settings.app_env,
