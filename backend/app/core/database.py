@@ -1,5 +1,5 @@
 import os
-from typing import Generator as TypingGenerator
+from collections.abc import Generator
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
@@ -18,7 +18,7 @@ def get_engine():
     if not settings.database_url:
         raise RuntimeError(
             "DATABASE_URL is not configured. "
-            "Please set DATABASE_URL, POSTGRES_URL, or POSTGRES_URL_NON_POOLING environment variable."
+            "Set DATABASE_URL, POSTGRES_URL, or POSTGRES_URL_NON_POOLING."
         )
     
     # Check for default/invalid URL in production
@@ -86,7 +86,7 @@ engine = LazyEngine()
 SessionLocal = LazySessionLocal()
 
 
-def get_db() -> TypingGenerator[Session, None, None]:
+def get_db() -> Generator[Session, None, None]:
     """Dependency injection for FastAPI endpoints."""
     db = SessionLocal()
     try:
