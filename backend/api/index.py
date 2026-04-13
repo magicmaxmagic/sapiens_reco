@@ -1,6 +1,15 @@
 """Vercel serverless entry point."""
 
-from app.main import app
-
-# Vercel expects a top-level `app`, `application`, or `handler`
-# This file exports the FastAPI app from app/main.py
+# Minimal test first
+try:
+    from app.main import app
+except Exception as e:
+    import traceback
+    error_msg = traceback.format_exc()
+    
+    def app(request):
+        return {
+            "statusCode": 500,
+            "body": f'{{"error": "{str(e)}", "traceback": "{error_msg}"}}',
+            "headers": {"Content-Type": "application/json"}
+        }
