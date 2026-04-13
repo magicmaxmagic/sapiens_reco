@@ -16,7 +16,13 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import TYPE_CHECKING
 
-import numpy as np
+# Heavy ML dependencies - optional for Vercel serverless
+try:
+    import numpy as np
+    NUMPY_AVAILABLE = True
+except ImportError:
+    np = None
+    NUMPY_AVAILABLE = False
 
 if TYPE_CHECKING:
     from app.models.mission import Mission

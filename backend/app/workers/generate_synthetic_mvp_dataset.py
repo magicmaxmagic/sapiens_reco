@@ -8,11 +8,21 @@ from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
-import numpy as np
-import pandas as pd
+# Heavy ML dependencies - optional for Vercel serverless
+try:
+    import numpy as np
+    import pandas as pd
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    from sklearn.metrics.pairwise import cosine_similarity
+    ML_AVAILABLE = True
+except ImportError:
+    np = None
+    pd = None
+    TfidfVectorizer = None
+    cosine_similarity = None
+    ML_AVAILABLE = False
+
 from faker import Faker
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
 
 BACKEND_ROOT = Path(__file__).resolve().parents[2]
 if str(BACKEND_ROOT) not in sys.path:
