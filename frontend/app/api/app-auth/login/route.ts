@@ -63,7 +63,7 @@ export async function POST(request: Request) {
 
   let upstream: Response;
   try {
-    upstream = await fetch(`${apiBase}/auth/login`, {
+    upstream = await fetch(`${apiBase}/auth/db-login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
