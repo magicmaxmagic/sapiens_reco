@@ -38,30 +38,47 @@ def get_engine():
     return create_engine(settings.database_url, **engine_kwargs)
 
 
+# Lazy initialization - only create engine when first accessed
+_engine = None
+_sessionmaker = None
+
+
+def _get_engine():
+    """Get or create the engine lazily."""
+    global _engine
+    if _engine is None:
+        _engine = get_engine()
+    return _engine
+
+
+def _get_sessionmaker():
+    """Get or create the sessionmaker lazily."""
+    global _sessionmaker
+    if _sessionmaker is None:
+        _sessionmaker = sessionmaker(bind=_get_engine(), autoflush=False, autocommit=False)
+    return _sessionmaker
+
+
 class LazyEngine:
     """Lazy proxy for engine that initializes on first access."""
-    _engine = None
     
     def __call__(self):
-        if self._engine is None:
-            self._engine = get_engine()
-        return self._engine
+        return _get_engine()
     
     def __getattr__(self, name):
-        return getattr(self(), name)
+        return getattr(_get_engine(), name)
 
 
 class LazySessionLocal:
-    """Lazy proxy for SessionLocal that initializes on first access."""
-    _session_local = None
+    """Lazy proxy for SessionLocal that creates sessions on demand."""
     
     def __call__(self):
-        if self._session_local is None:
-            self._session_local = sessionmaker(bind=LazyEngine()(), autoflush=False, autocommit=False)
-        return self._session_local
+        """Create and return a new Session instance."""
+        return _get_sessionmaker()()
     
     def __getattr__(self, name):
-        return getattr(self(), name)
+        """Proxy attributes to the sessionmaker for backward compatibility."""
+        return getattr(_get_sessionmaker(), name)
 
 
 # Lazy instances
@@ -70,6 +87,7 @@ SessionLocal = LazySessionLocal()
 
 
 def get_db() -> TypingGenerator[Session, None, None]:
+    """Dependency injection for FastAPI endpoints."""
     db = SessionLocal()
     try:
         yield db
@@ -79,4 +97,4 @@ def get_db() -> TypingGenerator[Session, None, None]:
 
 # Backward compatible accessor
 def get_session_local():
-    return SessionLocal()
+    return _get_sessionmaker()
