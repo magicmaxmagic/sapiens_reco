@@ -35,5 +35,11 @@ def test_score_profile_for_mission():
 
     result = score_profile_for_mission(mission, profile)
 
-    assert result["final_score"] >= 60
-    assert "language_match" in result["explanation_tags"]
+    # Skills: 2/2 matched = 1.0
+    assert result["skills_match"] == 1.0
+    # Seniority: senior >= mid = 1.0
+    assert result["seniority_match"] == 1.0
+    # Location: paris == paris = 1.0
+    assert result["location_match"] == 1.0
+    # Final: 0.6*1 + 0.3*1 + 0.1*1 = 1.0
+    assert result["final_score"] == 1.0

@@ -23,3 +23,13 @@ class MatchScoreBreakdown(BaseModel):
     business_score: float
     final_score: float
     explanation_tags: list[str] = Field(default_factory=list)
+
+
+class ShortlistItem(BaseModel):
+    """Simple matching result for MVP."""
+    profile_id: int
+    profile_name: str
+    score: float
+    skills_match: float
+    seniority_match: float
+    location_match: float

@@ -3,65 +3,74 @@ from sqlalchemy.orm import Session
 
 from app.core.auth import AuthContext, require_admin_user
 from app.core.database import get_db
-from app.models.match_result import MatchResult
 from app.models.mission import Mission
 from app.models.profile import Profile
-from app.schemas.match import MatchResultRead
+from app.schemas.match import ShortlistItem
 from app.services.matching_service import score_profile_for_mission
 
 router = APIRouter(prefix="/missions", tags=["matching"])
 
+# In-memory storage for shortlists (MVP only)
+_shortlists: dict[int, list[ShortlistItem]] = {}
 
-@router.post("/{mission_id}/match", response_model=list[MatchResultRead])
+
+@router.post("/{mission_id}/match", response_model=list[ShortlistItem])
 def run_matching(
     mission_id: int,
-    top_n: int = 10,
     db: Session = Depends(get_db),
     _: AuthContext = Depends(require_admin_user),
-) -> list[MatchResult]:
+) -> list[ShortlistItem]:
+    """Run matching for a mission and return sorted shortlist."""
     mission = db.get(Mission, mission_id)
     if not mission:
         raise HTTPException(status_code=404, detail="Mission not found")
 
-    profiles = db.query(Profile).all()
+    profiles = (
+        db.query(Profile)
+        .filter(Profile.is_active.is_(True))
+        .all()
+    )
     if not profiles:
         return []
 
-    db.query(MatchResult).filter(MatchResult.mission_id == mission_id).delete()
-
+    results: list[ShortlistItem] = []
     for profile in profiles:
         score = score_profile_for_mission(mission, profile)
-        row = MatchResult(
-            mission_id=mission_id,
-            profile_id=profile.id,
-            structured_score=float(score["structured_score"]),
-            semantic_score=float(score["semantic_score"]),
-            business_score=float(score["business_score"]),
-            final_score=float(score["final_score"]),
-            explanation_tags=list(score["explanation_tags"]),
+        results.append(
+            ShortlistItem(
+                profile_id=profile.id,
+                profile_name=profile.full_name,
+                score=score["final_score"],
+                skills_match=score["skills_match"],
+                seniority_match=score["seniority_match"],
+                location_match=score["location_match"],
+            )
         )
-        db.add(row)
 
-    db.commit()
+    # Sort by score descending
+    results.sort(key=lambda x: x.score, reverse=True)
 
-    return (
-        db.query(MatchResult)
-        .filter(MatchResult.mission_id == mission_id)
-        .order_by(MatchResult.final_score.desc())
-        .limit(min(max(top_n, 1), 50))
-        .all()
-    )
+    # Store for GET endpoint
+    _shortlists[mission_id] = results
+
+    return results
 
 
-@router.get("/{mission_id}/matches", response_model=list[MatchResultRead])
-def list_matches(mission_id: int, db: Session = Depends(get_db)) -> list[MatchResult]:
+@router.get("/{mission_id}/shortlist", response_model=list[ShortlistItem])
+def get_shortlist(
+    mission_id: int,
+    db: Session = Depends(get_db),
+) -> list[ShortlistItem]:
+    """Get the last shortlist generated for a mission."""
     mission = db.get(Mission, mission_id)
     if not mission:
         raise HTTPException(status_code=404, detail="Mission not found")
 
-    return (
-        db.query(MatchResult)
-        .filter(MatchResult.mission_id == mission_id)
-        .order_by(MatchResult.final_score.desc())
-        .all()
-    )
+    shortlist = _shortlists.get(mission_id, [])
+    if not shortlist:
+        raise HTTPException(
+            status_code=404,
+            detail="No shortlist found for this mission. Run POST /missions/{id}/match first.",
+        )
+
+    return shortlist
