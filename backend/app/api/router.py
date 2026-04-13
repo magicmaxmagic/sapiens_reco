@@ -3,6 +3,8 @@ from fastapi import APIRouter
 from app.api.analytics import router as analytics_router
 from app.api.endpoints.audit import router as audit_router
 from app.api.endpoints.auth import router as auth_router
+from app.api.endpoints.db_login import router as db_login_router
+from app.api.endpoints.debug_env import router as debug_router
 from app.api.endpoints.health import router as health_router
 from app.api.endpoints.matching import router as matching_router
 from app.api.endpoints.missions import router as missions_router
@@ -15,7 +17,9 @@ from app.api.users import router as users_router
 api_router = APIRouter()
 api_router.include_router(health_router)
 api_router.include_router(auth_router)
+api_router.include_router(db_login_router)
 api_router.include_router(signup_router)
+api_router.include_router(debug_router)
 api_router.include_router(audit_router)
 api_router.include_router(profiles_router)
 api_router.include_router(missions_router)

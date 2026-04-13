@@ -66,13 +66,14 @@ async def signup(
     db.refresh(user)
 
     # Log the signup event
+    role_str = user.role.value if hasattr(user.role, 'value') else str(user.role)
     append_audit_event(
         "user_signup",
         {
             "user_id": str(user.id),
             "username": user.username,
             "email": user.email,
-            "role": user.role.value,
+            "role": role_str,
         },
     )
 
@@ -80,6 +81,6 @@ async def signup(
         id=str(user.id),
         username=user.username,
         email=user.email,
-        role=user.role.value,
+        role=role_str,
         message="Account created successfully. Please log in.",
     )

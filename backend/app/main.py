@@ -62,7 +62,7 @@ async def lifespan(_: FastAPI):
         )
 
     if settings.auto_create_tables:
-        Base.metadata.create_all(bind=engine)
+        Base.metadata.create_all(bind=engine())
     yield
 
 
