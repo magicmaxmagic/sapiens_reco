@@ -40,7 +40,7 @@ def run_matching(
             ShortlistItem(
                 profile_id=profile.id,
                 profile_name=profile.full_name,
-                score=score["final_score"],
+                score=score["score"],
                 skills_match=score["skills_match"],
                 seniority_match=score["seniority_match"],
                 location_match=score["location_match"],

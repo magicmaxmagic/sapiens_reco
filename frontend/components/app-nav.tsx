@@ -8,7 +8,8 @@ import { LogoutButton } from "@/components/logout-button";
 const dashboardLinks = [
   { href: "/dashboard", label: "Dashboard" },
   { href: "/profiles", label: "Profils" },
-  { href: "/missions", label: "Missions & Matching" },
+  { href: "/missions", label: "Missions" },
+  { href: "/matching", label: "Matching" },
   { href: "/notes", label: "Notes" },
 ];
 
