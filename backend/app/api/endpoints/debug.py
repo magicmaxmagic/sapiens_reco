@@ -1,31 +1,28 @@
-"""Debug endpoint for troubleshooting."""
+"""Minimal debug endpoint for troubleshooting."""
 
 from fastapi import APIRouter
 
 router = APIRouter(tags=["debug"])
 
 
-@router.get("/debug/env")
-def debug_env() -> dict:
-    """Show environment variables (non-sensitive)."""
-    import os
-    from app.core.config import get_settings
+@router.get("/debug/ping")
+def ping() -> dict:
+    """Basic ping without any imports."""
+    return {"status": "ok", "message": "pong"}
 
-    settings = get_settings()
+
+@router.get("/debug/info")
+def info() -> dict:
+    """Basic info with minimal imports."""
+    import os
+    import sys
 
     return {
-        "app_env": settings.app_env,
-        "auth_required": settings.auth_required,
-        "admin_username": settings.admin_username,
-        "admin_password_set": "***SET***" if settings.admin_password else "***NOT SET***",
-        "jwt_secret_set": "***SET***" if settings.jwt_secret_key else "***NOT SET***",
-        "database_url_set": "***SET***" if settings.database_url else "***NOT SET***",
-        "auto_create_tables": settings.auto_create_tables,
-        "allowed_origins": settings.allowed_origins,
+        "status": "ok",
+        "python_version": sys.version,
+        "env_app_env": os.environ.get("APP_ENV", "NOT_SET"),
+        "env_auth_required": os.environ.get("AUTH_REQUIRED", "NOT_SET"),
+        "env_admin_password": "***SET***" if os.environ.get("ADMIN_PASSWORD") else "***NOT_SET***",
+        "env_jwt_secret": "***SET***" if os.environ.get("JWT_SECRET_KEY") else "***NOT_SET***",
+        "env_database_url": "***SET***" if os.environ.get("DATABASE_URL") else "***NOT_SET***",
     }
-
-
-@router.get("/debug/health")
-def debug_health() -> dict:
-    """Basic health check without database."""
-    return {"status": "ok", "message": "Backend is running"}
